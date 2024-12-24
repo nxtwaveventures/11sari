@@ -13,21 +13,86 @@
         <h1>11Sari</h1>
         <p>Wear Elegance, Embrace Tradition</p>
     </header>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <main>
         <section>
             <h2>Welcome to 11Sari!</h2>
             <p>Your one-stop destination for elegant Banarasi sarees.</p>
         </section>
+
+        <!-- Filter Section -->
+        <section class="filter">
+            <h3>Filter by:</h3>
+            <label for="color">Color:</label>
+            <select id="color">
+                <option value="all">All Colors</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+
+            <label for="material">Material:</label>
+            <select id="material">
+                <option value="all">All Materials</option>
+                <option value="silk">Silk</option>
+                <option value="cotton">Cotton</option>
+            </select>
+        </section>
+
+        <!-- Saree Catalog Section -->
+        <section class="catalog">
+            <h3>Our Saree Collection</h3>
+
+            <!-- Saree Item 1 -->
+            <div class="saree-item" data-color="red" data-material="silk">
+                <img src="Saree1.jpg" alt="Red Silk Saree">
+                <h4>Red Silk Saree</h4>
+                <p>Price: ₹5,500</p>
+                <p>Material: Silk</p>
+                <p>Description: A stunning red silk saree with golden zari work.</p>
+            </div>
+
+            <!-- Saree Item 2 -->
+            <div class="saree-item" data-color="green" data-material="cotton">
+                <img src="Saree2.jpg" alt="Green Cotton Saree">
+                <h4>Green Cotton Saree</h4>
+                <p>Price: ₹2,800</p>
+                <p>Material: Cotton</p>
+                <p>Description: A comfortable green cotton saree for casual wear.</p>
+            </div>
+
+            <!-- Saree Item 3 -->
+            <div class="saree-item" data-color="blue" data-material="silk">
+                <img src="image3.jpg" alt="Blue Silk Saree">
+                <h4>Blue Silk Saree</h4>
+                <p>Price: ₹6,000</p>
+                <p>Material: Silk</p>
+                <p>Description: A beautiful blue silk saree with intricate embroidery.</p>
+            </div>
+
+            <!-- Saree Item 4 -->
+            <div class="saree-item" data-color="red" data-material="cotton">
+                <img src="image4.jpg" alt="Red Cotton Saree">
+                <h4>Red Cotton Saree</h4>
+                <p>Price: ₹2,200</p>
+                <p>Material: Cotton</p>
+                <p>Description: A simple and elegant red cotton saree for everyday wear.</p>
+            </div>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2024 11Sari. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
