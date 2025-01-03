@@ -1,13 +1,17 @@
-/* General Styles */
+/* General styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #fff5f5;
+    /* Light red background */
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
+/* Header styles */
 header {
-    background-color: #5c3d2e;
+    background-color: #b30000;
+    /* Dark red */
     color: white;
     padding: 20px;
     text-align: center;
@@ -35,16 +39,34 @@ h3 {
     margin-top: 20px;
 }
 
-/* Filter Section */
-.filter {
-    margin: 20px;
+/* Filter section styles */
+section.filters {
+    background-color: #ffcccc;
+    /* Light red */
+    padding: 20px;
+    border-bottom: 2px solid #b30000;
+    /* Dark red */
 }
 
-.filter select {
+section.filters label {
+    margin-right: 10px;
+}
+
+section.filters select {
     margin-right: 20px;
+    padding: 5px;
 }
 
-/* Catalog Section */
+/* Catalog section styles */
+section.catalog {
+    padding: 20px;
+}
+
+.catalog h3 {
+    color: #b30000;
+    /* Dark red */
+}
+
 .catalog {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -52,19 +74,25 @@ h3 {
     padding: 20px;
 }
 
+/* Saree item styles */
 .saree-item {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
+    background-color: #ffe6e6;
+    /* Very light red */
+    border: 1px solid #b30000;
+    /* Dark red */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
     text-align: center;
     transition: transform 0.3s;
 }
 
 .saree-item img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-bottom: 1px solid #b30000;
+    /* Dark red */
+    margin-bottom: 10px;
 }
 
 .saree-item:hover {
@@ -72,10 +100,24 @@ h3 {
 }
 
 .saree-item h4 {
+    color: #b30000;
+    /* Dark red */
     font-size: 1.2em;
     margin-top: 10px;
 }
 
 .saree-item p {
     margin: 5px 0;
+}
+
+/* Footer styles */
+footer {
+    background-color: #b30000;
+    /* Dark red */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

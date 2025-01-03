@@ -44,6 +44,13 @@
                 <option value="silk">Silk</option>
                 <option value="cotton">Cotton</option>
             </select>
+
+            <label for="texture">Texture:</label>
+            <select id="texture">
+                <option value="all">All</option>
+                <option value="smooth">Smooth</option>
+                <option value="rough">Rough</option>
+            </select>
         </section>
 
         <!-- Saree Catalog Section -->
@@ -51,40 +58,44 @@
             <h3>Our Saree Collection</h3>
 
             <!-- Saree Item 1 -->
-            <div class="saree-item" data-color="red" data-material="silk">
-                <img src="Saree1.jpg" alt="Red Silk Saree">
+            <article class="saree-item" data-color="red" data-material="silk" data-texture="smooth">
+                <img src="Saree1.jpg" alt="Red Silk Saree" srcset="Saree1-small.jpg 480w, Saree1.jpg 800w"
+                    sizes="(max-width: 600px) 480px, 800px">
                 <h4>Red Silk Saree</h4>
                 <p>Price: ₹5,500</p>
                 <p>Material: Silk</p>
                 <p>Description: A stunning red silk saree with golden zari work.</p>
-            </div>
+            </article>
 
             <!-- Saree Item 2 -->
-            <div class="saree-item" data-color="green" data-material="cotton">
-                <img src="Saree2.jpg" alt="Green Cotton Saree">
+            <article class="saree-item" data-color="green" data-material="cotton" data-texture="rough">
+                <img src="Saree2.jpg" alt="Green Cotton Saree" srcset="Saree2-small.jpg 480w, Saree2.jpg 800w"
+                    sizes="(max-width: 600px) 480px, 800px">
                 <h4>Green Cotton Saree</h4>
                 <p>Price: ₹2,800</p>
                 <p>Material: Cotton</p>
                 <p>Description: A comfortable green cotton saree for casual wear.</p>
-            </div>
+            </article>
 
             <!-- Saree Item 3 -->
-            <div class="saree-item" data-color="blue" data-material="silk">
-                <img src="Saree3.jpg" alt="Blue Silk Saree">
+            <article class="saree-item" data-color="blue" data-material="silk" data-texture="smooth">
+                <img src="Saree3.jpg" alt="Blue Silk Saree" srcset="Saree3-small.jpg 480w, Saree3.jpg 800w"
+                    sizes="(max-width: 600px) 480px, 800px">
                 <h4>Blue Silk Saree</h4>
                 <p>Price: ₹6,000</p>
                 <p>Material: Silk</p>
                 <p>Description: A beautiful blue silk saree with intricate embroidery.</p>
-            </div>
+            </article>
 
             <!-- Saree Item 4 -->
-            <div class="saree-item" data-color="red" data-material="cotton">
-                <img src="Saree4.jpg" alt="Red Cotton Saree">
+            <article class="saree-item" data-color="red" data-material="cotton" data-texture="smooth">
+                <img src="Saree4.jpg" alt="Red Cotton Saree" srcset="Saree4-small.jpg 480w, Saree4.jpg 800w"
+                    sizes="(max-width: 600px) 480px, 800px">
                 <h4>Red Cotton Saree</h4>
                 <p>Price: ₹2,400</p>
                 <p>Material: Cotton</p>
                 <p>Description: A simple and elegant red cotton saree for everyday wear.</p>
-            </div>
+            </article>
         </section>
     </main>
 
