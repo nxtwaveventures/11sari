@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - 11Sari</title>
+    <meta name="description"
+        content="11Sari Terms of Service - Clear and comprehensive guidelines for shopping authentic Indian ethnic wear. Know your rights and our commitments.">
+    <meta name="keywords"
+        content="11Sari terms, Indian ethnic wear shopping terms, online saree shopping policy, customer rights">
+    <title>Terms of Service - 11Sari | Your Rights & Our Commitments</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -119,6 +123,38 @@
             margin: var(--space-lg) 0;
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
+
+        .info-card {
+            background: linear-gradient(135deg, var(--primary-50), white);
+            border: 1px solid var(--primary-100);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-md) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+
+        .key-point i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 
@@ -145,58 +181,77 @@
 
     <div class="policy-header">
         <h1>Terms of Service</h1>
-        <p>Please read these terms carefully before using our services</p>
+        <p>Your Trust, Our Responsibility</p>
+        <div class="key-point">
+            <i class="fas fa-check-circle"></i>
+            <span>Last Updated: April 14, 2025</span>
+        </div>
     </div>
 
     <div class="policy-container">
-        <div class="policy-section">
-            <h2>Welcome to 11Sari</h2>
-            <p>By accessing and using this website, you accept and agree to be bound by these Terms of Service. If you
-                do not agree to these terms, please do not use our services.</p>
+        <div class="policy-section" id="introduction">
+            <h2>Welcome to the 11Sari Family</h2>
+            <p>These Terms of Service establish the foundation of our relationship with you. They're designed to protect
+                both your interests and ours while ensuring a seamless shopping experience.</p>
 
-            <div class="highlight-box">
-                <p>Last Updated: April 14, 2025</p>
+            <div class="info-card">
+                <h3>Quick Overview</h3>
+                <ul class="policy-list">
+                    <li>Must be 18+ to make purchases</li>
+                    <li>Account creation requires accurate information</li>
+                    <li>Prices are in INR unless stated otherwise</li>
+                    <li>We ship worldwide with some restrictions</li>
+                </ul>
             </div>
         </div>
 
-        <div class="policy-section">
-            <h2>Account Registration</h2>
+        <div class="policy-section" id="account-registration">
+            <h2>Account & Registration</h2>
+            <h3>Account Requirements</h3>
             <ul class="policy-list">
-                <li>You must be at least 18 years old to create an account</li>
-                <li>Provide accurate and complete information when creating an account</li>
-                <li>Maintain the security of your account credentials</li>
-                <li>Notify us immediately of any unauthorized account access</li>
+                <li>Provide accurate and current information</li>
+                <li>Keep your login credentials secure</li>
+                <li>Update your information when it changes</li>
+                <li>One account per user</li>
             </ul>
 
-            <div class="important-note">
-                <p>You are responsible for all activities that occur under your account.</p>
+            <div class="info-card">
+                <p><strong>Security Tip:</strong> Use a strong password and never share your login details.</p>
             </div>
         </div>
 
-        <div class="policy-section">
-            <h2>Product Information</h2>
+        <div class="policy-section" id="ordering">
+            <h2>Ordering & Payments</h2>
+            <h3>Order Process</h3>
             <ul class="policy-list">
-                <li>We strive to display accurate product colors, but actual colors may vary</li>
-                <li>Product prices are subject to change without notice</li>
-                <li>We reserve the right to limit quantities of any product</li>
-                <li>Product descriptions may be updated or modified</li>
-            </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2>Orders and Payment</h2>
-            <h3>Order Acceptance</h3>
-            <ul class="policy-list">
-                <li>We reserve the right to refuse or cancel any order</li>
-                <li>Order confirmation emails do not guarantee order acceptance</li>
-                <li>Payment must be received in full before order processing</li>
+                <li>Orders are subject to availability</li>
+                <li>Prices may change without notice</li>
+                <li>Payment is required before processing</li>
+                <li>Order confirmation is not guarantee of acceptance</li>
             </ul>
 
             <h3>Payment Methods</h3>
             <ul class="policy-list">
-                <li>We accept major credit cards and UPI payments</li>
-                <li>All transactions are processed securely</li>
-                <li>Payment information is never stored on our servers</li>
+                <li>Credit/Debit Cards (Visa, MasterCard, American Express)</li>
+                <li>UPI Payments</li>
+                <li>Net Banking (Indian banks only)</li>
+                <li>International Wire Transfer (for bulk orders)</li>
+            </ul>
+        </div>
+
+        <div class="policy-section" id="product-policies">
+            <h2>Product Policies</h2>
+            <div class="info-card">
+                <p><strong>Color Disclaimer:</strong> We strive to display accurate colors, but variations may occur due
+                    to screen settings.</p>
+            </div>
+
+            <h3>Product Information</h3>
+            <ul class="policy-list">
+                <li>All measurements are approximate</li>
+                <li>Handcrafted items may have slight variations</li>
+                <li>We regularly update product descriptions</li>
+                <li>Stock availability is real-time</li>
             </ul>
         </div>
 
