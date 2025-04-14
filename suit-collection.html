@@ -19,10 +19,10 @@
     <style>
         .collection-header {
             background: linear-gradient(135deg, #2F5D8C, #1A3A57);
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
             color: white;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
         }
 
@@ -54,20 +54,23 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
             padding: 0 2rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
         }
 
         .product-card {
             background: white;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--border-light);
+            margin: 0 auto;
+            max-width: 400px;
+            width: 100%;
         }
 
         .product-card:hover {
@@ -83,7 +86,7 @@
         }
 
         .product-details {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .product-title {
@@ -171,30 +174,75 @@
 
         .filter-bar {
             background: white;
-            padding: 1rem 2rem;
-            margin: 0 auto 2rem;
-            border-radius: 0.5rem;
+            padding: 1.5rem 2rem;
+            margin: 0 auto 3rem;
+            border-radius: 0.75rem;
             box-shadow: var(--shadow-sm);
             display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             border: 1px solid var(--border-light);
+        }
+
+        .spiritual-collection {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fff5e6, #fff);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .spiritual-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .filter-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .filter-category h3 {
+            color: #2F5D8C;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .spiritual-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 0.5rem;
+            background: white;
+            color: #2F5D8C;
+            font-family: var(--font-body);
+            margin-top: 0.5rem;
         }
 
         .filter-group {
             display: flex;
             gap: 1rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .filter-select {
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.25rem;
             border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
+            border-radius: 0.5rem;
             background: white;
             font-family: var(--font-body);
             color: var(--text-primary);
+            min-width: 180px;
         }
 
         .logo-text {
@@ -205,6 +253,83 @@
 
         .logo-highlight {
             color: #D4AF37;
+        }
+
+        @media (max-width: 768px) {
+            .collection-header {
+                padding: 4rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .collection-header h1 {
+                font-size: 2rem;
+            }
+
+            .collection-header p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                padding: 1.5rem;
+                margin: 0 1rem 2rem;
+                gap: 1rem;
+            }
+
+            .spiritual-collection {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .spiritual-filters {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .filter-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .filter-select {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .product-grid {
+                padding: 0 1rem;
+                gap: 1.5rem;
+            }
+
+            .product-details {
+                padding: 1.5rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .buy-now,
+            .add-to-cart {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .collection-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .product-title {
+                font-size: 1.1rem;
+            }
+
+            .product-description {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -268,19 +393,68 @@
         </div>
     </div>
 
+    <!-- Spiritual Collection Section -->
+    <div class="spiritual-collection">
+        <h2 class="section-title">Sacred Selections: Ayurvedic & Astrological Collection</h2>
+        <div class="spiritual-filters">
+            <div class="filter-category ayurvedic">
+                <h3>Ayurvedic Healing</h3>
+                <select class="spiritual-select" id="dosha-filter">
+                    <option value="">Choose Your Dosha</option>
+                    <option value="vata">Vata (Blue, Purple)</option>
+                    <option value="pitta">Pitta (Green, Silver)</option>
+                    <option value="kapha">Kapha (Red, Orange)</option>
+                </select>
+            </div>
+
+            <div class="filter-category zodiac">
+                <h3>Astrological Significance</h3>
+                <select class="spiritual-select" id="zodiac-filter">
+                    <option value="">Select Your Zodiac</option>
+                    <option value="aries">Aries (Red)</option>
+                    <option value="taurus">Taurus (Green)</option>
+                    <option value="gemini">Gemini (Yellow)</option>
+                    <option value="cancer">Cancer (Silver)</option>
+                    <option value="leo">Leo (Gold)</option>
+                    <option value="virgo">Virgo (Green, Brown)</option>
+                    <option value="libra">Libra (Pink)</option>
+                    <option value="scorpio">Scorpio (Dark Red)</option>
+                    <option value="sagittarius">Sagittarius (Purple)</option>
+                    <option value="capricorn">Capricorn (Brown, Grey)</option>
+                    <option value="aquarius">Aquarius (Blue)</option>
+                    <option value="pisces">Pisces (Sea Green)</option>
+                </select>
+            </div>
+
+            <div class="filter-category festival">
+                <h3>Festival & Occasions</h3>
+                <select class="spiritual-select" id="festival-filter">
+                    <option value="">Select Festival</option>
+                    <option value="diwali">Diwali (Red, Gold)</option>
+                    <option value="durga-puja">Durga Puja (Red, White)</option>
+                    <option value="karwa-chauth">Karwa Chauth (Red, Maroon)</option>
+                    <option value="wedding">Wedding (Red, Maroon, Gold)</option>
+                    <option value="holi">Holi (All Colors)</option>
+                    <option value="navratri">Navratri (Nine Colors)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
     <div class="product-grid">
         <!-- Product 1 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e1f5fe/2F5D8C?text=Anarkali+Suit" alt="Elegant Anarkali Suit"
+            <img src="https://via.placeholder.com/400x500/e8eaf6/2F5D8C?text=Anarkali+Suit" alt="Designer Anarkali Suit"
                 class="product-image">
             <div class="product-details">
                 <span class="material-tag">Georgette</span>
-                <h3 class="product-title">Royal Blue Anarkali Suit</h3>
-                <p class="product-description">Stunning royal blue anarkali suit with gold embroidery work, perfect for
-                    festive occasions and celebrations.</p>
+                <h3 class="product-title">Designer Anarkali Suit</h3>
+                <p class="product-description">Elegant designer anarkali suit with intricate embroidery and mirror work,
+                    perfect for weddings and special occasions.</p>
                 <div class="product-price">
-                    <span>₹8,999</span>
-                    <span class="original-price">₹12,999</span>
+                    <span>₹12,999</span>
+                    <span class="original-price">₹15,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -291,16 +465,16 @@
 
         <!-- Product 2 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e8f5e9/2F5D8C?text=Palazzo+Suit" alt="Designer Palazzo Suit"
+            <img src="https://via.placeholder.com/400x500/f3e5f5/2F5D8C?text=Sharara+Suit" alt="Bridal Sharara Suit"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Cotton Silk</span>
-                <h3 class="product-title">Emerald Green Palazzo Suit</h3>
-                <p class="product-description">Elegant emerald green palazzo suit with delicate hand embroidery,
-                    offering comfort and style for everyday wear.</p>
+                <span class="material-tag">Raw Silk</span>
+                <h3 class="product-title">Bridal Sharara Suit</h3>
+                <p class="product-description">Stunning bridal sharara suit with heavy zari work and sequin
+                    embellishments, designed for wedding ceremonies.</p>
                 <div class="product-price">
-                    <span>₹6,499</span>
-                    <span class="original-price">₹8,999</span>
+                    <span>₹24,999</span>
+                    <span class="original-price">₹29,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -311,16 +485,16 @@
 
         <!-- Product 3 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/fff3e0/2F5D8C?text=Wedding+Suit" alt="Wedding Salwar Suit"
+            <img src="https://via.placeholder.com/400x500/e3f2fd/2F5D8C?text=Palazzo+Suit" alt="Casual Palazzo Suit"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Bridal Maroon Sharara Suit</h3>
-                <p class="product-description">Luxurious maroon sharara suit with intricate zari work and stone
-                    embellishments, perfect for wedding ceremonies.</p>
+                <span class="material-tag">Cotton</span>
+                <h3 class="product-title">Contemporary Palazzo Suit</h3>
+                <p class="product-description">Comfortable and stylish palazzo suit with digital prints, perfect for
+                    casual outings and daily wear.</p>
                 <div class="product-price">
-                    <span>₹18,999</span>
-                    <span class="original-price">₹24,999</span>
+                    <span>₹5,999</span>
+                    <span class="original-price">₹7,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -331,16 +505,16 @@
 
         <!-- Product 4 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/f3e5f5/2F5D8C?text=Patiala+Suit" alt="Patiala Salwar Suit"
-                class="product-image">
+            <img src="https://via.placeholder.com/400x500/fff3e0/2F5D8C?text=Designer+Suit"
+                alt="Party Wear Designer Suit" class="product-image">
             <div class="product-details">
-                <span class="material-tag">Cotton</span>
-                <h3 class="product-title">Lavender Patiala Suit</h3>
-                <p class="product-description">Comfortable lavender patiala suit with subtle print and mirror work
-                    details, ideal for casual gatherings.</p>
+                <span class="material-tag">Crepe</span>
+                <h3 class="product-title">Party Wear Designer Suit</h3>
+                <p class="product-description">Modern designer suit with contemporary cuts and elegant embellishments,
+                    ideal for parties and social gatherings.</p>
                 <div class="product-price">
-                    <span>₹4,999</span>
-                    <span class="original-price">₹6,999</span>
+                    <span>₹8,999</span>
+                    <span class="original-price">₹11,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -351,16 +525,16 @@
 
         <!-- Product 5 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/ffebee/2F5D8C?text=Party+Wear" alt="Party Wear Suit"
-                class="product-image">
+            <img src="https://via.placeholder.com/400x500/fce4ec/2F5D8C?text=Punjabi+Suit"
+                alt="Traditional Punjabi Suit" class="product-image">
             <div class="product-details">
-                <span class="material-tag">Chiffon</span>
-                <h3 class="product-title">Rose Pink Designer Suit</h3>
-                <p class="product-description">Stylish rose pink designer suit with contemporary cuts and sequin work,
-                    perfect for evening parties.</p>
+                <span class="material-tag">Pure Cotton</span>
+                <h3 class="product-title">Traditional Punjabi Suit</h3>
+                <p class="product-description">Classic Punjabi suit with phulkari embroidery and traditional design
+                    elements, perfect for festive occasions.</p>
                 <div class="product-price">
-                    <span>₹9,499</span>
-                    <span class="original-price">₹11,999</span>
+                    <span>₹6,999</span>
+                    <span class="original-price">₹8,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -371,15 +545,15 @@
 
         <!-- Product 6 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e0f2f1/2F5D8C?text=Punjabi+Suit"
-                alt="Traditional Punjabi Suit" class="product-image">
+            <img src="https://via.placeholder.com/400x500/f1f8e9/2F5D8C?text=Ethnic+Suit" alt="Festive Ethnic Suit"
+                class="product-image">
             <div class="product-details">
                 <span class="material-tag">Chanderi</span>
-                <h3 class="product-title">Turquoise Punjabi Suit</h3>
-                <p class="product-description">Vibrant turquoise punjabi suit with phulkari embroidery, celebrating the
-                    rich cultural heritage of Punjab.</p>
+                <h3 class="product-title">Festive Ethnic Suit</h3>
+                <p class="product-description">Beautiful ethnic suit with gota patti work and traditional motifs,
+                    designed for festival celebrations.</p>
                 <div class="product-price">
-                    <span>₹7,499</span>
+                    <span>₹7,999</span>
                     <span class="original-price">₹9,999</span>
                 </div>
                 <div class="product-actions">
@@ -402,27 +576,142 @@
     </div>
 
     <script>
-        // Add interactive filtering functionality here
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize filters
             const categoryFilter = document.getElementById('category-filter');
             const occasionFilter = document.getElementById('occasion-filter');
             const sortOptions = document.getElementById('sort-options');
+            const productCards = document.querySelectorAll('.product-card');
 
             // Add event listeners
-            categoryFilter.addEventListener('change', filterProducts);
-            occasionFilter.addEventListener('change', filterProducts);
+            categoryFilter.addEventListener('change', applyFilters);
+            occasionFilter.addEventListener('change', applyFilters);
             sortOptions.addEventListener('change', sortProducts);
 
-            function filterProducts() {
-                // Filter implementation would go here
-                console.log('Filtering products...');
+            function applyFilters() {
+                const categoryValue = categoryFilter.value;
+                const occasionValue = occasionFilter.value;
+
+                productCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const description = card.querySelector('.product-description').textContent.toLowerCase();
+
+                    let categoryMatch = categoryValue === 'all';
+                    let occasionMatch = occasionValue === 'all';
+
+                    // Check category match
+                    if (!categoryMatch) {
+                        categoryMatch = title.includes(categoryValue.toLowerCase()) ||
+                            description.includes(categoryValue.toLowerCase());
+                    }
+
+                    // Check occasion match
+                    if (!occasionMatch) {
+                        occasionMatch = description.includes(occasionValue.toLowerCase());
+                    }
+
+                    // Show/hide card based on filters
+                    card.style.display = (categoryMatch && occasionMatch) ? 'block' : 'none';
+                });
             }
 
             function sortProducts() {
-                // Sort implementation would go here
-                console.log('Sorting products...');
+                const sortValue = sortOptions.value;
+                const productsArray = Array.from(productCards);
+
+                productsArray.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.product-price span').textContent.replace(/[^\d]/g, ''));
+                    const priceB = parseInt(b.querySelector('.product-price span').textContent.replace(/[^\d]/g, ''));
+
+                    switch (sortValue) {
+                        case 'price-low':
+                            return priceA - priceB;
+                        case 'price-high':
+                            return priceB - priceA;
+                        case 'newest':
+                            return -1; // For demo, keeping newest first
+                        default: // 'popular'
+                            return 0; // For demo, maintaining original order
+                    }
+                });
+
+                const productGrid = document.querySelector('.product-grid');
+                productsArray.forEach(card => productGrid.appendChild(card));
             }
+
+            // Initialize cart functionality
+            let cart = [];
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const card = this.closest('.product-card');
+                    const title = card.querySelector('.product-title').textContent;
+                    const price = card.querySelector('.product-price span').textContent;
+
+                    cart.push({
+                        title: title,
+                        price: price
+                    });
+
+                    alert(`${title} added to cart!`);
+                });
+            });
+
+            // Initialize buy now functionality
+            const buyNowButtons = document.querySelectorAll('.buy-now');
+
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const card = this.closest('.product-card');
+                    const title = card.querySelector('.product-title').textContent;
+                    alert(`Proceeding to checkout for ${title}`);
+                });
+            });
+
+            // Spiritual Collection Filters
+            const doshaFilter = document.getElementById('dosha-filter');
+            const zodiacFilter = document.getElementById('zodiac-filter');
+            const festivalFilter = document.getElementById('festival-filter');
+
+            [doshaFilter, zodiacFilter, festivalFilter].forEach(filter => {
+                filter.addEventListener('change', function () {
+                    const selectedValue = this.value.toLowerCase();
+                    if (selectedValue) {
+                        productCards.forEach(card => {
+                            const description = card.querySelector('.product-description').textContent.toLowerCase();
+                            const colors = card.querySelector('.material-tag').textContent.toLowerCase();
+                            const match = description.includes(selectedValue) ||
+                                description.includes(this.options[this.selectedIndex].text.toLowerCase()) ||
+                                colors.includes(selectedValue);
+                            card.style.display = match ? 'block' : 'none';
+                        });
+                    } else {
+                        // Show all products when no filter is selected
+                        productCards.forEach(card => card.style.display = 'block');
+                    }
+                });
+            });
+
+            // Reset other filters when spiritual filters are used
+            [doshaFilter, zodiacFilter, festivalFilter].forEach(filter => {
+                filter.addEventListener('change', function () {
+                    if (this.value) {
+                        // Reset main filters
+                        categoryFilter.value = 'all';
+                        occasionFilter.value = 'all';
+
+                        // Reset other spiritual filters
+                        [doshaFilter, zodiacFilter, festivalFilter].forEach(otherFilter => {
+                            if (otherFilter !== this) {
+                                otherFilter.value = '';
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
