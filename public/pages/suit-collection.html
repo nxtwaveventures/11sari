@@ -318,6 +318,227 @@
         .logo-highlight {
             color: #D4AF37;
         }
+
+        /* Cart and Payment Modal Styles */
+        .cart-icon-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, white, #f5f5f5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(47, 93, 140, 0.1);
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.2s ease;
+        }
+
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            color: #2F5D8C;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(47, 93, 140, 0.3);
+        }
+
+        .cart-modal,
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-modal.active,
+        .payment-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-header,
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #fff, #f9f5ef);
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: 400px;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .cart-item-details {
+            margin-left: 1rem;
+            flex-grow: 1;
+        }
+
+        .cart-quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .cart-quantity-btn {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #f9f5ef, #fff);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .payment-form {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .payment-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .payment-form-group input,
+        .payment-form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.25rem;
+            font-family: var(--font-body);
+        }
+
+        .payment-form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .payment-btn {
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        @keyframes added-animation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .added-animation {
+            animation: added-animation 0.5s ease;
+        }
     </style>
 </head>
 
@@ -531,27 +752,298 @@
     </div>
 
     <script>
-        // Add interactive filtering functionality here
+        let cart = [];
+        const cartCount = document.querySelector('.cart-count');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartModal = document.getElementById('cartModal');
+        const paymentModal = document.getElementById('paymentModal');
+        const productDetailsContainer = document.getElementById('productDetailsContainer');
+        const paymentForm = document.getElementById('paymentForm');
+
+        // Initialize cart from localStorage
         document.addEventListener('DOMContentLoaded', function () {
+            const savedCart = localStorage.getItem('11suitCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+
+            // Add event listeners to all Add to Cart buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.dataset.id || Math.random().toString(36).substr(2, 9);
+                    const productImage = productCard.querySelector('.product-image').src;
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price span').textContent;
+                    const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, ''));
+
+                    // Check if product already in cart
+                    const existingItemIndex = cart.findIndex(item => item.id === productId);
+                    if (existingItemIndex !== -1) {
+                        cart[existingItemIndex].quantity++;
+                    } else {
+                        cart.push({
+                            id: productId,
+                            image: productImage,
+                            title: productTitle,
+                            price: numericPrice,
+                            quantity: 1
+                        });
+                    }
+
+                    // Add animation to cart icon
+                    const cartIconContainer = document.querySelector('.cart-icon-container');
+                    cartIconContainer.classList.add('added-animation');
+                    setTimeout(() => {
+                        cartIconContainer.classList.remove('added-animation');
+                    }, 500);
+
+                    updateCart();
+                });
+            });
+
+            // Add event listeners to all Buy Now buttons
+            const buyNowButtons = document.querySelectorAll('.buy-now');
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price span').textContent;
+
+                    productDetailsContainer.innerHTML = `
+                        <div class="payment-product-details" style="width: 100%">
+                            <h4 class="payment-product-title">${productTitle}</h4>
+                            <div class="payment-product-price">${productPrice}</div>
+                        </div>
+                    `;
+
+                    openPaymentModal();
+                });
+            });
+
             // Initialize filters
             const categoryFilter = document.getElementById('category-filter');
             const occasionFilter = document.getElementById('occasion-filter');
             const sortOptions = document.getElementById('sort-options');
 
-            // Add event listeners
-            categoryFilter.addEventListener('change', filterProducts);
-            occasionFilter.addEventListener('change', filterProducts);
+            categoryFilter.addEventListener('change', applyFilters);
+            occasionFilter.addEventListener('change', applyFilters);
             sortOptions.addEventListener('change', sortProducts);
+        });
 
-            function filterProducts() {
-                // Filter implementation would go here
-                console.log('Filtering products...');
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty.</div>';
+            } else {
+                cartItems.innerHTML = '';
+                let totalPrice = 0;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    totalPrice += itemTotal;
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" class="cart-item-image" alt="${item.title}">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.title}</h4>
+                            <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                            <div class="cart-quantity-controls">
+                                <button class="cart-quantity-btn" onclick="decrementItem('${item.id}')">-</button>
+                                <span class="cart-quantity">${item.quantity}</span>
+                                <button class="cart-quantity-btn" onclick="incrementItem('${item.id}')">+</button>
+                            </div>
+                            <button class="cart-remove" onclick="removeItem('${item.id}')">Remove</button>
+                        </div>
+                    `;
+
+                    cartItems.appendChild(itemElement);
+                });
+
+                cartTotal.textContent = `₹${totalPrice.toLocaleString()}`;
             }
 
-            function sortProducts() {
-                // Sort implementation would go here
-                console.log('Sorting products...');
+            // Save to localStorage
+            localStorage.setItem('11suitCart', JSON.stringify(cart));
+        }
+
+        function incrementItem(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity++;
+                updateCart();
             }
+        }
+
+        function decrementItem(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity--;
+                if (item.quantity <= 0) {
+                    removeItem(id);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function openCartModal() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPaymentModal() {
+            paymentModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePaymentModal() {
+            paymentModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            paymentForm.reset();
+            document.getElementById('cardDetails').style.display = 'none';
+            document.getElementById('upiDetails').style.display = 'none';
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items before checkout.');
+                return;
+            }
+
+            closeCartModal();
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+            productDetailsContainer.innerHTML = `
+                <div class="payment-product-details" style="width: 100%">
+                    <h4 class="payment-product-title">Cart Summary (${totalItems} items)</h4>
+                    <div class="payment-product-price">₹${totalPrice.toLocaleString()}</div>
+                </div>
+            `;
+
+            openPaymentModal();
+        }
+
+        function togglePaymentDetails() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const cardDetails = document.getElementById('cardDetails');
+            const upiDetails = document.getElementById('upiDetails');
+
+            cardDetails.style.display = 'none';
+            upiDetails.style.display = 'none';
+
+            if (paymentMethod === 'card') {
+                cardDetails.style.display = 'block';
+            } else if (paymentMethod === 'upi') {
+                upiDetails.style.display = 'block';
+            }
+        }
+
+        // Filter and sort functionality
+        function applyFilters() {
+            const categoryValue = document.getElementById('category-filter').value;
+            const occasionValue = document.getElementById('occasion-filter').value;
+            const productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(card => {
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                const description = card.querySelector('.product-description').textContent.toLowerCase();
+                const material = card.querySelector('.material-tag').textContent.toLowerCase();
+
+                let categoryMatch = categoryValue === 'all';
+                let occasionMatch = occasionValue === 'all';
+
+                // Check category match
+                if (!categoryMatch) {
+                    categoryMatch = title.includes(categoryValue.toLowerCase()) ||
+                        description.includes(categoryValue.toLowerCase());
+                }
+
+                // Check occasion match
+                if (!occasionMatch) {
+                    occasionMatch = description.includes(occasionValue.toLowerCase());
+                }
+
+                // Show/hide card based on filters
+                if (categoryMatch && occasionMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function sortProducts() {
+            const sortValue = document.getElementById('sort-options').value;
+            const productGrid = document.querySelector('.product-grid');
+            const productCards = Array.from(document.querySelectorAll('.product-card'));
+
+            productCards.sort((a, b) => {
+                const priceA = parseInt(a.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
+                const priceB = parseInt(b.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
+
+                if (sortValue === 'price-low') {
+                    return priceA - priceB;
+                } else if (sortValue === 'price-high') {
+                    return priceB - priceA;
+                }
+                return 0;
+            });
+
+            // Clear and re-append sorted cards
+            productCards.forEach(card => productGrid.appendChild(card));
+        }
+
+        // Handle payment form submission
+        paymentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Basic form validation
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            if (paymentMethod === 'card') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (!cardNumber || !expiryDate || !cvv) {
+                    alert('Please fill in all card details');
+                    return;
+                }
+            } else if (paymentMethod === 'upi') {
+                const upiId = document.getElementById('upiId').value;
+                if (!upiId) {
+                    alert('Please enter your UPI ID');
+                    return;
+                }
+            }
+
+            // Process the order
+            alert('Thank you for your order! Your payment has been processed successfully.');
+            cart = [];
+            updateCart();
+            closePaymentModal();
         });
     </script>
 </body>
