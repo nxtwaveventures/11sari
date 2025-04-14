@@ -32,9 +32,7 @@ export default function Layout({ children, seo }) {
                     </div>
                 </div>
             </header>
-
             {children}
-
             <footer className="site-footer">
                 <div className="container">
                     <div className="footer-content">
@@ -44,9 +42,12 @@ export default function Layout({ children, seo }) {
                             <Link href="/shipping-policy">Shipping Policy</Link>
                         </div>
                         <div className="social-media">
-                            <a href="#" className="social-link"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#" className="social-link"><i className="fab fa-instagram"></i></a>
-                            <a href="#" className="social-link"><i className="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61574843622187" className="social-link" target="_blank" rel="noopener noreferrer">
+                                <i className="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/elevensaree/" className="social-link" target="_blank" rel="noopener noreferrer">
+                                <i className="fab fa-instagram"></i>
+                            </a>
                         </div>
                         <div className="copyright">
                             &copy; {new Date().getFullYear()} 11Sari. All Rights Reserved.
