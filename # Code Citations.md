@@ -1,3 +1,9 @@
+# Code Citations
+
+## License: unknown
+https://github.com/josdem/hugo/blob/8a47b6e7ed9c44a62047732d233efdf8950eac50/content/techtalk/ux/playwright_reports_deployment.md
+
+```
 name: Deploy to GitHub Pages
 
 on:
@@ -12,10 +18,10 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,27 +29,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './out'  # Next.js static export output directory
-      
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+```
+

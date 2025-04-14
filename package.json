@@ -1,16 +1,25 @@
 {
-    "name": "11sari",
-    "version": "1.0.0",
+    "name": "eleven-sari",
+    "version": "0.1.0",
+    "private": true,
     "description": "Luxury Indian Saree E-commerce Platform",
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
-        "start": "next start"
+        "build": "next build && npm run generate-sitemap",
+        "start": "next start",
+        "lint": "next lint",
+        "generate-sitemap": "node scripts/generate-sitemap.js"
     },
     "dependencies": {
-        "next": "^12.0.0",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "next": "13.4.19",
+        "react": "18.2.0",
+        "react-dom": "18.2.0"
+    },
+    "devDependencies": {
+        "eslint": "8.47.0",
+        "eslint-config-next": "13.4.19",
+        "globby": "^11.0.4",
+        "prettier": "^2.8.8"
     }
 }
