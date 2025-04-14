@@ -11,7 +11,6 @@ export default function Layout({ children, seo }) {
     return (
         <>
             <SEO {...defaultSEO} {...seo} />
-
             <header className="site-header">
                 <div className="container">
                     <div className="header-container">
