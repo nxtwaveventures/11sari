@@ -1,15 +1,17 @@
-import Layout from '@/components/Layout'
-import { useState } from 'react'
+import Head from 'next/head';
+import Image from 'next/image';
+import Layout from '@/components/Layout';
+import { useState } from 'react';
 
 export default function KnowMore() {
-    const [activeTab, setActiveTab] = useState('wedding')
+    const [activeTab, setActiveTab] = useState('wedding');
 
     const seo = {
         title: 'Know More - Sacred Significance',
         description: 'Discover the deep cultural significance and sacred meanings behind different sarees in Indian ceremonies. Learn about traditional sarees for weddings, poojas, and festivals.',
         keywords: ['saree significance', 'indian ceremonies', 'wedding sarees', 'pooja sarees', 'festival wear', 'cultural traditions', 'indian customs'],
         ogImage: '/assets/images/occasions/wedding-saree.jpg'
-    }
+    };
 
     const tabContent = {
         wedding: {
@@ -69,7 +71,7 @@ export default function KnowMore() {
                 }
             ]
         }
-    }
+    };
 
     return (
         <Layout seo={seo}>
@@ -112,7 +114,13 @@ export default function KnowMore() {
                         >
                             <div className="sacred-grid">
                                 <div className="sacred-image">
-                                    <img src={tabContent[tab].image} alt={`${tabContent[tab].title} Saree`} />
+                                    <Image
+                                        src={tabContent[tab].image}
+                                        alt={`${tabContent[tab].title} Saree`}
+                                        width={800}
+                                        height={600}
+                                        priority
+                                    />
                                 </div>
                                 <div className="sacred-info">
                                     <h3>{tabContent[tab].title} <span className="sanskrit-name">{tabContent[tab].sanskrit}</span></h3>
@@ -134,5 +142,5 @@ export default function KnowMore() {
                 </div>
             </main>
         </Layout>
-    )
+    );
 }

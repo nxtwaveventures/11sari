@@ -6,11 +6,12 @@
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export && npm run generate-sitemap",
+        "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "generate-sitemap": "node scripts/generate-sitemap.js",
-        "export": "next export"
+        "export": "next export",
+        "deploy": "next build && next export && touch out/.nojekyll"
     },
     "dependencies": {
         "next": "13.4.19",

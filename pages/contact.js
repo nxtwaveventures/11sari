@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import Head from 'next/head'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -32,11 +33,15 @@ export default function Contact() {
 
     return (
         <Layout seo={seo}>
+            <Head>
+                <title>Contact Us - 11Sari</title>
+                <meta name="description" content="Get in touch with 11Sari&apos;s customer service team for any queries about our products or services." />
+            </Head>
             <div className="page-header">
                 <div className="container">
                     <h1 className="gjs-heading">Contact <span className="gold-accent">Us</span></h1>
                     <div className="text-main-content highlighted-text">
-                        <p>We'd love to hear from you. Reach out to us for any queries or assistance.</p>
+                        <p>We&apos;d love to hear from you. Reach out to us for any queries or assistance.</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +67,7 @@ export default function Contact() {
                                 <i className="fas fa-envelope"></i>
                                 <h3>Email Us</h3>
                                 <p><a href="mailto:info@11sari.com">info@11sari.com</a></p>
-                                <p>We'll respond within 24 hours</p>
+                                <p>We&apos;ll respond within 24 hours</p>
                             </div>
                         </div>
 
