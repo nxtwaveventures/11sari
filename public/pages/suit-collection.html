@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elegant Indian Salwar Suit Collection - 11Suit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <meta name="generator" content="GrapesJS Studio">
+    <meta name="description"
+        content="Explore our exclusive collection of authentic Indian salwar suits with intricate designs and premium quality.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./custom-pages.css">
+    <style>
+        :root {
+            --primary-color: #2F5D8C;
+            --primary-dark: #1A3A57;
+            --accent-color: #D4AF37;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-light: #E5E5E5;
+            --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-body: var(--font-sans);
+            --font-heading: var(--font-serif);
+        }
+
+        .collection-header {
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .collection-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        .collection-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .collection-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Featured Collection Styles */
+        .featured-collection {
+            margin: 0 auto 4rem;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .featured-container {
+            display: flex;
+            background: white;
+            border-radius: 0.8rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(47, 93, 140, 0.1);
+        }
+
+        .featured-image {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-tag {
+            display: inline-block;
+            background: rgba(47, 93, 140, 0.1);
+            color: #2F5D8C;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #2F5D8C;
+        }
+
+        .featured-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .featured-cta {
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .featured-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(47, 93, 140, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .featured-container {
+                flex-direction: column;
+            }
+
+            .featured-image {
+                min-height: 300px;
+            }
+
+            .featured-content {
+                padding: 2rem;
+            }
+
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md), 0 0 15px rgba(47, 93, 140, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #D4AF37;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2F5D8C;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buy-now {
+            background: linear-gradient(135deg, #2F5D8C, #1A3A57);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .buy-now:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .add-to-cart {
+            background: white;
+            color: #2F5D8C;
+            border: 1px solid #2F5D8C;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-to-cart:hover {
+            background-color: rgba(47, 93, 140, 0.05);
+        }
+
+        .material-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1rem 2rem;
+            margin: 0 auto 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            border: 1px solid var(--border-light);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.25rem;
+            background: white;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2F5D8C;
+        }
+
+        .logo-highlight {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">11<span class="logo-highlight">Suit</span></span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                    <li><a href="know-more.html" class="nav-link">Know More</a></li>
+                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                    <li><a href="index.html" class="nav-link">11Sari</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="collection-header">
+        <h1>Elegant Indian Salwar Suit Collection</h1>
+        <p>Discover our premium range of authentic Indian salwar suits, carefully crafted with traditional techniques
+            and
+            contemporary designs.</p>
+    </div>
+
+    <!-- Contemporary Elegance Featured Section -->
+    <div class="featured-collection">
+        <div class="featured-container">
+            <div class="featured-image">
+                <img src="assets/images/collections/contemporary-elegance.jpg" alt="Contemporary Elegance Collection">
+            </div>
+            <div class="featured-content">
+                <span class="featured-tag">NEW ARRIVAL</span>
+                <h2>Contemporary Elegance</h2>
+                <p>Our newest collection blends traditional craftsmanship with modern silhouettes. Each suit is designed
+                    for the contemporary woman who values both heritage and style.</p>
+                <a href="#" class="featured-cta">Explore Collection</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label for="category-filter">Category:</label>
+            <select id="category-filter" class="filter-select">
+                <option value="all">All Suits</option>
+                <option value="anarkali">Anarkali Suits</option>
+                <option value="palazzo">Palazzo Suits</option>
+                <option value="patiala">Patiala Suits</option>
+                <option value="punjabi">Punjabi Suits</option>
+                <option value="sharara">Sharara Suits</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="occasion-filter">Occasion:</label>
+            <select id="occasion-filter" class="filter-select">
+                <option value="all">All Occasions</option>
+                <option value="wedding">Wedding</option>
+                <option value="festive">Festive</option>
+                <option value="casual">Casual</option>
+                <option value="party">Party Wear</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="sort-options">Sort By:</label>
+            <select id="sort-options" class="filter-select">
+                <option value="popular">Most Popular</option>
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/e1f5fe/2F5D8C?text=Anarkali+Suit" alt="Elegant Anarkali Suit"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Georgette</span>
+                <h3 class="product-title">Royal Blue Anarkali Suit</h3>
+                <p class="product-description">Stunning royal blue anarkali suit with gold embroidery work, perfect for
+                    festive occasions and celebrations.</p>
+                <div class="product-price">
+                    <span>₹8,999</span>
+                    <span class="original-price">₹12,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/e8f5e9/2F5D8C?text=Palazzo+Suit" alt="Designer Palazzo Suit"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Cotton Silk</span>
+                <h3 class="product-title">Emerald Green Palazzo Suit</h3>
+                <p class="product-description">Elegant emerald green palazzo suit with delicate hand embroidery,
+                    offering comfort and style for everyday wear.</p>
+                <div class="product-price">
+                    <span>₹6,499</span>
+                    <span class="original-price">₹8,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/fff3e0/2F5D8C?text=Wedding+Suit" alt="Wedding Salwar Suit"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Pure Silk</span>
+                <h3 class="product-title">Bridal Maroon Sharara Suit</h3>
+                <p class="product-description">Luxurious maroon sharara suit with intricate zari work and stone
+                    embellishments, perfect for wedding ceremonies.</p>
+                <div class="product-price">
+                    <span>₹18,999</span>
+                    <span class="original-price">₹24,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/f3e5f5/2F5D8C?text=Patiala+Suit" alt="Patiala Salwar Suit"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Cotton</span>
+                <h3 class="product-title">Lavender Patiala Suit</h3>
+                <p class="product-description">Comfortable lavender patiala suit with subtle print and mirror work
+                    details, ideal for casual gatherings.</p>
+                <div class="product-price">
+                    <span>₹4,999</span>
+                    <span class="original-price">₹6,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/ffebee/2F5D8C?text=Party+Wear" alt="Party Wear Suit"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Chiffon</span>
+                <h3 class="product-title">Rose Pink Designer Suit</h3>
+                <p class="product-description">Stylish rose pink designer suit with contemporary cuts and sequin work,
+                    perfect for evening parties.</p>
+                <div class="product-price">
+                    <span>₹9,499</span>
+                    <span class="original-price">₹11,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x500/e0f2f1/2F5D8C?text=Punjabi+Suit"
+                alt="Traditional Punjabi Suit" class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Chanderi</span>
+                <h3 class="product-title">Turquoise Punjabi Suit</h3>
+                <p class="product-description">Vibrant turquoise punjabi suit with phulkari embroidery, celebrating the
+                    rich cultural heritage of Punjab.</p>
+                <div class="product-price">
+                    <span>₹7,499</span>
+                    <span class="original-price">₹9,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gjs-grid-row">
+        <div class="gjs-grid-column">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="shipping-policy.html">Shipping Policy</a>
+            </div>
+            <div class="copyright">Copyright &copy; 2025 11Suit. All Rights Reserved.</div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive filtering functionality here
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize filters
+            const categoryFilter = document.getElementById('category-filter');
+            const occasionFilter = document.getElementById('occasion-filter');
+            const sortOptions = document.getElementById('sort-options');
+
+            // Add event listeners
+            categoryFilter.addEventListener('change', filterProducts);
+            occasionFilter.addEventListener('change', filterProducts);
+            sortOptions.addEventListener('change', sortProducts);
+
+            function filterProducts() {
+                // Filter implementation would go here
+                console.log('Filtering products...');
+            }
+
+            function sortProducts() {
+                // Sort implementation would go here
+                console.log('Sorting products...');
+            }
+        });
+    </script>
+</body>
+
+</html>
