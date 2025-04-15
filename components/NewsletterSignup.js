@@ -1,166 +1,166 @@
 import { useState } from 'react';
 
 const NewsletterSignup = ({ className = '', variant = 'default' }) => {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [interests, setInterests] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState(null);
-    const [error, setError] = useState(null);
-    const [expanded, setExpanded] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [interests, setInterests] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [error, setError] = useState(null);
+  const [expanded, setExpanded] = useState(false);
 
-    const interestOptions = [
-        { id: 'ayurvedic-sarees', label: 'Ayurvedic Sarees' },
-        { id: 'natural-dyes', label: 'Natural Dyes' },
-        { id: 'wellness-tips', label: 'Wellness Tips' },
-        { id: 'traditional-craft', label: 'Traditional Crafts' },
-        { id: 'healing-fabrics', label: 'Healing Fabrics' }
-    ];
+  const interestOptions = [
+    { id: 'ayurvedic-sarees', label: 'Ayurvedic Sarees' },
+    { id: 'natural-dyes', label: 'Natural Dyes' },
+    { id: 'wellness-tips', label: 'Wellness Tips' },
+    { id: 'traditional-craft', label: 'Traditional Crafts' },
+    { id: 'healing-fabrics', label: 'Healing Fabrics' }
+  ];
 
-    const handleInterestToggle = (interestId) => {
-        if (interests.includes(interestId)) {
-            setInterests(interests.filter(id => id !== interestId));
-        } else {
-            setInterests([...interests, interestId]);
-        }
-    };
+  const handleInterestToggle = (interestId) => {
+    if (interests.includes(interestId)) {
+      setInterests(interests.filter(id => id !== interestId));
+    } else {
+      setInterests([...interests, interestId]);
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        // Reset states
-        setError(null);
-        setMessage(null);
-        setLoading(true);
+    // Reset states
+    setError(null);
+    setMessage(null);
+    setLoading(true);
 
-        try {
-            const response = await fetch('/api/subscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    name,
-                    interests
-                }),
-            });
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          name,
+          interests
+        }),
+      });
 
-            const data = await response.json();
+      const data = await response.json();
 
-            if (!response.ok) {
-                throw new Error(data.error || 'Something went wrong');
-            }
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
 
-            setMessage(data.message);
-            setEmail('');
-            setName('');
-            setInterests([]);
-            setExpanded(false);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+      setMessage(data.message);
+      setEmail('');
+      setName('');
+      setInterests([]);
+      setExpanded(false);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <div className={`newsletter-signup ${className} ${variant}`}>
-            <div className="newsletter-content">
-                {variant === 'default' && (
-                    <h3 className="newsletter-title">Subscribe to Our Newsletter</h3>
-                )}
+  return (
+    <div className={`newsletter-signup ${className} ${variant}`}>
+      <div className="newsletter-content">
+        {variant === 'default' && (
+          <h3 className="newsletter-title">Subscribe to Our Newsletter</h3>
+        )}
 
-                {variant === 'popup' && (
-                    <>
-                        <div className="newsletter-icon">
-                            <i className="fas fa-envelope"></i>
-                        </div>
-                        <h3 className="newsletter-title">Join the 11Sari Family</h3>
-                    </>
-                )}
+        {variant === 'popup' && (
+          <>
+            <div className="newsletter-icon">
+              <i className="fas fa-envelope"></i>
+            </div>
+            <h3 className="newsletter-title">Join the 11Sari Family</h3>
+          </>
+        )}
 
-                <p className="newsletter-description">
-                    Stay updated with our latest collections, ayurvedic wellness tips, and exclusive offers.
-                </p>
+        <p className="newsletter-description">
+          Stay updated with our latest collections, ayurvedic wellness tips, and exclusive offers.
+        </p>
 
-                {message ? (
-                    <div className="success-message">
-                        <i className="fas fa-check-circle"></i>
-                        <p>{message}</p>
-                    </div>
-                ) : (
-                    <form onSubmit={handleSubmit} className="newsletter-form">
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Your email address"
-                                required
-                                className="newsletter-input"
-                            />
+        {message ? (
+          <div className="success-message">
+            <i className="fas fa-check-circle"></i>
+            <p>{message}</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="newsletter-form">
+            <div className="form-group">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                required
+                className="newsletter-input"
+              />
 
-                            {!expanded && (
-                                <button
-                                    type="button"
-                                    className="btn-expand"
-                                    onClick={() => setExpanded(true)}
-                                >
-                                    <i className="fas fa-chevron-down"></i>
-                                </button>
-                            )}
-                        </div>
-
-                        {expanded && (
-                            <div className="expanded-form">
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Your name (optional)"
-                                        className="newsletter-input"
-                                    />
-                                </div>
-
-                                <div className="interest-section">
-                                    <p className="interest-title">I'm interested in:</p>
-                                    <div className="interest-options">
-                                        {interestOptions.map(option => (
-                                            <label key={option.id} className="interest-option">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={interests.includes(option.id)}
-                                                    onChange={() => handleInterestToggle(option.id)}
-                                                    className="interest-checkbox"
-                                                />
-                                                <span className="interest-label">{option.label}</span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {error && <p className="error-message">{error}</p>}
-
-                        <button
-                            type="submit"
-                            className="submit-button"
-                            disabled={loading}
-                        >
-                            {loading ? 'Subscribing...' : 'Subscribe'}
-                        </button>
-                    </form>
-                )}
-
-                <p className="privacy-note">
-                    By subscribing, you agree to our <a href="/privacy-policy">Privacy Policy</a>. We respect your privacy.
-                </p>
+              {!expanded && (
+                <button
+                  type="button"
+                  className="btn-expand"
+                  onClick={() => setExpanded(true)}
+                >
+                  <i className="fas fa-chevron-down"></i>
+                </button>
+              )}
             </div>
 
-            <style jsx>{`
+            {expanded && (
+              <div className="expanded-form">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name (optional)"
+                    className="newsletter-input"
+                  />
+                </div>
+
+                <div className="interest-section">
+                  <p className="interest-title">I&apos;m interested in:</p>
+                  <div className="interest-options">
+                    {interestOptions.map(option => (
+                      <label key={option.id} className="interest-option">
+                        <input
+                          type="checkbox"
+                          checked={interests.includes(option.id)}
+                          onChange={() => handleInterestToggle(option.id)}
+                          className="interest-checkbox"
+                        />
+                        <span className="interest-label">{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {error && <p className="error-message">{error}</p>}
+
+            <button
+              type="submit"
+              className="submit-button"
+              disabled={loading}
+            >
+              {loading ? 'Subscribing...' : 'Subscribe'}
+            </button>
+          </form>
+        )}
+
+        <p className="privacy-note">
+          By subscribing, you agree to our <a href="/privacy-policy">Privacy Policy</a>. We respect your privacy.
+        </p>
+      </div>
+
+      <style jsx>{`
         .newsletter-signup {
           background: white;
           border-radius: 0.5rem;
@@ -405,8 +405,8 @@ const NewsletterSignup = ({ className = '', variant = 'default' }) => {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default NewsletterSignup; 

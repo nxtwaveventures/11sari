@@ -13,6 +13,19 @@
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --primary-50: #FFF8E1;
+  --primary-100: #FFECB3;
+  --primary-200: #FFE082;
+  --primary-300: #FFD54F;
+  --primary-400: #FFCA28;
+  --primary-500: #FFC107;
+  --primary-600: #FFB300;
+  --primary-700: #B71C1C;
+  --primary-800: #C62828;
+  --primary-900: #B71C1C;
+  --gold: #D4AF37;
+  --gold-light: #F9F1DB;
+  --gold-dark: #AA8C2C;
 }
 
 * {
@@ -482,5 +495,289 @@ body {
   .ayurvedic-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Enhanced Service Tabs Styling */
+.customer-service-section {
+  background: linear-gradient(135deg, #FBF7F4, #F5EBE6);
+  padding: 3rem 0;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.customer-service-title {
+  font-family: var(--font-display);
+  color: var(--primary-700);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.customer-service-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.service-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.service-tab {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-tab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  color: var(--primary-700);
+}
+
+.service-tab.active {
+  border-color: var(--gold);
+  color: var(--primary-700);
+  background: #FFF8E1;
+}
+
+.service-tab i {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.service-tab-content {
+  display: none;
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease;
+}
+
+.service-tab-content.active {
+  display: block;
+}
+
+.service-tab-content h2 {
+  color: var(--primary-700);
+  font-family: var(--font-display);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.service-tab-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.service-tab-content p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.service-tab-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-tab-content li {
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.service-tab-content li::before {
+  content: '✦';
+  color: var(--gold);
+  position: absolute;
+  left: -1.5rem;
+}
+
+.service-tab-content .cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: var(--primary-700);
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.service-tab-content .cta-button:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Service Icons styling */
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gold-light);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+  transform: rotate(15deg) scale(1.1);
+  background: var(--gold);
+  color: white;
+}
+
+/* Enhanced typography for service content */
+.service-item h3 {
+  font-family: var(--font-display);
+  color: var(--primary-700);
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.service-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Custom card styling for service sections */
+.service-card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border-top: 3px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-top-color: var(--gold);
+}
+
+/* Highlight boxes for important information */
+.highlight-box {
+  background: var(--gold-light);
+  border-left: 4px solid var(--gold);
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5rem 0;
+}
+
+.highlight-box h4 {
+  color: var(--primary-700);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlight-box h4 i {
+  color: var(--gold);
+}
+
+.highlight-box p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Button styling for service pages */
+.btn-service {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: var(--primary-700);
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-service:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-service-outline {
+  background: transparent;
+  border: 2px solid var(--primary-700);
+  color: var(--primary-700);
+}
+
+.btn-service-outline:hover {
+  background: var(--primary-700);
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .service-tab {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .customer-service-title {
+    font-size: 2rem;
+  }
+
+  .service-tab-content {
+    padding: 1.5rem;
   }
 }
