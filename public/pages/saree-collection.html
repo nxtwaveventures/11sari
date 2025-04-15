@@ -16,11 +16,11 @@
         rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/collection.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/collection.css">
 
     <!-- Add custom modal styles -->
     <style>
@@ -108,7 +108,7 @@
         }
 
         .close-modal:hover {
-            background: var(--primary);
+            background: #ff7e5f;
             color: white;
             transform: rotate(90deg);
         }
@@ -133,9 +133,9 @@
         }
 
         .option-btn.active {
-            background: var(--primary);
+            background: #ff7e5f;
             color: white;
-            border-color: var(--primary);
+            border-color: #ff7e5f;
         }
 
         .color-btn {
@@ -150,7 +150,7 @@
         .color-btn.active {
             transform: scale(1.2);
             border-color: white;
-            box-shadow: 0 0 0 2px var(--primary);
+            box-shadow: 0 0 0 2px #ff7e5f;
         }
 
         .quantity-selector {
@@ -205,24 +205,24 @@
 
         .add-to-cart-btn {
             background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
+            color: #ff7e5f;
+            border: 1px solid #ff7e5f;
         }
 
         .buy-now-btn {
-            background: var(--primary);
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
             color: white;
         }
 
         .add-to-cart-btn:hover {
-            background: rgba(173, 0, 0, 0.05);
+            background: rgba(255, 126, 95, 0.05);
             transform: translateY(-3px);
         }
 
         .buy-now-btn:hover {
-            background: var(--primary-dark);
+            background: #ff7e5f;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(173, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
         }
 
         /* Cart Success Message */
@@ -230,7 +230,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--primary);
+            background: #ff7e5f;
             color: white;
             padding: 1rem 2rem;
             border-radius: 6px;
@@ -258,63 +258,30 @@
             transform: translateY(0);
         }
 
-        /* Ready to Wear Banner */
-        .ready-to-wear-banner {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--text-dark);
-            padding: 1.2rem;
-            margin: -1.5rem auto 2.5rem;
-            border-radius: 10px;
-            max-width: 1200px;
-            display: flex;
-            align-items: center;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            z-index: 5;
-            animation: pulse 2s infinite;
+        .scroll-indicator a {
+            color: white;
+            text-decoration: none;
+            animation: bounce 2s infinite;
+            display: block;
         }
 
-        .ready-to-wear-banner-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-        }
+        @keyframes bounce {
 
-        .ready-to-wear-banner-text {
-            flex: 1;
-        }
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
 
-        .ready-to-wear-banner-text h3 {
-            margin-bottom: 0.3rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-dark);
-        }
+            40% {
+                transform: translateY(-20px);
+            }
 
-        .ready-to-wear-banner-text p {
-            margin-bottom: 0;
-            font-size: 1rem;
-        }
-
-        /* Add a global ready-to-wear badge for all products */
-        .all-ready-to-wear {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: var(--text-dark);
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            z-index: 3;
-        }
-
-        .all-ready-to-wear::before {
-            content: '⏱️';
-            margin-right: 5px;
+            60% {
+                transform: translateY(-10px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -345,22 +312,22 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html">
-                    <span class="logo-text">11<span class="logo-highlight">Sari</span></span>
-                </a>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/index.html">11<span>Sari</span></a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/pages/saree-collection.html" class="active">Sarees</a></li>
+                        <li><a href="/pages/suit-collection.html">Suits</a></li>
+                        <li><a href="/pages/about-us.html">About</a></li>
+                        <li><a href="/pages/contact-us.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
-                    <li><a href="blogs.html" class="nav-link">Blogs</a></li>
-                    <li><a href="know-more.html" class="nav-link">Know More</a></li>
-                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
-                    <li><a href="suit-collection.html" class="nav-link">11Suit</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -705,7 +672,7 @@
         </div>
     </div>
 
-    <script src="../js/collection.js"></script>
+    <script src="/js/collection.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Add sunrise animation to header
