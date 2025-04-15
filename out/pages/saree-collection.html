@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exotic Banarasi Sarees Collection - Royal Varanasi Sarees</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <meta name="generator" content="GrapesJS Studio">
+    <meta name="description"
+        content="Explore our exclusive collection of authentic Banarasi sarees with intricate designs and premium quality.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./custom-pages.css">
+    <style>
+        .collection-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .collection-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        .collection-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .collection-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md), 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buy-now {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .buy-now:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .add-to-cart {
+            background: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-to-cart:hover {
+            background-color: rgba(179, 0, 0, 0.05);
+        }
+
+        .material-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1rem 2rem;
+            margin: 0 auto 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            border: 1px solid var(--border-light);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.25rem;
+            background: white;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.25rem;
+            background: white;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .filter-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+    <style>
+        /* Payment Modal Styles */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-modal.active {
+            display: flex;
+        }
+
+        .payment-form {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .payment-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .payment-product {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .payment-product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .payment-product-details {
+            margin-left: 1rem;
+        }
+
+        .payment-product-title {
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .payment-product-price {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .payment-form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .payment-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .payment-form-group input,
+        .payment-form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.25rem;
+            font-family: var(--font-body);
+        }
+
+        .payment-form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        .payment-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .secure-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .secure-text svg {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+    <style>
+        /* Additional styles for shopping cart */
+        .cart-icon-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, white, #f5f5f5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.1);
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.2s ease;
+        }
+
+        .cart-icon-container:hover {
+            background: linear-gradient(135deg, #fcf9f6, white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(179, 0, 0, 0.1);
+        }
+
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(179, 0, 0, 0.3);
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #fff, #f9f5ef);
+        }
+
+        .cart-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: 400px;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .cart-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .cart-item-details {
+            margin-left: 1rem;
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            margin: 0 0 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .cart-quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .cart-quantity-btn {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .cart-quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .cart-quantity {
+            font-weight: 500;
+        }
+
+        .cart-remove {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        .cart-remove:hover {
+            color: var(--primary-color);
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #f9f5ef, #fff);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(179, 0, 0, 0.2);
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 2rem 0;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Animation for cart icon */
+        @keyframes added-animation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .added-animation {
+            animation: added-animation 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">11<span class="logo-highlight">Sari</span></span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                    <li><a href="know-more.html" class="nav-link">Know More</a></li>
+                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                    <li><a href="suit-collection.html" class="nav-link">11Suit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="collection-header">
+        <h1>Exotic Banarasi Sarees Collection</h1>
+        <p>Discover our exquisite collection of handwoven Banarasi silk sarees, crafted with the finest materials and
+            centuries-old techniques. Each piece tells a story of heritage, artistry, and royal elegance.</p>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label for="material">Filter by:</label>
+            <select id="material" class="filter-select">
+                <option value="all">All Materials</option>
+                <option value="silk">Pure Silk</option>
+                <option value="organza">Organza</option>
+                <option value="georgette">Georgette</option>
+                <option value="cotton">Cotton</option>
+            </select>
+            <select id="color" class="filter-select">
+                <option value="all">All Colors</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="gold">Gold</option>
+                <option value="maroon">Maroon</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="sort">Sort by:</label>
+            <select id="sort" class="sort-select">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="newest">Newest First</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,red" alt="Royal Red Banarasi Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Pure Silk</span>
+                <h3 class="product-title">Royal Red Bridal Banarasi Saree</h3>
+                <p class="product-description">Exquisite pure silk Banarasi saree with intricate gold zari work
+                    featuring
+                    traditional motifs. Perfect for wedding ceremonies and special occasions.</p>
+                <div class="product-price">
+                    <span>₹15,999</span>
+                    <span class="original-price">₹19,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,green"
+                alt="Emerald Green Banarasi Saree" class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Pure Silk</span>
+                <h3 class="product-title">Emerald Green Banarasi Silk Saree</h3>
+                <p class="product-description">Lustrous pure silk saree in emerald green with silver zari work. Features
+                    elaborate peacock motifs and a rich pallu design.</p>
+                <div class="product-price">
+                    <span>₹12,499</span>
+                    <span class="original-price">₹15,499</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,blue" alt="Royal Blue Banarasi Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Organza Silk</span>
+                <h3 class="product-title">Royal Blue Organza Banarasi Saree</h3>
+                <p class="product-description">Lightweight organza silk saree with traditional Banarasi weaving.
+                    Features
+                    intricate floral motifs and a stunning contrast border.</p>
+                <div class="product-price">
+                    <span>₹9,999</span>
+                    <span class="original-price">₹12,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,gold" alt="Golden Banarasi Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Pure Silk</span>
+                <h3 class="product-title">Golden Antique Banarasi Saree</h3>
+                <p class="product-description">Luxurious pure silk saree in golden hue with elaborate antique zari work.
+                    Showcases traditional temple motifs and intricate border design.</p>
+                <div class="product-price">
+                    <span>₹18,999</span>
+                    <span class="original-price">₹22,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,pink" alt="Soft Pink Banarasi Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Georgette Silk</span>
+                <h3 class="product-title">Soft Pink Georgette Banarasi Saree</h3>
+                <p class="product-description">Elegant georgette silk saree in soft pink with delicate silver zari work.
+                    Perfect
+                    for evening parties and festive celebrations.</p>
+                <div class="product-price">
+                    <span>₹8,499</span>
+                    <span class="original-price">₹10,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,maroon" alt="Maroon Banarasi Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag">Pure Silk</span>
+                <h3 class="product-title">Royal Maroon Banarasi Silk Saree</h3>
+                <p class="product-description">Classic pure silk Banarasi saree in deep maroon with rich gold zari work.
+                    Features
+                    traditional paisley motifs and an elaborate pallu.</p>
+                <div class="product-price">
+                    <span>₹14,999</span>
+                    <span class="original-price">₹17,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gjs-grid-row">
+        <div class="gjs-grid-column">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="shipping-policy.html">Shipping Policy</a>
+            </div>
+            <div class="gjs-text-blue">Copyright &copy; 2025 11sari. All Rights Reserved.</div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-form">
+            <div class="payment-header">
+                <h3>Secure Checkout</h3>
+                <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+            </div>
+
+            <div id="productDetailsContainer" class="payment-product">
+                <!-- Product details will be populated here -->
+            </div>
+
+            <form id="paymentForm">
+                <div class="payment-form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+
+                <div class="payment-form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="payment-form-group">
+                    <label for="address">Shipping Address</label>
+                    <input type="text" id="address" required>
+                </div>
+
+                <div class="payment-form-row">
+                    <div class="payment-form-group" style="flex: 1;">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="payment-form-group" style="flex: 1;">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" id="pincode" required>
+                    </div>
+                </div>
+
+                <div class="payment-form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" required onchange="togglePaymentDetails()">
+                        <option value="" selected disabled>Select payment method</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                </div>
+
+                <div id="cardDetails" style="display: none;">
+                    <div class="card-icons">
+                        <img src="https://cdn-icons-png.flaticon.com/128/349/349221.png" class="card-icon" alt="Visa">
+                        <img src="https://cdn-icons-png.flaticon.com/128/349/349228.png" class="card-icon"
+                            alt="Mastercard">
+                        <img src="https://cdn-icons-png.flaticon.com/128/349/349247.png" class="card-icon"
+                            alt="American Express">
+                    </div>
+
+                    <div class="payment-form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                    </div>
+
+                    <div class="payment-form-row">
+                        <div class="payment-form-group" style="flex: 2;">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY">
+                        </div>
+                        <div class="payment-form-group" style="flex: 1;">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="upiDetails" style="display: none;">
+                    <div class="payment-form-group">
+                        <label for="upiId">UPI ID</label>
+                        <input type="text" id="upiId" placeholder="username@upi">
+                    </div>
+                </div>
+
+                <button type="submit" class="payment-btn">Place Order</button>
+
+                <div class="secure-text">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                    <span>Secure payment with 256-bit encryption</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Icon -->
+    <div class="cart-icon-container" onclick="openCartModal()">
+        <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+            </path>
+        </svg>
+        <span class="cart-count">0</span>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Shopping Cart</h3>
+                <button class="close-modal" onclick="closeCartModal()">&times;</button>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+                <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Payment Modal Functionality
+        const paymentModal = document.getElementById('paymentModal');
+        const paymentForm = document.getElementById('paymentForm');
+        const productDetailsContainer = document.getElementById('productDetailsContainer');
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const cardDetails = document.getElementById('cardDetails');
+        const upiDetails = document.getElementById('upiDetails');
+
+        // Add event listeners to all Buy Now buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            const buyNowButtons = document.querySelectorAll('.buy-now');
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productImage = productCard.querySelector('.product-image').src;
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price span').textContent;
+
+                    // Populate product details in the payment modal
+                    productDetailsContainer.innerHTML = `
+                        <img src="${productImage}" class="payment-product-image" alt="${productTitle}">
+                        <div class="payment-product-details">
+                            <h4 class="payment-product-title">${productTitle}</h4>
+                            <div class="payment-product-price">${productPrice}</div>
+                        </div>
+                    `;
+
+                    openPaymentModal();
+                });
+            });
+
+            // Show/hide payment method details
+            paymentMethodSelect.addEventListener('change', function () {
+                if (this.value === 'card') {
+                    cardDetails.style.display = 'block';
+                    upiDetails.style.display = 'none';
+                } else if (this.value === 'upi') {
+                    cardDetails.style.display = 'none';
+                    upiDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                    upiDetails.style.display = 'none';
+                }
+            });
+
+            // Handle form submission
+            paymentForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Payment successful! Your order has been placed.');
+                closePaymentModal();
+            });
+
+            // Filter functionality
+            const materialFilter = document.getElementById('material');
+            const colorFilter = document.getElementById('color');
+            const sortSelect = document.getElementById('sort');
+
+            function applyFilters() {
+                const materialValue = materialFilter.value;
+                const colorValue = colorFilter.value;
+                const productCards = document.querySelectorAll('.product-card');
+
+                productCards.forEach(card => {
+                    let materialMatch = true;
+                    let colorMatch = true;
+
+                    if (materialValue !== 'all') {
+                        const materialTag = card.querySelector('.material-tag').textContent.toLowerCase();
+                        materialMatch = materialTag.includes(materialValue.toLowerCase());
+                    }
+
+                    if (colorValue !== 'all') {
+                        const productTitle = card.querySelector('.product-title').textContent.toLowerCase();
+                        const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
+                        colorMatch = productTitle.includes(colorValue.toLowerCase()) ||
+                            productDesc.includes(colorValue.toLowerCase());
+                    }
+
+                    if (materialMatch && colorMatch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            materialFilter.addEventListener('change', applyFilters);
+            colorFilter.addEventListener('change', applyFilters);
+
+            sortSelect.addEventListener('change', function () {
+                const productGrid = document.querySelector('.product-grid');
+                const productCards = Array.from(document.querySelectorAll('.product-card'));
+
+                productCards.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
+                    const priceB = parseInt(b.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
+
+                    if (this.value === 'price-low') {
+                        return priceA - priceB;
+                    } else if (this.value === 'price-high') {
+                        return priceB - priceA;
+                    } else {
+                        return 0; // Default or featured
+                    }
+                });
+
+                // Reappend sorted cards
+                productCards.forEach(card => productGrid.appendChild(card));
+            });
+        });
+
+        function openPaymentModal() {
+            paymentModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closePaymentModal() {
+            paymentModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            paymentForm.reset();
+            cardDetails.style.display = 'none';
+            upiDetails.style.display = 'none';
+        }
+
+        // Cart functionality
+        let cart = [];
+        const cartCount = document.querySelector('.cart-count');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartModal = document.getElementById('cartModal');
+
+        // Add event listeners to all Add to Cart buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.dataset.id || Math.random().toString(36).substr(2, 9); // Generate random ID if none exists
+                    const productImage = productCard.querySelector('.product-image').src;
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price span').textContent;
+                    const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, ''));
+
+                    // Check if product already in cart
+                    const existingItemIndex = cart.findIndex(item => item.id === productId);
+
+                    if (existingItemIndex !== -1) {
+                        // Increment quantity
+                        cart[existingItemIndex].quantity++;
+                    } else {
+                        // Add new item
+                        cart.push({
+                            id: productId,
+                            image: productImage,
+                            title: productTitle,
+                            price: numericPrice,
+                            quantity: 1
+                        });
+                    }
+
+                    // Add product ID to card if it doesn't exist
+                    if (!productCard.dataset.id) {
+                        productCard.dataset.id = productId;
+                    }
+
+                    // Add animation to cart icon
+                    const cartIconContainer = document.querySelector('.cart-icon-container');
+                    cartIconContainer.classList.add('added-animation');
+                    setTimeout(() => {
+                        cartIconContainer.classList.remove('added-animation');
+                    }, 500);
+
+                    updateCart();
+                });
+            });
+
+            // Initialize cart from localStorage if available
+            const savedCart = localStorage.getItem('11sariCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        });
+
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty.</div>';
+            } else {
+                cartItems.innerHTML = '';
+                let totalPrice = 0;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    totalPrice += itemTotal;
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" class="cart-item-image" alt="${item.title}">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.title}</h4>
+                            <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                            <div class="cart-quantity-controls">
+                                <button class="cart-quantity-btn" onclick="decrementItem('${item.id}')">-</button>
+                                <span class="cart-quantity">${item.quantity}</span>
+                                <button class="cart-quantity-btn" onclick="incrementItem('${item.id}')">+</button>
+                            </div>
+                            <button class="cart-remove" onclick="removeItem('${item.id}')">Remove</button>
+                        </div>
+                    `;
+
+                    cartItems.appendChild(itemElement);
+                });
+
+                // Update total
+                cartTotal.textContent = `₹${totalPrice.toLocaleString()}`;
+            }
+
+            // Save to localStorage
+            localStorage.setItem('11sariCart', JSON.stringify(cart));
+        }
+
+        function incrementItem(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity++;
+                updateCart();
+            }
+        }
+
+        function decrementItem(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity--;
+                if (item.quantity <= 0) {
+                    removeItem(id);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function openCartModal() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items before checkout.');
+                return;
+            }
+
+            // Close cart modal and open payment modal
+            closeCartModal();
+
+            // Populate product details in payment modal with cart summary
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+            productDetailsContainer.innerHTML = `
+                <div class="payment-product-details" style="width: 100%">
+                    <h4 class="payment-product-title">Cart Summary (${totalItems} items)</h4>
+                    <div class="payment-product-price">₹${totalPrice.toLocaleString()}</div>
+                </div>
+            `;
+
+            openPaymentModal();
+        }
+
+        function togglePaymentDetails() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const cardDetails = document.getElementById('cardDetails');
+            const upiDetails = document.getElementById('upiDetails');
+
+            // Hide all payment method details first
+            cardDetails.style.display = 'none';
+            upiDetails.style.display = 'none';
+
+            // Show selected payment method details
+            if (paymentMethod === 'card') {
+                cardDetails.style.display = 'block';
+            } else if (paymentMethod === 'upi') {
+                upiDetails.style.display = 'block';
+            }
+        }
+
+        // Add submit handler for payment form
+        document.getElementById('paymentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            // Validate payment details based on the selected method
+            if (paymentMethod === 'card') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (!cardNumber || !expiryDate || !cvv) {
+                    alert('Please fill in all card details');
+                    return;
+                }
+            } else if (paymentMethod === 'upi') {
+                const upiId = document.getElementById('upiId').value;
+
+                if (!upiId) {
+                    alert('Please enter your UPI ID');
+                    return;
+                }
+            }
+
+            // Show order confirmation
+            alert('Thank you for your order! Your payment has been processed successfully.');
+
+            // Clear cart and close payment modal
+            cart = [];
+            updateCart();
+            closePaymentModal();
+        });
+    </script>
+</body>
+
+</html>

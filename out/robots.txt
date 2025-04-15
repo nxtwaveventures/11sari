@@ -1,0 +1,15 @@
+# https://11sari.com/robots.txt
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /collection
+Allow: /blogs
+Allow: /know-more
+Allow: /contact
+
+# Optimize crawling
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemaps
+Sitemap: https://11sari.com/sitemap.xml
