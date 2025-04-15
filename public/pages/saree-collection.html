@@ -8,785 +8,338 @@
     <meta name="robots" content="index,follow">
     <meta name="generator" content="GrapesJS Studio">
     <meta name="description"
-        content="Discover our Ayurvedic healing saree collection with natural dyes, wellness properties, and color therapy benefits. Wedding, festive, and ready-to-wear options available.">
+        content="Discover our Ayurvedic healing saree collection with natural dyes, wellness properties, and color therapy benefits. All sarees can be made ready-to-wear in 60 seconds for free.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./custom-pages.css">
-    <style>
-        .collection-header {
-            background: linear-gradient(135deg, var(--primary), var(--sea-green));
-            animation: gradientShift 15s ease infinite;
-            background-size: 200% 200%;
-            padding: 4rem 2rem;
-            text-align: center;
-            color: white;
-            margin-bottom: 3rem;
-            position: relative;
-        }
 
-        .collection-header::before {
-            content: '';
-            position: absolute;
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/collection.css">
+
+    <!-- Add custom modal styles -->
+    <style>
+        /* Quick View Modal Styles */
+        .quick-view-modal {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        .collection-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+        .quick-view-modal.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .collection-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding: 0 2rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-        }
-
-        .product-card {
+        .modal-content {
             background: white;
-            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-light);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md), 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--secondary-color);
-        }
-
-        .product-details {
-            padding: 1.5rem;
-        }
-
-        .product-title {
-            font-family: var(--font-sans);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .product-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        .product-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .buy-now {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .buy-now:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .add-to-cart {
-            background: white;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .add-to-cart:hover {
-            background-color: rgba(179, 0, 0, 0.05);
-        }
-
-        .material-tag {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--secondary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .filter-bar {
-            background: white;
-            padding: 1rem 2rem;
-            margin: 0 auto 2rem;
-            border-radius: 0.5rem;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            border: 1px solid var(--border-light);
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .filter-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
-            background: white;
-            font-family: var(--font-body);
-            color: var(--text-primary);
-        }
-
-        .sort-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
-            background: white;
-            font-family: var(--font-body);
-            color: var(--text-primary);
-        }
-
-        @media (max-width: 992px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-bar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .filter-group {
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-    </style>
-    <style>
-        /* Payment Modal Styles */
-        .payment-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .payment-modal.active {
-            display: flex;
-        }
-
-        .payment-form {
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             position: relative;
-        }
-
-        .payment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .payment-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-        }
-
-        .payment-product {
-            display: flex;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .payment-product-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 0.25rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .payment-product-details {
-            margin-left: 1rem;
-        }
-
-        .payment-product-title {
-            font-weight: 600;
-            margin: 0 0 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .payment-product-price {
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .payment-form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .payment-form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .payment-form-group input,
-        .payment-form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
-            font-family: var(--font-body);
-        }
-
-        .payment-form-row {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .card-icons {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 25px;
-            object-fit: contain;
-        }
-
-        .payment-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            margin-top: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .payment-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .secure-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .secure-text svg {
-            width: 16px;
-            height: 16px;
-        }
-    </style>
-    <style>
-        /* Additional styles for shopping cart */
-        .cart-icon-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, white, #f5f5f5);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.1);
-            cursor: pointer;
-            z-index: 100;
-            transition: transform 0.2s ease;
-        }
-
-        .cart-icon-container:hover {
-            background: linear-gradient(135deg, #fcf9f6, white);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(179, 0, 0, 0.1);
-        }
-
-        .cart-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-color);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(179, 0, 0, 0.3);
-        }
-
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cart-modal.active {
-            display: flex;
-        }
-
-        .cart-content {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
+            transform: translateY(30px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-height: 90vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
 
-        .cart-header {
+        .quick-view-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-body {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-            background: linear-gradient(135deg, #fff, #f9f5ef);
-        }
-
-        .cart-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .cart-items {
-            padding: 1.5rem;
-            overflow-y: auto;
-            max-height: 400px;
-            flex-grow: 1;
-        }
-
-        .cart-item {
-            display: flex;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .cart-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .cart-item-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 0.25rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .cart-item-details {
-            margin-left: 1rem;
-            flex-grow: 1;
-        }
-
-        .cart-item-title {
-            margin: 0 0 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-        }
-
-        .cart-item-price {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .cart-quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .cart-quantity-btn {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s ease;
-        }
-
-        .cart-quantity-btn:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .cart-quantity {
-            font-weight: 500;
-        }
-
-        .cart-remove {
-            background: none;
-            border: none;
-            color: #888;
-            cursor: pointer;
-            font-size: 0.9rem;
             padding: 0;
-            text-decoration: underline;
-            transition: color 0.2s ease;
+            overflow: auto;
         }
 
-        .cart-remove:hover {
-            color: var(--primary-color);
+        .product-gallery {
+            flex: 1;
+            max-width: 50%;
         }
 
-        .cart-footer {
-            padding: 1.5rem;
-            border-top: 1px solid var(--border-light);
-            background: linear-gradient(135deg, #f9f5ef, #fff);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .checkout-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
+        .product-gallery img {
             width: 100%;
-            font-size: 1.1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(179, 0, 0, 0.2);
+        .product-info {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        .empty-cart-message {
-            text-align: center;
-            padding: 2rem 0;
-            color: #888;
-            font-style: italic;
-        }
-
-        /* Animation for cart icon */
-        @keyframes added-animation {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .added-animation {
-            animation: added-animation 0.5s ease;
-        }
-    </style>
-    <style>
-        .collection-category {
-            max-width: 1200px;
-            margin: 3rem auto 1.5rem;
-            padding: 0 2rem;
-        }
-
-        .category-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-serif);
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        .category-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin-bottom: 2rem;
-        }
-
-        .collection-badge {
+        .close-modal {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 2rem;
-            z-index: 2;
-        }
-
-        .collection-badge.ready-badge {
-            background: var(--accent-color);
-            color: var(--primary-dark);
-        }
-
-        .product-card {
-            position: relative;
-        }
-
-        .material-tag[data-category="ayurvedic"] {
-            background: rgba(173, 0, 0, 0.1);
-            color: var(--primary-color);
-            border-color: rgba(173, 0, 0, 0.3);
-        }
-
-        .material-tag[data-category="wedding"] {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--accent-color);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .material-tag[data-category="festive"] {
-            background: rgba(30, 85, 92, 0.1);
-            color: var(--sea-green);
-            border-color: rgba(30, 85, 92, 0.3);
-        }
-
-        .material-tag[data-category="ready"] {
-            background: rgba(0, 128, 128, 0.1);
-            color: teal;
-            border-color: rgba(0, 128, 128, 0.3);
-        }
-
-        .healing-property-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-            vertical-align: middle;
-        }
-
-        .healing-benefits {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 0.5rem;
-            border-left: 3px solid var(--primary);
-        }
-
-        .healing-benefits h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .healing-benefits ul {
-            margin: 0;
-            padding-left: 1rem;
-            font-size: 0.85rem;
+        .close-modal:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .product-options {
+            margin: 1.5rem 0;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-btn.active {
+            transform: scale(1.2);
+            border-color: white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-light);
+            background: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: var(--border-light);
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            height: 40px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            font-size: 1rem;
+            margin: 0 0.5rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart-btn,
+        .buy-now-btn {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .add-to-cart-btn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .buy-now-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .add-to-cart-btn:hover {
+            background: rgba(173, 0, 0, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .buy-now-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(173, 0, 0, 0.2);
+        }
+
+        /* Cart Success Message */
+        .cart-success-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cart-success-message.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Scroll Animations */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ready to Wear Banner */
+        .ready-to-wear-banner {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--text-dark);
+            padding: 1.2rem;
+            margin: -1.5rem auto 2.5rem;
+            border-radius: 10px;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 5;
+            animation: pulse 2s infinite;
+        }
+
+        .ready-to-wear-banner-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .ready-to-wear-banner-text {
+            flex: 1;
+        }
+
+        .ready-to-wear-banner-text h3 {
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             color: var(--text-dark);
         }
 
-        .healing-benefits li {
-            margin-bottom: 0.25rem;
+        .ready-to-wear-banner-text p {
+            margin-bottom: 0;
+            font-size: 1rem;
         }
 
-        .ready-to-wear-badge {
+        /* Add a global ready-to-wear badge for all products */
+        .all-ready-to-wear {
             position: absolute;
             top: 1rem;
             right: 1rem;
             background: var(--accent);
-            color: var(--primary-dark);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-weight: 600;
+            color: var(--text-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
             font-size: 0.9rem;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            z-index: 5;
+            z-index: 3;
         }
 
-        .ready-to-wear-badge::before {
+        .all-ready-to-wear::before {
             content: '⏱️';
             margin-right: 5px;
         }
 
-        .product-card:hover .healing-benefits {
-            border-left-color: var(--accent);
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
+        @media (max-width: 768px) {
+            .modal-body {
+                flex-direction: column;
             }
 
-            50% {
-                background-position: 100% 50%;
+            .product-gallery {
+                max-width: 100%;
             }
 
-            100% {
-                background-position: 0% 50%;
+            .product-info {
+                padding: 1.5rem;
             }
-        }
 
-        /* Collection section dividers */
-        .collection-category {
-            position: relative;
-            padding-top: 2rem;
-        }
+            .ready-to-wear-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
 
-        .collection-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        }
-
-        .collection-category:first-of-type::before {
-            display: none;
+            .ready-to-wear-banner-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -812,21 +365,41 @@
     </header>
 
     <div class="collection-header">
+        <div class="sunrise-element"></div>
         <h1>Ayurvedic Healing Saree Collection</h1>
         <p>Experience the wellness and healing properties of our natural dyed sarees, crafted with ancient Ayurvedic
-            principles for mind, body and spiritual well-being.</p>
+            principles for mind, body, and spiritual well-being.</p>
+        <div class="scroll-indicator">
+            <a href="#collection-filters">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="8 12 12 16 16 12"></polyline>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                </svg>
+            </a>
+        </div>
     </div>
 
-    <div class="filter-bar">
+    <div class="ready-to-wear-banner">
+        <div class="ready-to-wear-banner-icon">⏱️</div>
+        <div class="ready-to-wear-banner-text">
+            <h3>All Our Sarees Can Be Made Ready-to-Wear in 60 Seconds - FREE!</h3>
+            <p>Simply select the "Make Ready-to-Wear" option during checkout, and we'll pre-drape your saree for easy
+                wear in just seconds. No extra cost, no hassle!</p>
+        </div>
+    </div>
+
+    <div class="filter-bar" id="collection-filters">
         <div class="filter-group">
-            <span>Filter by:</span>
+            <span class="filter-label">Collection:</span>
             <select class="filter-select" id="collection-filter">
                 <option value="all">All Collections</option>
                 <option value="ayurvedic">Ayurvedic Healing</option>
                 <option value="wedding">Wedding Collection</option>
                 <option value="festive">Festive Sarees</option>
-                <option value="ready">Ready-to-Wear (60 sec)</option>
             </select>
+            <span class="filter-label">Healing Properties:</span>
             <select class="filter-select" id="healing-filter">
                 <option value="all">All Healing Properties</option>
                 <option value="cooling">Cooling Properties</option>
@@ -837,8 +410,8 @@
             </select>
         </div>
         <div class="filter-group">
-            <span>Sort by:</span>
-            <select class="sort-select" id="sort-select">
+            <span class="filter-label">Sort by:</span>
+            <select class="filter-select" id="sort-select">
                 <option value="popular">Most Popular</option>
                 <option value="newest">Newest First</option>
                 <option value="price-low">Price: Low to High</option>
@@ -847,585 +420,148 @@
         </div>
     </div>
 
-    <div class="collection-category ayurvedic-collection">
-        <h2 class="category-title">Ayurvedic Healing Collection</h2>
-        <p class="category-description">Sarees dyed with medicinal herbs and natural ingredients that offer therapeutic
-            benefits along with exquisite beauty.</p>
-    </div>
+    <div class="collection-category">
+        <h2 class="category-title">Featured Collection</h2>
+        <p class="category-description">Our most sought-after Ayurvedic healing sarees, each crafted with natural dyes
+            that provide therapeutic benefits while offering timeless elegance.</p>
 
-    <div class="product-grid">
-        <!-- Product 1 -->
-        <div class="product-card" data-category="ayurvedic" data-property="anti-inflammatory">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?turmeric,saree,red" alt="Turmeric Dyed Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="anti-inflammatory">Turmeric Dyed •
-                    Anti-inflammatory</span>
-                <h3 class="product-title">Turmeric Infused Silk Saree</h3>
-                <p class="product-description">Handcrafted with turmeric-dyed silk that offers anti-inflammatory
-                    properties. Natural healing for sensitive skin and joint pain relief.</p>
-                <div class="product-price">
-                    <span>₹15,999</span>
-                    <span class="original-price">₹19,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+        <div class="product-grid">
+            <!-- Featured Product (Full Width) -->
+            <div class="product-card featured" data-category="ayurvedic" data-property="anti-inflammatory">
+                <img src="https://source.unsplash.com/random/800x1200/?saree,beach,sunrise,orange"
+                    alt="Turmeric-Infused Sunrise Glow Saree" class="product-image">
+                <div class="product-details">
+                    <span class="material-tag">Turmeric-Infused Silk</span>
+                    <h3 class="product-title">Sunrise Glow Meditation Saree</h3>
+                    <p class="product-description">A breathtaking sunrise-inspired saree infused with turmeric dye,
+                        known for its anti-inflammatory properties. This stunning piece captures the tranquil energy of
+                        an ocean sunrise with gradient hues of orange, yellow, and soft blues. Perfect for both
+                        meditation practice and special occasions.</p>
 
-        <!-- Product 2 -->
-        <div class="product-card" data-category="ayurvedic" data-property="calming">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?sandalwood,saree,green"
-                alt="Sandalwood Dyed Silk Saree" class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="calming">Sandalwood Dyed •
-                    Calming</span>
-                <h3 class="product-title">Sandalwood Infused Silk Saree</h3>
-                <p class="product-description">Lustrous silk saree dyed with sandalwood that promotes calm and
-                    centeredness. Features intricate peacock motifs and a rich pallu design.</p>
-                <div class="product-price">
-                    <span>₹12,499</span>
-                    <span class="original-price">₹15,499</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+                    <div class="healing-benefits">
+                        <h4><span class="healing-property-icon">✨</span>Healing Properties</h4>
+                        <ul>
+                            <li>Anti-inflammatory benefits</li>
+                            <li>Promotes skin health</li>
+                            <li>Enhances mental clarity</li>
+                            <li>Boosts immune system</li>
+                        </ul>
+                    </div>
 
-        <!-- Product 3 -->
-        <div class="product-card" data-category="ayurvedic" data-property="cooling">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?neem,saree,blue" alt="Neem Dyed Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Neem Cotton Silk Saree</h3>
-                <p class="product-description">Lightweight silk saree dyed with neem that offers cooling properties.
-                    Features traditional Banarasi weaving and intricate floral motifs.</p>
-                <div class="product-price">
-                    <span>₹9,999</span>
-                    <span class="original-price">₹12,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+                    <div class="product-price">
+                        ₹18,999 <span class="original-price">₹21,999</span>
+                    </div>
 
-        <!-- Product 4 -->
-        <div class="product-card" data-category="ayurvedic" data-property="immunity">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?turmeric,saree,gold" alt="Turmeric Dyed Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="immunity">Turmeric Dyed • Immunity
-                    Boosting</span>
-                <h3 class="product-title">Turmeric Infused Silk Saree</h3>
-                <p class="product-description">Luxurious silk saree dyed with turmeric that offers immunity boosting
-                    properties. Features intricate gold zari work and traditional motifs.</p>
-                <div class="product-price">
-                    <span>₹18,999</span>
-                    <span class="original-price">₹22,999</span>
+                    <div class="product-actions">
+                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <a href="#" class="buy-now">Buy Now</a>
+                    </div>
                 </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product-card" data-category="ayurvedic" data-property="calming">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?sandalwood,saree,pink"
-                alt="Sandalwood Dyed Silk Saree" class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="calming">Sandalwood Dyed •
-                    Calming</span>
-                <h3 class="product-title">Sandalwood Infused Silk Saree</h3>
-                <p class="product-description">Elegant silk saree dyed with sandalwood that promotes calm and
-                    centeredness. Features intricate peacock motifs and a rich pallu design.</p>
-                <div class="product-price">
-                    <span>₹8,499</span>
-                    <span class="original-price">₹10,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card" data-category="ayurvedic" data-property="cooling">
-            <span class="collection-badge">Ayurvedic</span>
-            <img src="https://source.unsplash.com/random/600x900/?neem,saree,maroon" alt="Neem Dyed Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Neem Cotton Silk Saree</h3>
-                <p class="product-description">Classic silk saree dyed with neem that offers cooling properties.
-                    Features traditional Banarasi weaving and intricate floral motifs.</p>
-                <div class="product-price">
-                    <span>₹14,999</span>
-                    <span class="original-price">₹17,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="product-card" data-category="ayurvedic" data-property="immunity">
-            <img src="https://source.unsplash.com/random/600x900/?green,saree,silk" alt="Neem & Tulsi Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="immunity">Neem & Tulsi Dyed •
-                    Immunity</span>
-                <h3 class="product-title">Neem-Tulsi Handloom Saree</h3>
-                <p class="product-description">Infused with neem and tulsi extracts that boost immunity and provide
-                    antibacterial benefits. Perfect for daily wear.</p>
-                <div class="healing-benefits">
-                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                            </path>
-                        </svg>Ayurvedic Benefits</h4>
-                    <ul>
-                        <li>Boosts immune system</li>
-                        <li>Natural antibacterial properties</li>
-                        <li>Repels insects naturally</li>
-                        <li>Promotes respiratory health</li>
-                    </ul>
-                </div>
-                <div class="product-price">
-                    ₹14,999 <span class="original-price">₹17,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="product-card" data-category="ayurvedic" data-property="calming">
-            <img src="https://source.unsplash.com/random/600x900/?blue,saree,cotton" alt="Lavender Infused Cotton Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ayurvedic" data-property="calming">Lavender Infused •
-                    Calming</span>
-                <h3 class="product-title">Lavender Essence Cotton Saree</h3>
-                <p class="product-description">Cotton saree treated with lavender essence for calming properties. Helps
-                    reduce anxiety and promotes restful sleep.</p>
-                <div class="healing-benefits">
-                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>Ayurvedic Benefits</h4>
-                    <ul>
-                        <li>Reduces stress and anxiety</li>
-                        <li>Promotes better sleep</li>
-                        <li>Soothes the nervous system</li>
-                        <li>Subtle aromatherapeutic effect</li>
-                    </ul>
-                </div>
-                <div class="product-price">
-                    ₹9,999 <span class="original-price">₹12,499</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
+                <div class="beach-element"></div>
             </div>
         </div>
     </div>
 
-    <div class="collection-category wedding-collection">
-        <h2 class="category-title">Wedding Collection</h2>
-        <p class="category-description">Specially curated sarees with color healing properties for brides, designed to
-            bring auspiciousness, calm, and joy on the special day.</p>
-    </div>
+    <div class="collection-category">
+        <h2 class="category-title">Beach Paradise Collection</h2>
+        <p class="category-description">Inspired by the serene beauty of coastal landscapes, our Beach Paradise
+            collection combines healing properties with the calming essence of ocean shores.</p>
 
-    <div class="product-grid">
-        <!-- Product 9 -->
-        <div class="product-card" data-category="wedding" data-property="energizing">
-            <span class="collection-badge">Wedding</span>
-            <img src="https://source.unsplash.com/random/600x900/?gold,saree,wedding" alt="Golden Saffron Wedding Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="wedding" data-property="energizing">Saffron Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Golden Saffron Bridal Saree</h3>
-                <p class="product-description">Luxurious wedding saree dyed with saffron for energizing properties. The
-                    vibrant golden hue symbolizes prosperity and joy.</p>
-                <div class="healing-benefits">
-                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                        </svg>Ayurvedic Benefits</h4>
-                    <ul>
-                        <li>Boosts energy and confidence</li>
-                        <li>Enhances mental clarity</li>
-                        <li>Promotes positive emotions</li>
-                        <li>Stimulates creativity and joy</li>
-                    </ul>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="festive" data-property="cooling">
+                <img src="https://source.unsplash.com/random/600x900/?saree,blue,ocean" alt="Ocean Breeze Cooling Saree"
+                    class="product-image">
+                <div class="product-details">
+                    <span class="material-tag">Indigo-Dyed Cotton Silk</span>
+                    <h3 class="product-title">Ocean Breeze Cooling Saree</h3>
+                    <p class="product-description">Embrace the refreshing essence of sea breezes with this cooling
+                        indigo-dyed saree. The natural indigo dye provides cooling properties that soothe both body and
+                        mind.</p>
+
+                    <div class="healing-benefits">
+                        <h4><span class="healing-property-icon">✨</span>Healing Properties</h4>
+                        <ul>
+                            <li>Cooling effect on body</li>
+                            <li>Reduces inflammation</li>
+                            <li>Calms overactive thoughts</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-price">
+                        ₹15,499
+                    </div>
+
+                    <div class="product-actions">
+                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <a href="#" class="buy-now">Buy Now</a>
+                    </div>
                 </div>
-                <div class="product-price">
-                    ₹32,999 <span class="original-price">₹38,499</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
+                <div class="beach-element"></div>
             </div>
-        </div>
 
-        <!-- Product 10 -->
-        <div class="product-card" data-category="wedding" data-property="calming">
-            <span class="collection-badge">Wedding</span>
-            <img src="https://source.unsplash.com/random/600x900/?purple,saree,bridal" alt="Bridal Purple Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="wedding" data-property="calming">Purple Kumkum Dyed •
-                    Calming</span>
-                <h3 class="product-title">Bridal Bliss Purple Saree</h3>
-                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
-                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
-                <div class="product-price">
-                    ₹24,999 <span class="original-price">₹29,999</span>
+            <!-- Product 2 -->
+            <div class="product-card" data-category="ayurvedic" data-property="calming">
+                <img src="https://source.unsplash.com/random/600x900/?saree,sunset,red" alt="Sunset Meditation Saree"
+                    class="product-image">
+                <div class="product-details">
+                    <span class="material-tag">Madder Root Dyed Silk</span>
+                    <h3 class="product-title">Sunset Meditation Saree</h3>
+                    <p class="product-description">Capture the tranquil energy of sunset with this stunning madder root
+                        dyed saree. The rich warm hues embody the calming effect of dusk, promoting inner peace and
+                        serenity.</p>
+
+                    <div class="healing-benefits">
+                        <h4><span class="healing-property-icon">✨</span>Healing Properties</h4>
+                        <ul>
+                            <li>Stress reduction</li>
+                            <li>Improves sleep quality</li>
+                            <li>Enhances meditation practice</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-price">
+                        ₹17,999 <span class="original-price">₹19,999</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <a href="#" class="buy-now">Buy Now</a>
+                    </div>
                 </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
+                <div class="beach-element"></div>
             </div>
-        </div>
 
-        <!-- Product 11 -->
-        <div class="product-card" data-category="wedding" data-property="calming">
-            <span class="collection-badge">Wedding</span>
-            <img src="https://source.unsplash.com/random/600x900/?orange,saree,bridal" alt="Bridal Orange Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="wedding" data-property="calming">Orange Kumkum Dyed •
-                    Calming</span>
-                <h3 class="product-title">Bridal Bliss Orange Saree</h3>
-                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
-                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
-                <div class="product-price">
-                    ₹24,999 <span class="original-price">₹29,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+            <!-- Product 3 -->
+            <div class="product-card" data-category="wedding" data-property="energizing">
+                <img src="https://source.unsplash.com/random/600x900/?saree,gold,beach"
+                    alt="Golden Sands Celebration Saree" class="product-image">
+                <div class="product-details">
+                    <span class="material-tag">Marigold & Turmeric Dyed</span>
+                    <h3 class="product-title">Golden Sands Celebration Saree</h3>
+                    <p class="product-description">Radiate joy and vitality with this energizing saree inspired by
+                        golden beach sands. A perfect blend of marigold and turmeric dyes creates a luminous golden hue
+                        that elevates special occasions.</p>
 
-        <!-- Product 12 -->
-        <div class="product-card" data-category="wedding" data-property="calming">
-            <span class="collection-badge">Wedding</span>
-            <img src="https://source.unsplash.com/random/600x900/?green,saree,bridal" alt="Bridal Green Silk Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="wedding" data-property="calming">Green Kumkum Dyed •
-                    Calming</span>
-                <h3 class="product-title">Bridal Bliss Green Saree</h3>
-                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
-                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
-                <div class="product-price">
-                    ₹24,999 <span class="original-price">₹29,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="healing-benefits">
+                        <h4><span class="healing-property-icon">✨</span>Healing Properties</h4>
+                        <ul>
+                            <li>Boosts energy and vitality</li>
+                            <li>Enhances confidence</li>
+                            <li>Promotes positive mood</li>
+                        </ul>
+                    </div>
 
-    <div class="collection-category festive-collection">
-        <h2 class="category-title">Festive Sarees</h2>
-        <p class="category-description">Seasonal sarees designed with consideration for weather patterns and festival
-            significance, offering both functional comfort and cultural symbolism.</p>
-    </div>
+                    <div class="product-price">
+                        ₹23,499
+                    </div>
 
-    <div class="product-grid">
-        <!-- Product 13 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?yellow,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Marigold Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Marigold-dyed festive saree that brings energizing properties perfect for
-                    Diwali celebrations. Light and comfortable for autumn weather.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
+                    <div class="product-actions">
+                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <a href="#" class="buy-now">Buy Now</a>
+                    </div>
                 </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 14 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?red,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Red Kumkum Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Red Kumkum-dyed festive saree that brings energizing properties perfect
-                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 15 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?green,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Green Kumkum Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Green Kumkum-dyed festive saree that brings energizing properties perfect
-                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 16 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?purple,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Purple Kumkum Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Purple Kumkum-dyed festive saree that brings energizing properties
-                    perfect for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 17 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?orange,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Orange Kumkum Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Orange Kumkum-dyed festive saree that brings energizing properties
-                    perfect for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 18 -->
-        <div class="product-card" data-category="festive" data-property="energizing">
-            <span class="collection-badge">Festive</span>
-            <img src="https://source.unsplash.com/random/600x900/?blue,saree,festival" alt="Diwali Celebration Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="festive" data-property="energizing">Blue Kumkum Dyed •
-                    Energizing</span>
-                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
-                <p class="product-description">Blue Kumkum-dyed festive saree that brings energizing properties perfect
-                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
-                <div class="product-price">
-                    ₹18,499 <span class="original-price">₹21,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="collection-category ready-collection">
-        <h2 class="category-title">Ready-to-Wear Sarees (60 sec)</h2>
-        <p class="category-description">Experience the convenience of our revolutionary ready-to-wear sarees. Select
-            your style and have it ready to wear in just 60 seconds!</p>
-    </div>
-
-    <div class="product-grid">
-        <!-- Product 19 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?green,saree,ready" alt="Ready-to-Wear Mint Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Mint Infused • Cooling</span>
-                <h3 class="product-title">Mint Quick-Drape Linen Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with mint-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="healing-benefits">
-                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v6m0 0v14m0-14h-4m4 0h4"></path>
-                        </svg>60-Second Wearing</h4>
-                    <ul>
-                        <li>Pre-stitched pleats for instant wear</li>
-                        <li>Cooling mint properties for comfort</li>
-                        <li>Adjustable waist for perfect fit</li>
-                        <li>All natural dyes and fabrics</li>
-                    </ul>
-                </div>
-                <div class="product-price">
-                    ₹11,499 <span class="original-price">₹13,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 20 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?blue,saree,ready" alt="Ready-to-Wear Cooling Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="product-price">
-                    ₹12,999 <span class="original-price">₹15,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 21 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?purple,saree,ready" alt="Ready-to-Wear Cooling Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="product-price">
-                    ₹12,999 <span class="original-price">₹15,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 22 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?orange,saree,ready" alt="Ready-to-Wear Cooling Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="product-price">
-                    ₹12,999 <span class="original-price">₹15,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 23 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?red,saree,ready" alt="Ready-to-Wear Cooling Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="product-price">
-                    ₹12,999 <span class="original-price">₹15,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 24 -->
-        <div class="product-card" data-category="ready" data-property="cooling">
-            <span class="ready-to-wear-badge">Ready in 60s</span>
-            <img src="https://source.unsplash.com/random/600x900/?yellow,saree,ready" alt="Ready-to-Wear Cooling Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
-                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
-                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
-                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
-                <div class="product-price">
-                    ₹12,999 <span class="original-price">₹15,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
+                <div class="beach-element"></div>
             </div>
         </div>
     </div>
@@ -1569,315 +705,61 @@
         </div>
     </div>
 
+    <script src="../js/collection.js"></script>
     <script>
-        // Payment Modal Functionality
-        const paymentModal = document.getElementById('paymentModal');
-        const paymentForm = document.getElementById('paymentForm');
-        const productDetailsContainer = document.getElementById('productDetailsContainer');
-        const paymentMethodSelect = document.getElementById('paymentMethod');
-        const cardDetails = document.getElementById('cardDetails');
-        const upiDetails = document.getElementById('upiDetails');
-
-        // Add event listeners to all Buy Now buttons
         document.addEventListener('DOMContentLoaded', function () {
-            const buyNowButtons = document.querySelectorAll('.buy-now');
-            buyNowButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const productCard = this.closest('.product-card');
-                    const productImage = productCard.querySelector('.product-image').src;
-                    const productTitle = productCard.querySelector('.product-title').textContent;
-                    const productPrice = productCard.querySelector('.product-price span').textContent;
-
-                    // Populate product details in the payment modal
-                    productDetailsContainer.innerHTML = `
-                        <img src="${productImage}" class="payment-product-image" alt="${productTitle}">
-                        <div class="payment-product-details">
-                            <h4 class="payment-product-title">${productTitle}</h4>
-                            <div class="payment-product-price">${productPrice}</div>
-                        </div>
-                    `;
-
-                    openPaymentModal();
-                });
-            });
-
-            // Show/hide payment method details
-            paymentMethodSelect.addEventListener('change', function () {
-                if (this.value === 'card') {
-                    cardDetails.style.display = 'block';
-                    upiDetails.style.display = 'none';
-                } else if (this.value === 'upi') {
-                    cardDetails.style.display = 'none';
-                    upiDetails.style.display = 'block';
-                } else {
-                    cardDetails.style.display = 'none';
-                    upiDetails.style.display = 'none';
+            // Add sunrise animation to header
+            const collectionHeader = document.querySelector('.collection-header');
+            if (collectionHeader) {
+                // Enhance the sunset element with animation
+                const sunriseElement = document.querySelector('.sunrise-element');
+                if (sunriseElement) {
+                    // Add random light sparkles to simulate sunrise reflection on water
+                    for (let i = 0; i < 10; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.style.position = 'absolute';
+                        sparkle.style.width = Math.random() * 8 + 2 + 'px';
+                        sparkle.style.height = sparkle.style.width;
+                        sparkle.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        sparkle.style.borderRadius = '50%';
+                        sparkle.style.top = Math.random() * 100 + '%';
+                        sparkle.style.left = Math.random() * 100 + '%';
+                        sparkle.style.animation = `sparkle ${Math.random() * 2 + 1}s infinite alternate`;
+                        sunriseElement.appendChild(sparkle);
+                    }
                 }
-            });
 
-            // Handle form submission
-            paymentForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert('Payment successful! Your order has been placed.');
-                closePaymentModal();
-            });
+                // Add beach wave animation styling
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes sparkle {
+                        0% { opacity: 0.5; transform: scale(1); }
+                        100% { opacity: 1; transform: scale(1.5); }
+                    }
+                    
+                    @keyframes wave {
+                        0% { transform: translateX(0) translateY(0); }
+                        50% { transform: translateX(-25%) translateY(2px); }
+                        100% { transform: translateX(0) translateY(0); }
+                    }
+                    
+                    .beach-element {
+                        animation: wave 5s ease-in-out infinite;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
 
-            // Filter functionality
-            const collectionFilter = document.getElementById('collection-filter');
-            const healingFilter = document.getElementById('healing-filter');
-            const sortSelect = document.getElementById('sort-select');
+            // Mark all product cards with beach elements
             const productCards = document.querySelectorAll('.product-card');
-
-            function filterProducts() {
-                const collectionValue = collectionFilter.value;
-                const healingValue = healingFilter.value;
-
-                productCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    const property = card.getAttribute('data-property');
-
-                    const collectionMatch = collectionValue === 'all' || category === collectionValue;
-                    const healingMatch = healingValue === 'all' || property === healingValue;
-
-                    if (collectionMatch && healingMatch) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            collectionFilter.addEventListener('change', filterProducts);
-            healingFilter.addEventListener('change', filterProducts);
-
-            // Add sorting functionality here if needed
-        });
-
-        function openPaymentModal() {
-            paymentModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closePaymentModal() {
-            paymentModal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            paymentForm.reset();
-            cardDetails.style.display = 'none';
-            upiDetails.style.display = 'none';
-        }
-
-        // Cart functionality
-        let cart = [];
-        const cartCount = document.querySelector('.cart-count');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const cartModal = document.getElementById('cartModal');
-
-        // Add event listeners to all Add to Cart buttons
-        document.addEventListener('DOMContentLoaded', function () {
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const productCard = this.closest('.product-card');
-                    const productId = productCard.dataset.id || Math.random().toString(36).substr(2, 9); // Generate random ID if none exists
-                    const productImage = productCard.querySelector('.product-image').src;
-                    const productTitle = productCard.querySelector('.product-title').textContent;
-                    const productPrice = productCard.querySelector('.product-price span').textContent;
-                    const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, ''));
-
-                    // Check if product already in cart
-                    const existingItemIndex = cart.findIndex(item => item.id === productId);
-
-                    if (existingItemIndex !== -1) {
-                        // Increment quantity
-                        cart[existingItemIndex].quantity++;
-                    } else {
-                        // Add new item
-                        cart.push({
-                            id: productId,
-                            image: productImage,
-                            title: productTitle,
-                            price: numericPrice,
-                            quantity: 1
-                        });
-                    }
-
-                    // Add product ID to card if it doesn't exist
-                    if (!productCard.dataset.id) {
-                        productCard.dataset.id = productId;
-                    }
-
-                    // Add animation to cart icon
-                    const cartIconContainer = document.querySelector('.cart-icon-container');
-                    cartIconContainer.classList.add('added-animation');
-                    setTimeout(() => {
-                        cartIconContainer.classList.remove('added-animation');
-                    }, 500);
-
-                    updateCart();
-                });
+            productCards.forEach(card => {
+                // Add ready-to-wear badge
+                const readyBadge = document.createElement('div');
+                readyBadge.className = 'all-ready-to-wear';
+                readyBadge.textContent = 'Ready in 60s';
+                card.appendChild(readyBadge);
             });
-
-            // Initialize cart from localStorage if available
-            const savedCart = localStorage.getItem('11sariCart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCart();
-            }
-        });
-
-        function updateCart() {
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-
-            // Update cart items
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty.</div>';
-            } else {
-                cartItems.innerHTML = '';
-                let totalPrice = 0;
-
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    totalPrice += itemTotal;
-
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'cart-item';
-                    itemElement.innerHTML = `
-                        <img src="${item.image}" class="cart-item-image" alt="${item.title}">
-                        <div class="cart-item-details">
-                            <h4 class="cart-item-title">${item.title}</h4>
-                            <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
-                            <div class="cart-quantity-controls">
-                                <button class="cart-quantity-btn" onclick="decrementItem('${item.id}')">-</button>
-                                <span class="cart-quantity">${item.quantity}</span>
-                                <button class="cart-quantity-btn" onclick="incrementItem('${item.id}')">+</button>
-                            </div>
-                            <button class="cart-remove" onclick="removeItem('${item.id}')">Remove</button>
-                        </div>
-                    `;
-
-                    cartItems.appendChild(itemElement);
-                });
-
-                // Update total
-                cartTotal.textContent = `₹${totalPrice.toLocaleString()}`;
-            }
-
-            // Save to localStorage
-            localStorage.setItem('11sariCart', JSON.stringify(cart));
-        }
-
-        function incrementItem(id) {
-            const item = cart.find(item => item.id === id);
-            if (item) {
-                item.quantity++;
-                updateCart();
-            }
-        }
-
-        function decrementItem(id) {
-            const item = cart.find(item => item.id === id);
-            if (item) {
-                item.quantity--;
-                if (item.quantity <= 0) {
-                    removeItem(id);
-                } else {
-                    updateCart();
-                }
-            }
-        }
-
-        function removeItem(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCart();
-        }
-
-        function openCartModal() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty. Please add items before checkout.');
-                return;
-            }
-
-            // Close cart modal and open payment modal
-            closeCartModal();
-
-            // Populate product details in payment modal with cart summary
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-
-            productDetailsContainer.innerHTML = `
-                <div class="payment-product-details" style="width: 100%">
-                    <h4 class="payment-product-title">Cart Summary (${totalItems} items)</h4>
-                    <div class="payment-product-price">₹${totalPrice.toLocaleString()}</div>
-                </div>
-            `;
-
-            openPaymentModal();
-        }
-
-        function togglePaymentDetails() {
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            const cardDetails = document.getElementById('cardDetails');
-            const upiDetails = document.getElementById('upiDetails');
-
-            // Hide all payment method details first
-            cardDetails.style.display = 'none';
-            upiDetails.style.display = 'none';
-
-            // Show selected payment method details
-            if (paymentMethod === 'card') {
-                cardDetails.style.display = 'block';
-            } else if (paymentMethod === 'upi') {
-                upiDetails.style.display = 'block';
-            }
-        }
-
-        // Add submit handler for payment form
-        document.getElementById('paymentForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const paymentMethod = document.getElementById('paymentMethod').value;
-
-            // Validate payment details based on the selected method
-            if (paymentMethod === 'card') {
-                const cardNumber = document.getElementById('cardNumber').value;
-                const expiryDate = document.getElementById('expiryDate').value;
-                const cvv = document.getElementById('cvv').value;
-
-                if (!cardNumber || !expiryDate || !cvv) {
-                    alert('Please fill in all card details');
-                    return;
-                }
-            } else if (paymentMethod === 'upi') {
-                const upiId = document.getElementById('upiId').value;
-
-                if (!upiId) {
-                    alert('Please enter your UPI ID');
-                    return;
-                }
-            }
-
-            // Show order confirmation
-            alert('Thank you for your order! Your payment has been processed successfully.');
-
-            // Clear cart and close payment modal
-            cart = [];
-            updateCart();
-            closePaymentModal();
         });
     </script>
 </body>
