@@ -2,1164 +2,1206 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11Sari - Ayurvedic Sarees & Wellness Fabrics</title>
-    <meta name="description"
-        content="Premium handcrafted sarees with Ayurvedic healing properties. Experience the wellness benefits of natural dyes and traditional craftsmanship.">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
-
-    <!-- Main Stylesheet -->
-    <style>
-        /* Base Styles */
-        :root {
-            --primary: #ad0000;
-            --primary-dark: #8a0000;
-            --accent: #d4af37;
-            --accent-light: #e6c66c;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --white: #ffffff;
-            --off-white: #fffaf2;
-            --gray-light: #f5f5f5;
-            --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .highlight {
-            color: var(--primary);
-        }
-
-        .accent-line {
-            height: 3px;
-            width: 60px;
-            background: var(--accent);
-            margin: 0 auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            background-color: var(--white);
-            box-shadow: var(--box-shadow);
-            padding: 15px 0;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .accent-text {
-            color: var(--primary);
-        }
-
-        .menu-items {
-            display: flex;
-            gap: 30px;
-        }
-
-        .menu-items a {
-            color: var(--text-dark);
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .menu-items a:hover,
-        .menu-items a.active {
-            color: var(--primary);
-        }
-
-        .menu-items a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .menu-items a:hover::after,
-        .menu-items a.active::after {
-            width: 100%;
-        }
-
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .search-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-dark);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-dark);
-        }
-
-        @media (max-width: 768px) {
-            .menu-items {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-        }
-
-        /* Mobile Menu (when active) */
-        .mobile-menu-active .menu-items {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: var(--white);
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            height: 80vh;
-            min-height: 600px;
-            background: url('https://source.unsplash.com/random/1920x1080/?saree,silk,indian') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin-top: 70px;
-            /* For fixed navbar */
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            color: var(--white);
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-buttons .btn-secondary {
-            border-color: var(--white);
-            color: var(--white);
-        }
-
-        .hero-buttons .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            background-color: var(--off-white);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .benefit-icon {
-            margin: 0 auto 20px;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff5e6;
-            border-radius: 50%;
-        }
-
-        .benefit-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .benefit-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        .benefits-cta {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .text-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-            display: inline-block;
-        }
-
-        .text-link:hover {
-            color: var(--accent);
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Featured Products */
-        .featured-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .product-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-image {
-            height: 350px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .product-price {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .product-description {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .btn-outlined {
-            display: inline-block;
-            padding: 8px 20px;
-            border: 1px solid var(--accent);
-            color: var(--primary);
-            background-color: transparent;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-outlined:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        .section-cta {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            background-color: var(--off-white);
-        }
-
-        .section-subheader {
-            font-size: 1.1rem;
-            color: var(--primary);
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        .testimonials-slider {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
-            justify-content: center;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--box-shadow);
-            display: flex;
-            flex-direction: column;
-            width: calc(50% - 15px);
-            max-width: 500px;
-            min-width: 280px;
-            transition: transform 0.3s ease;
-            border-left: 4px solid var(--accent);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimonial-image {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 15px;
-            border: 3px solid var(--accent);
-        }
-
-        .testimonial-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonial-rating {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-style: italic;
-            color: var(--text-light);
-        }
-
-        .testimonial-author {
-            margin-top: auto;
-        }
-
-        .author-name {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .author-title {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 15px;
-        }
-
-        .prev-testimonial,
-        .next-testimonial {
-            background: var(--white);
-            border: 1px solid var(--accent);
-            color: var(--primary);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .prev-testimonial:hover,
-        .next-testimonial:hover {
-            background: var(--accent);
-            color: var(--white);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonials-slider {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .testimonial-card {
-                width: 90%;
-            }
-        }
-
-        /* Newsletter Section */
-        .newsletter-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-        }
-
-        .newsletter-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .newsletter-content h2 {
-            margin-bottom: 15px;
-            font-size: 2rem;
-        }
-
-        .newsletter-content p {
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-
-        .newsletter-form button {
-            padding: 12px 25px;
-            border-radius: 0 4px 4px 0;
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
-            border: none;
-            color: var(--white);
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .footer-info p {
-            margin-bottom: 20px;
-            opacity: 0.8;
-            line-height: 1.5;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            transition: all 0.3s;
-        }
-
-        .social-icon:hover {
-            background-color: var(--accent);
-        }
-
-        .footer-links h3,
-        .footer-contact h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: var(--accent);
-        }
-
-        .footer-links ul {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-links a,
-        .footer-contact a {
-            color: var(--white);
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover,
-        .footer-contact a:hover {
-            opacity: 1;
-            color: var(--accent);
-        }
-
-        .footer-contact p {
-            margin-bottom: 10px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            color: var(--white);
-            opacity: 0.7;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-
-        .footer-bottom-links a:hover {
-            opacity: 1;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: var(--white);
-            width: 60px;
-            height: 60px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-float svg {
-            width: 30px;
-            height: 30px;
-        }
-
-        .whatsapp-float:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Responsive Footer */
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-form input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-
-            .newsletter-form button {
-                border-radius: 4px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11Sari - Ayurvedic Sarees & Wellness Fabrics</title>
+  <meta name="description"
+    content="Premium handcrafted sarees with Ayurvedic healing properties. Experience the wellness benefits of natural dyes and traditional craftsmanship.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <!-- Main Stylesheet -->
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #ad0000;
+      /* Blood red */
+      --primary-dark: #8a0000;
+      /* Darker red */
+      --accent: #d4af37;
+      /* Rich gold */
+      --accent-light: #e6c66c;
+      /* Light gold */
+      --teal: #3a8f8c;
+      /* Healing teal */
+      --teal-light: #c4e5e3;
+      /* Light teal */
+      --sage: #7ca583;
+      /* Calm sage green */
+      --sage-light: #e4f0e6;
+      /* Light sage */
+      --text-dark: #ad0000;
+      /* Use red instead of black for dark text */
+      --text-light: #7ca583;
+      /* Use sage instead of grey for light text */
+      --white: #ffffff;
+      --off-white: #fffaf2;
+      /* Warm off-white */
+      --box-shadow: 0 5px 20px rgba(173, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--primary-dark);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .accent-line {
+      height: 3px;
+      width: 60px;
+      background: var(--accent);
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: var(--white);
+      box-shadow: var(--box-shadow);
+      padding: 15px 0;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .accent-text {
+      color: var(--primary);
+    }
+
+    .menu-items {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu-items a {
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .menu-items a:hover,
+    .menu-items a.active {
+      color: var(--primary);
+    }
+
+    .menu-items a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .menu-items a:hover::after,
+    .menu-items a.active::after {
+      width: 100%;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .search-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .menu-items {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Mobile Menu (when active) */
+    .mobile-menu-active .menu-items {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--white);
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 80vh;
+      min-height: 600px;
+      background: url('https://source.unsplash.com/random/1920x1080/?saree,silk,indian') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 70px;
+      /* For fixed navbar */
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      color: var(--white);
+      padding: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn-secondary {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .hero-buttons .btn-secondary:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      background-color: var(--off-white);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--accent);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(173, 0, 0, 0.15);
+    }
+
+    .benefit-icon {
+      margin: 0 auto 20px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:nth-child(1) .benefit-icon {
+      background-color: var(--sage-light);
+      color: var(--sage);
+    }
+
+    .benefit-card:nth-child(2) .benefit-icon {
+      background-color: var(--teal-light);
+      color: var(--teal);
+    }
+
+    .benefit-card:nth-child(3) .benefit-icon {
+      background-color: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .benefit-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .benefit-card p {
+      color: var(--text-light);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .benefits-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .text-link {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: inline-block;
+    }
+
+    .text-link:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Featured Products */
+    .featured-section {
+      padding: 80px 0;
+      background-color: var(--white);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 203, 105, 0.15);
+    }
+
+    .product-image {
+      height: 350px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: var(--white);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card:nth-child(1) .product-tag {
+      background-color: var(--primary);
+    }
+
+    .product-card:nth-child(2) .product-tag {
+      background-color: var(--teal);
+    }
+
+    .product-card:nth-child(3) .product-tag {
+      background-color: var(--sage);
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .product-price {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .product-description {
+      color: var(--text-light);
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .btn-outlined {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      background-color: transparent;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-outlined:hover {
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    .section-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--off-white) 100%);
+    }
+
+    .section-subheader {
+      font-size: 1.1rem;
+      color: var(--primary);
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .testimonials-slider {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      display: flex;
+      flex-direction: column;
+      width: calc(50% - 15px);
+      max-width: 500px;
+      min-width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid var(--accent);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 112, 112, 0.1);
+    }
+
+    .testimonial-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 3px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(255, 203, 105, 0.2);
+    }
+
+    .testimonial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-rating {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-style: italic;
+      color: var(--text-light);
+    }
+
+    .testimonial-author {
+      margin-top: auto;
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .author-title {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 15px;
+    }
+
+    .prev-testimonial,
+    .next-testimonial {
+      background: var(--white);
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .prev-testimonial:hover,
+    .next-testimonial:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-slider {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .testimonial-card {
+        width: 90%;
+      }
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--sage) 100%);
+      color: var(--white);
+    }
+
+    .newsletter-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-content h2 {
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    .newsletter-content p {
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      padding: 12px 25px;
+      border-radius: 0 4px 4px 0;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      border: none;
+      color: var(--white);
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .footer-info p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      background-color: var(--accent);
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .footer-links ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+      color: var(--white);
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .footer-contact p {
+      margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: var(--white);
+      opacity: 0.7;
+      font-size: 0.9rem;
+      transition: opacity 0.3s;
+    }
+
+    .footer-bottom-links a:hover {
+      opacity: 1;
+    }
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--teal);
+      color: var(--white);
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      transition: all 0.3s;
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-form button {
+        border-radius: 4px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <div class="logo">11<span class="accent-text">Sari</span></div>
-            <div class="menu-items">
-                <a href="index.html" class="active">Home</a>
-                <a href="saree-collection.html">Sarees</a>
-                <a href="ayurvedic-collection.html">Ayurvedic</a>
-                <a href="about-us.html">About</a>
-                <a href="contact-us.html">Contact</a>
-            </div>
-            <div class="navbar-right">
-                <button class="search-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                <button class="mobile-menu-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="logo">11<span class="accent-text">Sari</span></div>
+      <div class="menu-items">
+        <a href="index.html" class="active">Home</a>
+        <a href="saree-collection.html">Sarees</a>
+        <a href="ayurvedic-collection.html">Ayurvedic</a>
+        <a href="about-us.html">About</a>
+        <a href="contact-us.html">Contact</a>
+      </div>
+      <div class="navbar-right">
+        <button class="search-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="mobile-menu-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Will Go Here -->
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Ayurvedic <span class="accent-text">Sarees</span></h1>
+        <p class="hero-description">Handcrafted with natural dyes for wellness and beauty</p>
+        <div class="hero-buttons">
+          <a href="ayurvedic-collection.html" class="btn btn-primary">Shop Collection</a>
+          <a href="#benefits" class="btn btn-secondary">Explore Benefits</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- Main Content Will Go Here -->
+  <!-- Benefits Section -->
+  <section id="benefits" class="section benefits-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Healing <span class="highlight">Benefits</span></h2>
+        <div class="accent-line"></div>
+      </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Discover Ayurvedic <span class="accent-text">Sarees</span></h1>
-                <p class="hero-description">Handcrafted with natural dyes for wellness and beauty</p>
-                <div class="hero-buttons">
-                    <a href="ayurvedic-collection.html" class="btn btn-primary">Shop Collection</a>
-                    <a href="#benefits" class="btn btn-secondary">Explore Benefits</a>
-                </div>
-            </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3>Skin Comfort</h3>
+          <p>Natural dyes that soothe sensitive skin and prevent irritation</p>
         </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="section benefits-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Healing <span class="highlight">Benefits</span></h2>
-                <div class="accent-line"></div>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="#ad0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <h3>Skin Comfort</h3>
-                    <p>Natural dyes that soothe sensitive skin and prevent irritation</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="#ad0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                            <line x1="6" y1="1" x2="6" y2="4"></line>
-                            <line x1="10" y1="1" x2="10" y2="4"></line>
-                            <line x1="14" y1="1" x2="14" y2="4"></line>
-                        </svg>
-                    </div>
-                    <h3>Stress Relief</h3>
-                    <p>Naturally dyed fabrics with aromatic properties to calm the mind</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="#ad0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Healing Properties</h3>
-                    <p>Therapeutic benefits from turmeric, neem, and other natural dyes</p>
-                </div>
-            </div>
-
-            <div class="benefits-cta">
-                <a href="fabric-care.html" class="text-link">Learn more about Ayurvedic properties →</a>
-            </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <h3>Stress Relief</h3>
+          <p>Naturally dyed fabrics with aromatic properties to calm the mind</p>
         </div>
-    </section>
 
-    <!-- Featured Products Section -->
-    <section class="section featured-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured <span class="highlight">Collection</span></h2>
-                <div class="accent-line"></div>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://source.unsplash.com/random/600x800/?saree,silk,red"
-                            alt="Turmeric-dyed Silk Saree">
-                        <div class="product-tag">Turmeric</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Turmeric-dyed Silk Saree</h3>
-                        <p class="product-price">₹15,999</p>
-                        <p class="product-description">Anti-inflammatory properties for sensitive skin</p>
-                        <a href="saree-collection.html" class="btn-outlined">View Details</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://source.unsplash.com/random/600x800/?saree,silk,blue"
-                            alt="Indigo-dyed Cotton Saree">
-                        <div class="product-tag">Indigo</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Indigo-dyed Cotton Saree</h3>
-                        <p class="product-price">₹12,999</p>
-                        <p class="product-description">Cooling properties ideal for stress relief</p>
-                        <a href="saree-collection.html" class="btn-outlined">View Details</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://source.unsplash.com/random/600x800/?saree,silk,green"
-                            alt="Neem-infused Linen Saree">
-                        <div class="product-tag">Neem</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Neem-infused Linen Saree</h3>
-                        <p class="product-price">₹18,999</p>
-                        <p class="product-description">Antibacterial properties for skin health</p>
-                        <a href="saree-collection.html" class="btn-outlined">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-cta">
-                <a href="saree-collection.html" class="btn btn-primary">View All Collections</a>
-            </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+              </path>
+            </svg>
+          </div>
+          <h3>Healing Properties</h3>
+          <p>Therapeutic benefits from turmeric, neem, and other natural dyes</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Customer <span class="highlight">Experiences</span></h2>
-                <p class="section-subheader">Real healing stories from our customers</p>
-                <div class="accent-line"></div>
-            </div>
+      <div class="benefits-cta">
+        <a href="fabric-care.html" class="text-link">Learn more about Ayurvedic properties →</a>
+      </div>
+    </div>
+  </section>
 
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="https://source.unsplash.com/random/100x100/?portrait,woman" alt="Priya Sharma">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <p>"The turmeric-dyed saree helped with my skin sensitivity. I can feel the Ayurvedic properties
-                            working!"</p>
-                        <div class="testimonial-author">
-                            <p class="author-name">Priya Sharma</p>
-                            <p class="author-title">Delhi</p>
-                        </div>
-                    </div>
-                </div>
+  <!-- Featured Products Section -->
+  <section class="section featured-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured <span class="highlight">Collection</span></h2>
+        <div class="accent-line"></div>
+      </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="https://source.unsplash.com/random/100x100/?portrait,indian,woman" alt="Anjali Patel">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <p>"The indigo-dyed saree has improved my sleep quality. The natural cooling properties are
-                            perfect for summer!"</p>
-                        <div class="testimonial-author">
-                            <p class="author-name">Anjali Patel</p>
-                            <p class="author-title">Mumbai</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-nav">
-                <button class="prev-testimonial" aria-label="Previous testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="next-testimonial" aria-label="Next testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://source.unsplash.com/random/600x800/?saree,silk,red" alt="Turmeric-dyed Silk Saree">
+            <div class="product-tag">Turmeric</div>
+          </div>
+          <div class="product-info">
+            <h3>Turmeric-dyed Silk Saree</h3>
+            <p class="product-price">₹15,999</p>
+            <p class="product-description">Anti-inflammatory properties for sensitive skin</p>
+            <a href="saree-collection.html" class="btn-outlined">View Details</a>
+          </div>
         </div>
-    </section>
 
-    <!-- Newsletter Section -->
-    <section class="section newsletter-section">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2>Join Our Ayurvedic Journey</h2>
-                <p>Subscribe for wellness tips and exclusive offers</p>
-                <form class="newsletter-form" action="/api/subscribe" method="POST">
-                    <input type="email" name="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn">Subscribe</button>
-                </form>
-            </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://source.unsplash.com/random/600x800/?saree,silk,blue" alt="Indigo-dyed Cotton Saree">
+            <div class="product-tag">Indigo</div>
+          </div>
+          <div class="product-info">
+            <h3>Indigo-dyed Cotton Saree</h3>
+            <p class="product-price">₹12,999</p>
+            <p class="product-description">Cooling properties ideal for stress relief</p>
+            <a href="saree-collection.html" class="btn-outlined">View Details</a>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <div class="footer-logo">11<span class="accent-text">Sari</span></div>
-                    <p>Premium handcrafted sarees with Ayurvedic healing properties</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61574843622187" class="social-icon"
-                            target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/elevensaree/" class="social-icon" target="_blank"
-                            rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="saree-collection.html">Collection</a></li>
-                        <li><a href="ayurvedic-collection.html">Ayurvedic</a></li>
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="contact-us.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <p><strong>Email:</strong> <a href="mailto:info@11sari.com">info@11sari.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+919663495817">+91 96634 95817</a></p>
-                    <p><strong>Address:</strong> Varanasi Silk House, MG Road, Bangalore - 560001</p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 11Sari. All Rights Reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="privacy-policy.html">Privacy</a>
-                    <a href="terms-of-service.html">Terms</a>
-                    <a href="shipping-policy.html">Shipping</a>
-                </div>
-            </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://source.unsplash.com/random/600x800/?saree,silk,green" alt="Neem-infused Linen Saree">
+            <div class="product-tag">Neem</div>
+          </div>
+          <div class="product-info">
+            <h3>Neem-infused Linen Saree</h3>
+            <p class="product-price">₹18,999</p>
+            <p class="product-description">Antibacterial properties for skin health</p>
+            <a href="saree-collection.html" class="btn-outlined">View Details</a>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/919663495817" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path
-                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-        </svg>
-    </a>
+      <div class="section-cta">
+        <a href="saree-collection.html" class="btn btn-primary">View All Collections</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function () {
-            document.body.classList.toggle('mobile-menu-active');
-        });
+  <!-- Testimonials Section -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Customer <span class="highlight">Experiences</span></h2>
+        <p class="section-subheader">Real healing stories from our customers</p>
+        <div class="accent-line"></div>
+      </div>
 
-        // Testimonial Slider for mobile
-        document.addEventListener('DOMContentLoaded', function () {
-            const testimonialCards = document.querySelectorAll('.testimonial-card');
-            const prevButton = document.querySelector('.prev-testimonial');
-            const nextButton = document.querySelector('.next-testimonial');
-            let currentTestimonial = 0;
-            const mobileView = window.matchMedia('(max-width: 768px)');
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="https://source.unsplash.com/random/100x100/?portrait,woman" alt="Priya Sharma">
+          </div>
+          <div class="testimonial-content">
+            <div class="testimonial-rating">★★★★★</div>
+            <p>"The turmeric-dyed saree helped with my skin sensitivity. I can feel the Ayurvedic properties
+              working!"</p>
+            <div class="testimonial-author">
+              <p class="author-name">Priya Sharma</p>
+              <p class="author-title">Delhi</p>
+            </div>
+          </div>
+        </div>
 
-            function updateTestimonials() {
-                if (mobileView.matches) {
-                    testimonialCards.forEach((card, index) => {
-                        if (index === currentTestimonial) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                } else {
-                    testimonialCards.forEach(card => {
-                        card.style.display = 'flex';
-                    });
-                }
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="https://source.unsplash.com/random/100x100/?portrait,indian,woman" alt="Anjali Patel">
+          </div>
+          <div class="testimonial-content">
+            <div class="testimonial-rating">★★★★★</div>
+            <p>"The indigo-dyed saree has improved my sleep quality. The natural cooling properties are
+              perfect for summer!"</p>
+            <div class="testimonial-author">
+              <p class="author-name">Anjali Patel</p>
+              <p class="author-title">Mumbai</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="prev-testimonial" aria-label="Previous testimonial">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="next-testimonial" aria-label="Next testimonial">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Join Our Ayurvedic Journey</h2>
+        <p>Subscribe for wellness tips and exclusive offers</p>
+        <form class="newsletter-form" action="/api/subscribe" method="POST">
+          <input type="email" name="email" placeholder="Your email address" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <div class="footer-logo">11<span class="accent-text">Sari</span></div>
+          <p>Premium handcrafted sarees with Ayurvedic healing properties</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61574843622187" class="social-icon" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/elevensaree/" class="social-icon" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="saree-collection.html">Collection</a></li>
+            <li><a href="ayurvedic-collection.html">Ayurvedic</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><strong>Email:</strong> <a href="mailto:info@11sari.com">info@11sari.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+919663495817">+91 96634 95817</a></p>
+          <p><strong>Address:</strong> Varanasi Silk House, MG Road, Bangalore - 560001</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 11Sari. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms-of-service.html">Terms</a>
+          <a href="shipping-policy.html">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919663495817" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+    </svg>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function () {
+      document.body.classList.toggle('mobile-menu-active');
+    });
+
+    // Testimonial Slider for mobile
+    document.addEventListener('DOMContentLoaded', function () {
+      const testimonialCards = document.querySelectorAll('.testimonial-card');
+      const prevButton = document.querySelector('.prev-testimonial');
+      const nextButton = document.querySelector('.next-testimonial');
+      let currentTestimonial = 0;
+      const mobileView = window.matchMedia('(max-width: 768px)');
+
+      function updateTestimonials() {
+        if (mobileView.matches) {
+          testimonialCards.forEach((card, index) => {
+            if (index === currentTestimonial) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
             }
+          });
+        } else {
+          testimonialCards.forEach(card => {
+            card.style.display = 'flex';
+          });
+        }
+      }
 
-            updateTestimonials();
-            mobileView.addEventListener('change', updateTestimonials);
+      updateTestimonials();
+      mobileView.addEventListener('change', updateTestimonials);
 
-            nextButton.addEventListener('click', function () {
-                if (mobileView.matches) {
-                    currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-                    updateTestimonials();
-                }
-            });
+      nextButton.addEventListener('click', function () {
+        if (mobileView.matches) {
+          currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+          updateTestimonials();
+        }
+      });
 
-            prevButton.addEventListener('click', function () {
-                if (mobileView.matches) {
-                    currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
-                    updateTestimonials();
-                }
-            });
-        });
-    </script>
+      prevButton.addEventListener('click', function () {
+        if (mobileView.matches) {
+          currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+          updateTestimonials();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
