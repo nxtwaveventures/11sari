@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>Exotic Banarasi Sarees Collection - Royal Varanasi Sarees</title>
+    <title>Ayurvedic Healing Saree Collection - 11Sari</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="index,follow">
     <meta name="generator" content="GrapesJS Studio">
     <meta name="description"
-        content="Explore our exclusive collection of authentic Banarasi sarees with intricate designs and premium quality.">
+        content="Discover our Ayurvedic healing saree collection with natural dyes, wellness properties, and color therapy benefits. Wedding, festive, and ready-to-wear options available.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="./custom-pages.css">
     <style>
         .collection-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary), var(--sea-green));
+            animation: gradientShift 15s ease infinite;
+            background-size: 200% 200%;
             padding: 4rem 2rem;
             text-align: center;
             color: white;
@@ -623,6 +625,170 @@
             animation: added-animation 0.5s ease;
         }
     </style>
+    <style>
+        .collection-category {
+            max-width: 1200px;
+            margin: 3rem auto 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-serif);
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .collection-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 2rem;
+            z-index: 2;
+        }
+
+        .collection-badge.ready-badge {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+        }
+
+        .product-card {
+            position: relative;
+        }
+
+        .material-tag[data-category="ayurvedic"] {
+            background: rgba(173, 0, 0, 0.1);
+            color: var(--primary-color);
+            border-color: rgba(173, 0, 0, 0.3);
+        }
+
+        .material-tag[data-category="wedding"] {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-color);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .material-tag[data-category="festive"] {
+            background: rgba(30, 85, 92, 0.1);
+            color: var(--sea-green);
+            border-color: rgba(30, 85, 92, 0.3);
+        }
+
+        .material-tag[data-category="ready"] {
+            background: rgba(0, 128, 128, 0.1);
+            color: teal;
+            border-color: rgba(0, 128, 128, 0.3);
+        }
+
+        .healing-property-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .healing-benefits {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .healing-benefits h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .healing-benefits ul {
+            margin: 0;
+            padding-left: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .healing-benefits li {
+            margin-bottom: 0.25rem;
+        }
+
+        .ready-to-wear-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .ready-to-wear-badge::before {
+            content: '⏱️';
+            margin-right: 5px;
+        }
+
+        .product-card:hover .healing-benefits {
+            border-left-color: var(--accent);
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Collection section dividers */
+        .collection-category {
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        .collection-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .collection-category:first-of-type::before {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -646,52 +812,59 @@
     </header>
 
     <div class="collection-header">
-        <h1>Exotic Banarasi Sarees Collection</h1>
-        <p>Discover our exquisite collection of handwoven Banarasi silk sarees, crafted with the finest materials and
-            centuries-old techniques. Each piece tells a story of heritage, artistry, and royal elegance.</p>
+        <h1>Ayurvedic Healing Saree Collection</h1>
+        <p>Experience the wellness and healing properties of our natural dyed sarees, crafted with ancient Ayurvedic
+            principles for mind, body and spiritual well-being.</p>
     </div>
 
     <div class="filter-bar">
         <div class="filter-group">
-            <label for="material">Filter by:</label>
-            <select id="material" class="filter-select">
-                <option value="all">All Materials</option>
-                <option value="silk">Pure Silk</option>
-                <option value="organza">Organza</option>
-                <option value="georgette">Georgette</option>
-                <option value="cotton">Cotton</option>
+            <span>Filter by:</span>
+            <select class="filter-select" id="collection-filter">
+                <option value="all">All Collections</option>
+                <option value="ayurvedic">Ayurvedic Healing</option>
+                <option value="wedding">Wedding Collection</option>
+                <option value="festive">Festive Sarees</option>
+                <option value="ready">Ready-to-Wear (60 sec)</option>
             </select>
-            <select id="color" class="filter-select">
-                <option value="all">All Colors</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="gold">Gold</option>
-                <option value="maroon">Maroon</option>
+            <select class="filter-select" id="healing-filter">
+                <option value="all">All Healing Properties</option>
+                <option value="cooling">Cooling Properties</option>
+                <option value="anti-inflammatory">Anti-inflammatory</option>
+                <option value="immunity">Immunity Boosting</option>
+                <option value="calming">Stress Relief & Calming</option>
+                <option value="energizing">Energizing & Uplifting</option>
             </select>
         </div>
         <div class="filter-group">
-            <label for="sort">Sort by:</label>
-            <select id="sort" class="sort-select">
-                <option value="featured">Featured</option>
+            <span>Sort by:</span>
+            <select class="sort-select" id="sort-select">
+                <option value="popular">Most Popular</option>
+                <option value="newest">Newest First</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
-                <option value="newest">Newest First</option>
             </select>
         </div>
     </div>
 
+    <div class="collection-category ayurvedic-collection">
+        <h2 class="category-title">Ayurvedic Healing Collection</h2>
+        <p class="category-description">Sarees dyed with medicinal herbs and natural ingredients that offer therapeutic
+            benefits along with exquisite beauty.</p>
+    </div>
+
     <div class="product-grid">
         <!-- Product 1 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,red" alt="Royal Red Banarasi Saree"
+        <div class="product-card" data-category="ayurvedic" data-property="anti-inflammatory">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?turmeric,saree,red" alt="Turmeric Dyed Silk Saree"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Royal Red Bridal Banarasi Saree</h3>
-                <p class="product-description">Exquisite pure silk Banarasi saree with intricate gold zari work
-                    featuring
-                    traditional motifs. Perfect for wedding ceremonies and special occasions.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="anti-inflammatory">Turmeric Dyed •
+                    Anti-inflammatory</span>
+                <h3 class="product-title">Turmeric Infused Silk Saree</h3>
+                <p class="product-description">Handcrafted with turmeric-dyed silk that offers anti-inflammatory
+                    properties. Natural healing for sensitive skin and joint pain relief.</p>
                 <div class="product-price">
                     <span>₹15,999</span>
                     <span class="original-price">₹19,999</span>
@@ -704,14 +877,16 @@
         </div>
 
         <!-- Product 2 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,green"
-                alt="Emerald Green Banarasi Saree" class="product-image">
+        <div class="product-card" data-category="ayurvedic" data-property="calming">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?sandalwood,saree,green"
+                alt="Sandalwood Dyed Silk Saree" class="product-image">
             <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Emerald Green Banarasi Silk Saree</h3>
-                <p class="product-description">Lustrous pure silk saree in emerald green with silver zari work. Features
-                    elaborate peacock motifs and a rich pallu design.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="calming">Sandalwood Dyed •
+                    Calming</span>
+                <h3 class="product-title">Sandalwood Infused Silk Saree</h3>
+                <p class="product-description">Lustrous silk saree dyed with sandalwood that promotes calm and
+                    centeredness. Features intricate peacock motifs and a rich pallu design.</p>
                 <div class="product-price">
                     <span>₹12,499</span>
                     <span class="original-price">₹15,499</span>
@@ -724,15 +899,15 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,blue" alt="Royal Blue Banarasi Saree"
+        <div class="product-card" data-category="ayurvedic" data-property="cooling">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?neem,saree,blue" alt="Neem Dyed Silk Saree"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Organza Silk</span>
-                <h3 class="product-title">Royal Blue Organza Banarasi Saree</h3>
-                <p class="product-description">Lightweight organza silk saree with traditional Banarasi weaving.
-                    Features
-                    intricate floral motifs and a stunning contrast border.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Neem Cotton Silk Saree</h3>
+                <p class="product-description">Lightweight silk saree dyed with neem that offers cooling properties.
+                    Features traditional Banarasi weaving and intricate floral motifs.</p>
                 <div class="product-price">
                     <span>₹9,999</span>
                     <span class="original-price">₹12,999</span>
@@ -745,14 +920,16 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,gold" alt="Golden Banarasi Saree"
+        <div class="product-card" data-category="ayurvedic" data-property="immunity">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?turmeric,saree,gold" alt="Turmeric Dyed Silk Saree"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Golden Antique Banarasi Saree</h3>
-                <p class="product-description">Luxurious pure silk saree in golden hue with elaborate antique zari work.
-                    Showcases traditional temple motifs and intricate border design.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="immunity">Turmeric Dyed • Immunity
+                    Boosting</span>
+                <h3 class="product-title">Turmeric Infused Silk Saree</h3>
+                <p class="product-description">Luxurious silk saree dyed with turmeric that offers immunity boosting
+                    properties. Features intricate gold zari work and traditional motifs.</p>
                 <div class="product-price">
                     <span>₹18,999</span>
                     <span class="original-price">₹22,999</span>
@@ -765,15 +942,16 @@
         </div>
 
         <!-- Product 5 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,pink" alt="Soft Pink Banarasi Saree"
-                class="product-image">
+        <div class="product-card" data-category="ayurvedic" data-property="calming">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?sandalwood,saree,pink"
+                alt="Sandalwood Dyed Silk Saree" class="product-image">
             <div class="product-details">
-                <span class="material-tag">Georgette Silk</span>
-                <h3 class="product-title">Soft Pink Georgette Banarasi Saree</h3>
-                <p class="product-description">Elegant georgette silk saree in soft pink with delicate silver zari work.
-                    Perfect
-                    for evening parties and festive celebrations.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="calming">Sandalwood Dyed •
+                    Calming</span>
+                <h3 class="product-title">Sandalwood Infused Silk Saree</h3>
+                <p class="product-description">Elegant silk saree dyed with sandalwood that promotes calm and
+                    centeredness. Features intricate peacock motifs and a rich pallu design.</p>
                 <div class="product-price">
                     <span>₹8,499</span>
                     <span class="original-price">₹10,999</span>
@@ -786,18 +964,463 @@
         </div>
 
         <!-- Product 6 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,maroon" alt="Maroon Banarasi Saree"
+        <div class="product-card" data-category="ayurvedic" data-property="cooling">
+            <span class="collection-badge">Ayurvedic</span>
+            <img src="https://source.unsplash.com/random/600x900/?neem,saree,maroon" alt="Neem Dyed Silk Saree"
                 class="product-image">
             <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Royal Maroon Banarasi Silk Saree</h3>
-                <p class="product-description">Classic pure silk Banarasi saree in deep maroon with rich gold zari work.
-                    Features
-                    traditional paisley motifs and an elaborate pallu.</p>
+                <span class="material-tag" data-category="ayurvedic" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Neem Cotton Silk Saree</h3>
+                <p class="product-description">Classic silk saree dyed with neem that offers cooling properties.
+                    Features traditional Banarasi weaving and intricate floral motifs.</p>
                 <div class="product-price">
                     <span>₹14,999</span>
                     <span class="original-price">₹17,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" data-category="ayurvedic" data-property="immunity">
+            <img src="https://source.unsplash.com/random/600x900/?green,saree,silk" alt="Neem & Tulsi Silk Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ayurvedic" data-property="immunity">Neem & Tulsi Dyed •
+                    Immunity</span>
+                <h3 class="product-title">Neem-Tulsi Handloom Saree</h3>
+                <p class="product-description">Infused with neem and tulsi extracts that boost immunity and provide
+                    antibacterial benefits. Perfect for daily wear.</p>
+                <div class="healing-benefits">
+                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg>Ayurvedic Benefits</h4>
+                    <ul>
+                        <li>Boosts immune system</li>
+                        <li>Natural antibacterial properties</li>
+                        <li>Repels insects naturally</li>
+                        <li>Promotes respiratory health</li>
+                    </ul>
+                </div>
+                <div class="product-price">
+                    ₹14,999 <span class="original-price">₹17,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" data-category="ayurvedic" data-property="calming">
+            <img src="https://source.unsplash.com/random/600x900/?blue,saree,cotton" alt="Lavender Infused Cotton Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ayurvedic" data-property="calming">Lavender Infused •
+                    Calming</span>
+                <h3 class="product-title">Lavender Essence Cotton Saree</h3>
+                <p class="product-description">Cotton saree treated with lavender essence for calming properties. Helps
+                    reduce anxiety and promotes restful sleep.</p>
+                <div class="healing-benefits">
+                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>Ayurvedic Benefits</h4>
+                    <ul>
+                        <li>Reduces stress and anxiety</li>
+                        <li>Promotes better sleep</li>
+                        <li>Soothes the nervous system</li>
+                        <li>Subtle aromatherapeutic effect</li>
+                    </ul>
+                </div>
+                <div class="product-price">
+                    ₹9,999 <span class="original-price">₹12,499</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-category wedding-collection">
+        <h2 class="category-title">Wedding Collection</h2>
+        <p class="category-description">Specially curated sarees with color healing properties for brides, designed to
+            bring auspiciousness, calm, and joy on the special day.</p>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 9 -->
+        <div class="product-card" data-category="wedding" data-property="energizing">
+            <span class="collection-badge">Wedding</span>
+            <img src="https://source.unsplash.com/random/600x900/?gold,saree,wedding" alt="Golden Saffron Wedding Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="wedding" data-property="energizing">Saffron Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Golden Saffron Bridal Saree</h3>
+                <p class="product-description">Luxurious wedding saree dyed with saffron for energizing properties. The
+                    vibrant golden hue symbolizes prosperity and joy.</p>
+                <div class="healing-benefits">
+                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg>Ayurvedic Benefits</h4>
+                    <ul>
+                        <li>Boosts energy and confidence</li>
+                        <li>Enhances mental clarity</li>
+                        <li>Promotes positive emotions</li>
+                        <li>Stimulates creativity and joy</li>
+                    </ul>
+                </div>
+                <div class="product-price">
+                    ₹32,999 <span class="original-price">₹38,499</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card" data-category="wedding" data-property="calming">
+            <span class="collection-badge">Wedding</span>
+            <img src="https://source.unsplash.com/random/600x900/?purple,saree,bridal" alt="Bridal Purple Silk Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="wedding" data-property="calming">Purple Kumkum Dyed •
+                    Calming</span>
+                <h3 class="product-title">Bridal Bliss Purple Saree</h3>
+                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
+                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
+                <div class="product-price">
+                    ₹24,999 <span class="original-price">₹29,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card" data-category="wedding" data-property="calming">
+            <span class="collection-badge">Wedding</span>
+            <img src="https://source.unsplash.com/random/600x900/?orange,saree,bridal" alt="Bridal Orange Silk Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="wedding" data-property="calming">Orange Kumkum Dyed •
+                    Calming</span>
+                <h3 class="product-title">Bridal Bliss Orange Saree</h3>
+                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
+                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
+                <div class="product-price">
+                    ₹24,999 <span class="original-price">₹29,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card" data-category="wedding" data-property="calming">
+            <span class="collection-badge">Wedding</span>
+            <img src="https://source.unsplash.com/random/600x900/?green,saree,bridal" alt="Bridal Green Silk Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="wedding" data-property="calming">Green Kumkum Dyed •
+                    Calming</span>
+                <h3 class="product-title">Bridal Bliss Green Saree</h3>
+                <p class="product-description">Traditional bridal saree with kumkum dyes that promote calm and
+                    centeredness. Adorned with auspicious motifs for marital harmony.</p>
+                <div class="product-price">
+                    ₹24,999 <span class="original-price">₹29,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-category festive-collection">
+        <h2 class="category-title">Festive Sarees</h2>
+        <p class="category-description">Seasonal sarees designed with consideration for weather patterns and festival
+            significance, offering both functional comfort and cultural symbolism.</p>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 13 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?yellow,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Marigold Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Marigold-dyed festive saree that brings energizing properties perfect for
+                    Diwali celebrations. Light and comfortable for autumn weather.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?red,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Red Kumkum Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Red Kumkum-dyed festive saree that brings energizing properties perfect
+                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 15 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?green,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Green Kumkum Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Green Kumkum-dyed festive saree that brings energizing properties perfect
+                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 16 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?purple,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Purple Kumkum Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Purple Kumkum-dyed festive saree that brings energizing properties
+                    perfect for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 17 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?orange,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Orange Kumkum Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Orange Kumkum-dyed festive saree that brings energizing properties
+                    perfect for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 18 -->
+        <div class="product-card" data-category="festive" data-property="energizing">
+            <span class="collection-badge">Festive</span>
+            <img src="https://source.unsplash.com/random/600x900/?blue,saree,festival" alt="Diwali Celebration Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="festive" data-property="energizing">Blue Kumkum Dyed •
+                    Energizing</span>
+                <h3 class="product-title">Diwali Celebration Silk Saree</h3>
+                <p class="product-description">Blue Kumkum-dyed festive saree that brings energizing properties perfect
+                    for Diwali celebrations. Features traditional motifs and vibrant colors.</p>
+                <div class="product-price">
+                    ₹18,499 <span class="original-price">₹21,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-category ready-collection">
+        <h2 class="category-title">Ready-to-Wear Sarees (60 sec)</h2>
+        <p class="category-description">Experience the convenience of our revolutionary ready-to-wear sarees. Select
+            your style and have it ready to wear in just 60 seconds!</p>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 19 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?green,saree,ready" alt="Ready-to-Wear Mint Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Mint Infused • Cooling</span>
+                <h3 class="product-title">Mint Quick-Drape Linen Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with mint-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="healing-benefits">
+                    <h4><svg class="healing-property-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v6m0 0v14m0-14h-4m4 0h4"></path>
+                        </svg>60-Second Wearing</h4>
+                    <ul>
+                        <li>Pre-stitched pleats for instant wear</li>
+                        <li>Cooling mint properties for comfort</li>
+                        <li>Adjustable waist for perfect fit</li>
+                        <li>All natural dyes and fabrics</li>
+                    </ul>
+                </div>
+                <div class="product-price">
+                    ₹11,499 <span class="original-price">₹13,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 20 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?blue,saree,ready" alt="Ready-to-Wear Cooling Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="product-price">
+                    ₹12,999 <span class="original-price">₹15,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 21 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?purple,saree,ready" alt="Ready-to-Wear Cooling Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="product-price">
+                    ₹12,999 <span class="original-price">₹15,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 22 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?orange,saree,ready" alt="Ready-to-Wear Cooling Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="product-price">
+                    ₹12,999 <span class="original-price">₹15,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 23 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?red,saree,ready" alt="Ready-to-Wear Cooling Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="product-price">
+                    ₹12,999 <span class="original-price">₹15,999</span>
+                </div>
+                <div class="product-actions">
+                    <a href="#" class="buy-now">Buy Now</a>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 24 -->
+        <div class="product-card" data-category="ready" data-property="cooling">
+            <span class="ready-to-wear-badge">Ready in 60s</span>
+            <img src="https://source.unsplash.com/random/600x900/?yellow,saree,ready" alt="Ready-to-Wear Cooling Saree"
+                class="product-image">
+            <div class="product-details">
+                <span class="material-tag" data-category="ready" data-property="cooling">Neem Dyed • Cooling</span>
+                <h3 class="product-title">Quick-Drape Neem Cotton Saree</h3>
+                <p class="product-description">Pre-pleated, ready-to-wear saree with neem-infused natural dyes. Perfect
+                    for summer with cooling properties and effortless wearing in 60 seconds.</p>
+                <div class="product-price">
+                    ₹12,999 <span class="original-price">₹15,999</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="buy-now">Buy Now</a>
@@ -1001,32 +1624,23 @@
             });
 
             // Filter functionality
-            const materialFilter = document.getElementById('material');
-            const colorFilter = document.getElementById('color');
-            const sortSelect = document.getElementById('sort');
+            const collectionFilter = document.getElementById('collection-filter');
+            const healingFilter = document.getElementById('healing-filter');
+            const sortSelect = document.getElementById('sort-select');
+            const productCards = document.querySelectorAll('.product-card');
 
-            function applyFilters() {
-                const materialValue = materialFilter.value;
-                const colorValue = colorFilter.value;
-                const productCards = document.querySelectorAll('.product-card');
+            function filterProducts() {
+                const collectionValue = collectionFilter.value;
+                const healingValue = healingFilter.value;
 
                 productCards.forEach(card => {
-                    let materialMatch = true;
-                    let colorMatch = true;
+                    const category = card.getAttribute('data-category');
+                    const property = card.getAttribute('data-property');
 
-                    if (materialValue !== 'all') {
-                        const materialTag = card.querySelector('.material-tag').textContent.toLowerCase();
-                        materialMatch = materialTag.includes(materialValue.toLowerCase());
-                    }
+                    const collectionMatch = collectionValue === 'all' || category === collectionValue;
+                    const healingMatch = healingValue === 'all' || property === healingValue;
 
-                    if (colorValue !== 'all') {
-                        const productTitle = card.querySelector('.product-title').textContent.toLowerCase();
-                        const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
-                        colorMatch = productTitle.includes(colorValue.toLowerCase()) ||
-                            productDesc.includes(colorValue.toLowerCase());
-                    }
-
-                    if (materialMatch && colorMatch) {
+                    if (collectionMatch && healingMatch) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
@@ -1034,29 +1648,10 @@
                 });
             }
 
-            materialFilter.addEventListener('change', applyFilters);
-            colorFilter.addEventListener('change', applyFilters);
+            collectionFilter.addEventListener('change', filterProducts);
+            healingFilter.addEventListener('change', filterProducts);
 
-            sortSelect.addEventListener('change', function () {
-                const productGrid = document.querySelector('.product-grid');
-                const productCards = Array.from(document.querySelectorAll('.product-card'));
-
-                productCards.sort((a, b) => {
-                    const priceA = parseInt(a.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
-                    const priceB = parseInt(b.querySelector('.product-price span').textContent.replace(/[^0-9]/g, ''));
-
-                    if (this.value === 'price-low') {
-                        return priceA - priceB;
-                    } else if (this.value === 'price-high') {
-                        return priceB - priceA;
-                    } else {
-                        return 0; // Default or featured
-                    }
-                });
-
-                // Reappend sorted cards
-                productCards.forEach(card => productGrid.appendChild(card));
-            });
+            // Add sorting functionality here if needed
         });
 
         function openPaymentModal() {
