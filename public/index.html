@@ -23,18 +23,14 @@
       /* Rich gold */
       --accent-light: #e6c66c;
       /* Light gold */
-      --teal: #3a8f8c;
-      /* Healing teal */
-      --teal-light: #c4e5e3;
-      /* Light teal */
-      --sage: #7ca583;
-      /* Calm sage green */
-      --sage-light: #e4f0e6;
-      /* Light sage */
+      --sea-green: #1e555c;
+      /* Sea dark green */
+      --sea-green-light: #d4eded;
+      /* Light sea green */
       --text-dark: #ad0000;
       /* Use red instead of black for dark text */
-      --text-light: #7ca583;
-      /* Use sage instead of grey for light text */
+      --text-light: #1e555c;
+      /* Sea dark green instead of grey for light text */
       --white: #ffffff;
       --off-white: #fffaf2;
       /* Warm off-white */
@@ -339,13 +335,13 @@
     }
 
     .benefit-card:nth-child(1) .benefit-icon {
-      background-color: var(--sage-light);
-      color: var(--sage);
+      background-color: var(--sea-green-light);
+      color: var(--sea-green);
     }
 
     .benefit-card:nth-child(2) .benefit-icon {
-      background-color: var(--teal-light);
-      color: var(--teal);
+      background-color: var(--sea-green-light);
+      color: var(--sea-green);
     }
 
     .benefit-card:nth-child(3) .benefit-icon {
@@ -371,7 +367,7 @@
     }
 
     .text-link {
-      color: var(--teal);
+      color: var(--sea-green);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
@@ -458,11 +454,11 @@
     }
 
     .product-card:nth-child(2) .product-tag {
-      background-color: var(--teal);
+      background-color: var(--sea-green);
     }
 
     .product-card:nth-child(3) .product-tag {
-      background-color: var(--sage);
+      background-color: var(--accent);
     }
 
     .product-info {
@@ -514,7 +510,7 @@
 
     /* Testimonials */
     .testimonials-section {
-      background: linear-gradient(135deg, var(--sage-light) 0%, var(--off-white) 100%);
+      background: linear-gradient(135deg, var(--sea-green-light) 0%, var(--off-white) 100%);
     }
 
     .section-subheader {
@@ -652,7 +648,7 @@
     /* Newsletter Section */
     .newsletter-section {
       padding: 60px 0;
-      background: linear-gradient(135deg, var(--teal) 0%, var(--sage) 100%);
+      background: linear-gradient(135deg, var(--sea-green) 0%, var(--primary-dark) 100%);
       color: var(--white);
     }
 
@@ -782,7 +778,7 @@
     }
 
     .footer-bottom p {
-      opacity: 0.7;
+      opacity: 0.9;
       font-size: 0.9rem;
     }
 
@@ -793,7 +789,7 @@
 
     .footer-bottom-links a {
       color: var(--white);
-      opacity: 0.7;
+      opacity: 0.9;
       font-size: 0.9rem;
       transition: opacity 0.3s;
     }
@@ -807,7 +803,7 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background-color: var(--teal);
+      background-color: var(--sea-green);
       color: var(--white);
       width: 60px;
       height: 60px;
