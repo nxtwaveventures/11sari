@@ -1,184 +1,365 @@
-import Layout from '@/components/Layout'
-import OptimizedImage from '@/components/OptimizedImage'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-
-// This would typically come from an API or CMS
-const products = {
-    1: {
-        id: 1,
-        name: "Royal Banarasi Silk",
-        price: "₹25,999",
-        images: [
-            "/assets/images/products/royal-banarasi.jpg",
-            "/assets/images/products/royal-banarasi-2.jpg",
-            "/assets/images/products/royal-banarasi-3.jpg"
-        ],
-        category: "Wedding",
-        description: "Experience the grandeur of traditional Banarasi craftsmanship with this exquisite silk saree. Featuring intricate zari work and timeless motifs.",
-        details: {
-            fabric: "Pure Silk",
-            weave: "Banarasi",
-            color: "Deep Red with Gold",
-            zari: "Real Gold Zari",
-            weight: "850-900 grams",
-            length: "6.3 meters",
-            blouse: "0.8 meters unstitched",
-            occasion: "Wedding, Bridal"
-        },
-        care: [
-            "Dry clean only",
-            "Store in muslin cloth",
-            "Keep away from direct sunlight",
-            "Use wooden hangers"
-        ],
-        relatedProducts: [2, 3]
-    }
-}
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Layout from '../../components/Layout';
+import { sareeCollection, suitCollection } from '../../scripts/products';
 
 export default function ProductDetail() {
-    const router = useRouter()
-    const { id } = router.query
-    const [selectedImage, setSelectedImage] = useState(0)
-    const product = products[id]
+    const router = useRouter();
+    const { id } = router.query;
+    const [selectedImage, setSelectedImage] = useState(0);
+    const [selectedSize, setSelectedSize] = useState(null);
 
-    const seo = product ? {
-        title: product.name,
-        description: `${product.description} Shop this ${product.category.toLowerCase()} Banarasi silk saree from our exclusive collection. Made with ${product.details.fabric}, featuring ${product.details.zari} work.`,
-        keywords: [
-            'banarasi saree',
-            product.category.toLowerCase(),
-            'silk saree',
-            'wedding wear',
-            'indian fashion',
-            'traditional wear',
-            'handloom saree',
-            product.details.fabric.toLowerCase()
-        ],
-        ogImage: product.images[0]
-    } : {
-        title: 'Product Not Found',
-        description: 'The product you are looking for could not be found.',
-    }
+    // Find product in either collection
+    const product = findProduct(id);
 
     if (!product) {
-        return (
-            <Layout seo={seo}>
-                <div className="container">
-                    <div className="error-message">
-                        <h1>Product not found</h1>
-                        <Link href="/collection" className="back-link">
-                            Return to Collection
-                        </Link>
-                    </div>
-                </div>
-            </Layout>
-        )
+        return <div>Product not found</div>;
     }
 
     return (
-        <Layout seo={seo}>
-            <main className="product-detail">
-                <div className="container">
-                    <div className="product-grid">
-                        <div className="product-gallery">
-                            <div className="main-image">
-                                <OptimizedImage
-                                    src={product.images[selectedImage]}
-                                    alt={product.name}
-                                    fill
-                                    priority
-                                    sizes="(max-width: 768px) 100vw, 50vw"
+        <Layout>
+            <div className="product-detail-container">
+                <div className="product-gallery">
+                    <div className="main-image-container">
+                        <div className="product-page-main-image">
+                            <img
+                                src={`/assets/images/products/${product.images[selectedImage]}`}
+                                alt={product.name}
+                                className="main-product-image"
+                            />
+                        </div>
+                    </div>
+                    <div className="thumbnail-gallery">
+                        {product.images.map((image, index) => (
+                            <div
+                                key={index}
+                                className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                onClick={() => setSelectedImage(index)}
+                            >
+                                <img
+                                    src={`/assets/images/products/${image}`}
+                                    alt={`${product.name} view ${index + 1}`}
                                 />
                             </div>
-                            <div className="image-thumbnails">
-                                {product.images.map((image, index) => (
+                        ))}
+                    </div>
+                </div>
+
+                <div className="product-info">
+                    <h1 className="product-title">{product.name}</h1>
+
+                    <div className="product-price">
+                        <span className="current-price">₹{product.price.toLocaleString()}</span>
+                        <span className="original-price">₹{product.originalPrice.toLocaleString()}</span>
+                        <span className="discount">
+                            {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                        </span>
+                    </div>
+
+                    <div className="product-description">
+                        <p>{product.description}</p>
+                    </div>
+
+                    <div className="product-details">
+                        <div className="detail-row">
+                            <span className="detail-label">Fabric:</span>
+                            <span className="detail-value">{product.fabric}</span>
+                        </div>
+                        <div className="detail-row">
+                            <span className="detail-label">Color:</span>
+                            <span className="detail-value">{product.color}</span>
+                        </div>
+                        {product.sareeLength && (
+                            <div className="detail-row">
+                                <span className="detail-label">Saree Length:</span>
+                                <span className="detail-value">{product.sareeLength}</span>
+                            </div>
+                        )}
+                        {product.blousePiece && (
+                            <div className="detail-row">
+                                <span className="detail-label">Blouse Piece:</span>
+                                <span className="detail-value">Included ({product.blouseLength})</span>
+                            </div>
+                        )}
+                        {product.included && (
+                            <div className="detail-row">
+                                <span className="detail-label">Included Items:</span>
+                                <span className="detail-value">{product.included.join(', ')}</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {product.sizes && (
+                        <div className="size-selection">
+                            <h3>Select Size</h3>
+                            <div className="size-options">
+                                {product.sizes.map(size => (
                                     <button
-                                        key={index}
-                                        className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
-                                        onClick={() => setSelectedImage(index)}
+                                        key={size}
+                                        className={`size-option ${selectedSize === size ? 'selected' : ''}`}
+                                        onClick={() => setSelectedSize(size)}
                                     >
-                                        <OptimizedImage
-                                            src={image}
-                                            alt={`${product.name} view ${index + 1}`}
-                                            fill
-                                            sizes="80px"
-                                        />
+                                        {size}
                                     </button>
                                 ))}
                             </div>
                         </div>
+                    )}
 
-                        <div className="product-info">
-                            <h1 className="product-title">{product.name}</h1>
-                            <span className="product-category">{product.category}</span>
-                            <span className="product-price">{product.price}</span>
-                            <p className="product-description">{product.description}</p>
-
-                            <div className="product-details">
-                                <h2>Product Details</h2>
-                                <div className="details-grid">
-                                    {Object.entries(product.details).map(([key, value]) => (
-                                        <div key={key} className="detail-item">
-                                            <span className="detail-label">{key}</span>
-                                            <span className="detail-value">{value}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="care-instructions">
-                                <h2>Care Instructions</h2>
-                                <ul>
-                                    {product.care.map((instruction, index) => (
-                                        <li key={index}>{instruction}</li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="product-actions">
-                                <button className="primary-button">
-                                    <i className="fas fa-shopping-bag"></i>
-                                    Add to Cart
-                                </button>
-                                <button className="secondary-button">
-                                    <i className="fas fa-heart"></i>
-                                    Add to Wishlist
-                                </button>
-                            </div>
-                        </div>
+                    <div className="care-instructions">
+                        <h3>Care Instructions</h3>
+                        <p>{product.care}</p>
                     </div>
 
-                    <div className="related-products">
-                        <h2>You May Also Like</h2>
-                        <div className="related-grid">
-                            {product.relatedProducts.map(relatedId => {
-                                const relatedProduct = products[relatedId]
-                                if (!relatedProduct) return null
-                                return (
-                                    <Link
-                                        href={`/collection/${relatedId}`}
-                                        key={relatedId}
-                                        className="related-product-card"
-                                    >
-                                        <OptimizedImage
-                                            src={relatedProduct.images[0]}
-                                            alt={relatedProduct.name}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        />
-                                        <div className="related-product-info">
-                                            <h3>{relatedProduct.name}</h3>
-                                            <span>{relatedProduct.price}</span>
-                                        </div>
-                                    </Link>
-                                )
-                            })}
-                        </div>
+                    <div className="product-actions">
+                        <button
+                            className="add-to-cart-btn"
+                            onClick={() => handleAddToCart(product, selectedSize)}
+                            disabled={product.sizes && !selectedSize}
+                        >
+                            Add to Cart
+                        </button>
+                        <button
+                            className="buy-now-btn"
+                            onClick={() => handleBuyNow(product, selectedSize)}
+                            disabled={product.sizes && !selectedSize}
+                        >
+                            Buy Now
+                        </button>
                     </div>
                 </div>
-            </main>
+            </div>
+
+            <style jsx>{`
+                .product-detail-container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                    padding: 2rem;
+                    max-width: 1400px;
+                    margin: 0 auto;
+                }
+
+                .product-gallery {
+                    position: sticky;
+                    top: 2rem;
+                }
+
+                .main-image-container {
+                    margin-bottom: 1rem;
+                    border-radius: 0.5rem;
+                    overflow: hidden;
+                }
+
+                .main-product-image {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+
+                .thumbnail-gallery {
+                    display: flex;
+                    gap: 0.5rem;
+                    overflow-x: auto;
+                }
+
+                .thumbnail {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 0.25rem;
+                    overflow: hidden;
+                    cursor: pointer;
+                    opacity: 0.6;
+                    transition: opacity 0.2s ease;
+                }
+
+                .thumbnail.active {
+                    opacity: 1;
+                    border: 2px solid var(--primary-color);
+                }
+
+                .thumbnail img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .product-title {
+                    font-family: var(--font-display);
+                    font-size: 2rem;
+                    margin-bottom: 1rem;
+                }
+
+                .product-price {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 1.5rem;
+                }
+
+                .current-price {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    color: var(--primary-color);
+                }
+
+                .original-price {
+                    text-decoration: line-through;
+                    color: var(--text-secondary);
+                }
+
+                .discount {
+                    background: #28a745;
+                    color: white;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 0.25rem;
+                    font-size: 0.9rem;
+                }
+
+                .product-description {
+                    margin-bottom: 2rem;
+                    line-height: 1.6;
+                    color: var(--text-secondary);
+                }
+
+                .product-details {
+                    margin-bottom: 2rem;
+                }
+
+                .detail-row {
+                    display: flex;
+                    margin-bottom: 0.5rem;
+                }
+
+                .detail-label {
+                    width: 120px;
+                    font-weight: 600;
+                }
+
+                .size-selection {
+                    margin-bottom: 2rem;
+                }
+
+                .size-selection h3 {
+                    margin-bottom: 0.5rem;
+                }
+
+                .size-options {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+
+                .size-option {
+                    padding: 0.5rem 1rem;
+                    border: 1px solid var(--border-light);
+                    border-radius: 0.25rem;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .size-option.selected {
+                    background: var(--primary-color);
+                    color: white;
+                    border-color: var(--primary-color);
+                }
+
+                .care-instructions {
+                    margin-bottom: 2rem;
+                    padding: 1rem;
+                    background: #f8f9fa;
+                    border-radius: 0.5rem;
+                }
+
+                .care-instructions h3 {
+                    margin-bottom: 0.5rem;
+                }
+
+                .product-actions {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                .add-to-cart-btn, .buy-now-btn {
+                    flex: 1;
+                    padding: 1rem;
+                    border-radius: 0.25rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .add-to-cart-btn {
+                    background: white;
+                    border: 1px solid var(--primary-color);
+                    color: var(--primary-color);
+                }
+
+                .buy-now-btn {
+                    background: var(--primary-color);
+                    border: 1px solid var(--primary-color);
+                    color: white;
+                }
+
+                .add-to-cart-btn:hover {
+                    background: rgba(147, 37, 37, 0.1);
+                }
+
+                .buy-now-btn:hover {
+                    background: var(--primary-dark);
+                }
+
+                button:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+
+                @media (max-width: 768px) {
+                    .product-detail-container {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .product-gallery {
+                        position: static;
+                    }
+                }
+            `}</style>
         </Layout>
-    )
+    );
+}
+
+function findProduct(id) {
+    // Search in saree collection
+    for (const category in sareeCollection) {
+        const found = sareeCollection[category].find(item => item.id === id);
+        if (found) return found;
+    }
+
+    // Search in suit collection
+    for (const category in suitCollection) {
+        const found = suitCollection[category].find(item => item.id === id);
+        if (found) return found;
+    }
+
+    return null;
+}
+
+function handleAddToCart(product, selectedSize) {
+    const event = new CustomEvent('addToCart', {
+        detail: {
+            ...product,
+            selectedSize,
+            quantity: 1
+        }
+    });
+    document.dispatchEvent(event);
+}
+
+function handleBuyNow(product, selectedSize) {
+    const event = new CustomEvent('buyNow', {
+        detail: {
+            ...product,
+            selectedSize
+        }
+    });
+    document.dispatchEvent(event);
 }

@@ -1,40 +1,68 @@
-import Image from 'next/image'
-import { useState } from 'react'
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function OptimizedImage({
     src,
     alt,
-    fill,
     width,
     height,
-    sizes,
-    priority,
-    quality = 75,
     className = '',
+    priority = false,
+    quality = 75,
+    sizes = '(max-width: 768px) 100vw, 50vw'
 }) {
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
 
     return (
-        <div className={`image-container ${className}`} style={{
-            width: fill ? '100%' : width,
-            height: fill ? '100%' : height,
-            position: fill ? 'relative' : 'static',
-        }}>
-            {isLoading && <div className="image-placeholder" />}
+        <div className={`image-container ${isLoading ? 'loading' : 'loaded'} ${className}`}>
             <Image
                 src={src}
                 alt={alt}
-                fill={fill}
-                width={!fill ? width : undefined}
-                height={!fill ? height : undefined}
-                sizes={sizes}
+                width={width}
+                height={height}
                 quality={quality}
                 priority={priority}
-                className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'
-                    }`}
+                sizes={sizes}
                 onLoadingComplete={() => setIsLoading(false)}
             />
-            <div className="image-overlay" />
+            <style jsx>{`
+                .image-container {
+                    position: relative;
+                    overflow: hidden;
+                    background: #f8f8f8;
+                }
+
+                .image-container.loading {
+                    animation: pulse 1.5s infinite;
+                }
+
+                .image-container.loaded {
+                    animation: none;
+                }
+
+                @keyframes pulse {
+                    0% {
+                        opacity: 1;
+                    }
+                    50% {
+                        opacity: 0.5;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .image-container :global(img) {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+
+                .image-container:hover :global(img) {
+                    transform: scale(1.05);
+                }
+            `}</style>
         </div>
-    )
+    );
 }

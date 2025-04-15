@@ -75,11 +75,41 @@
             box-shadow: var(--shadow-md), 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
         .product-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
             border-bottom: 3px solid var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .quick-view-trigger {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: bottom 0.3s ease;
+            opacity: 0;
+        }
+
+        .product-card:hover .quick-view-trigger {
+            bottom: 20px;
+            opacity: 1;
         }
 
         .product-details {
@@ -171,39 +201,87 @@
 
         .filter-bar {
             background: white;
-            padding: 1rem 2rem;
-            margin: 0 auto 2rem;
+            padding: 1.5rem;
+            margin: 2rem auto;
             border-radius: 0.5rem;
             box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             max-width: 1200px;
-            border: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
         .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .price-range {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
 
-        .filter-select {
-            padding: 0.5rem 1rem;
+        .price-input {
+            width: 100px;
+            padding: 0.5rem;
             border: 1px solid var(--border-light);
             border-radius: 0.25rem;
-            background: white;
-            font-family: var(--font-body);
-            color: var(--text-primary);
         }
 
-        .sort-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
-            background: white;
-            font-family: var(--font-body);
-            color: var(--text-primary);
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 2rem 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+        }
+
+        .category-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         @media (max-width: 992px) {
@@ -226,401 +304,6 @@
                 width: 100%;
                 justify-content: space-between;
             }
-        }
-    </style>
-    <style>
-        /* Payment Modal Styles */
-        .payment-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .payment-modal.active {
-            display: flex;
-        }
-
-        .payment-form {
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .payment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .payment-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-        }
-
-        .payment-product {
-            display: flex;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .payment-product-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 0.25rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .payment-product-details {
-            margin-left: 1rem;
-        }
-
-        .payment-product-title {
-            font-weight: 600;
-            margin: 0 0 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .payment-product-price {
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .payment-form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .payment-form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .payment-form-group input,
-        .payment-form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.25rem;
-            font-family: var(--font-body);
-        }
-
-        .payment-form-row {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .card-icons {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 25px;
-            object-fit: contain;
-        }
-
-        .payment-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            margin-top: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .payment-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .secure-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .secure-text svg {
-            width: 16px;
-            height: 16px;
-        }
-    </style>
-    <style>
-        /* Additional styles for shopping cart */
-        .cart-icon-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, white, #f5f5f5);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 175, 55, 0.1);
-            cursor: pointer;
-            z-index: 100;
-            transition: transform 0.2s ease;
-        }
-
-        .cart-icon-container:hover {
-            background: linear-gradient(135deg, #fcf9f6, white);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(179, 0, 0, 0.1);
-        }
-
-        .cart-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-color);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(179, 0, 0, 0.3);
-        }
-
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cart-modal.active {
-            display: flex;
-        }
-
-        .cart-content {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-            background: linear-gradient(135deg, #fff, #f9f5ef);
-        }
-
-        .cart-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .cart-items {
-            padding: 1.5rem;
-            overflow-y: auto;
-            max-height: 400px;
-            flex-grow: 1;
-        }
-
-        .cart-item {
-            display: flex;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .cart-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .cart-item-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 0.25rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .cart-item-details {
-            margin-left: 1rem;
-            flex-grow: 1;
-        }
-
-        .cart-item-title {
-            margin: 0 0 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-        }
-
-        .cart-item-price {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .cart-quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .cart-quantity-btn {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s ease;
-        }
-
-        .cart-quantity-btn:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .cart-quantity {
-            font-weight: 500;
-        }
-
-        .cart-remove {
-            background: none;
-            border: none;
-            color: #888;
-            cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0;
-            text-decoration: underline;
-            transition: color 0.2s ease;
-        }
-
-        .cart-remove:hover {
-            color: var(--primary-color);
-        }
-
-        .cart-footer {
-            padding: 1.5rem;
-            border-top: 1px solid var(--border-light);
-            background: linear-gradient(135deg, #f9f5ef, #fff);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .checkout-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(179, 0, 0, 0.2);
-        }
-
-        .empty-cart-message {
-            text-align: center;
-            padding: 2rem 0;
-            color: #888;
-            font-style: italic;
-        }
-
-        /* Animation for cart icon */
-        @keyframes added-animation {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .added-animation {
-            animation: added-animation 0.5s ease;
         }
     </style>
 </head>
@@ -646,33 +329,68 @@
     </header>
 
     <div class="collection-header">
-        <h1>Exotic Banarasi Sarees Collection</h1>
-        <p>Discover our exquisite collection of handwoven Banarasi silk sarees, crafted with the finest materials and
-            centuries-old techniques. Each piece tells a story of heritage, artistry, and royal elegance.</p>
+        <h1>Discover India's Finest Sarees</h1>
+        <p>Explore our curated collection of India's most celebrated saree traditions. Each piece is handpicked to bring
+            you the authentic craftsmanship and heritage of different regions.</p>
+    </div>
+
+    <div class="category-grid">
+        <a href="#banarasi" class="category-card">
+            <img src="assets/images/categories/banarasi.jpg" alt="Banarasi Silk Sarees" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">Banarasi Silk</h3>
+                <p class="category-description">Luxurious silk sarees with intricate zari work from Varanasi</p>
+            </div>
+        </a>
+        <a href="#kanjeevaram" class="category-card">
+            <img src="assets/images/categories/kanjeevaram.jpg" alt="Kanjeevaram Silk Sarees" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">Kanjeevaram Silk</h3>
+                <p class="category-description">Royal silk sarees from Tamil Nadu with rich pallus</p>
+            </div>
+        </a>
+        <!-- Add more category cards for other saree types -->
     </div>
 
     <div class="filter-bar">
         <div class="filter-group">
-            <label for="material">Filter by:</label>
-            <select id="material" class="filter-select">
-                <option value="all">All Materials</option>
-                <option value="silk">Pure Silk</option>
-                <option value="organza">Organza</option>
-                <option value="georgette">Georgette</option>
-                <option value="cotton">Cotton</option>
-            </select>
-            <select id="color" class="filter-select">
-                <option value="all">All Colors</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="gold">Gold</option>
-                <option value="maroon">Maroon</option>
+            <label class="filter-label">Saree Type</label>
+            <select class="filter-select" id="sareeType">
+                <option value="all">All Types</option>
+                <option value="banarasi">Banarasi Silk</option>
+                <option value="kanjeevaram">Kanjeevaram Silk</option>
+                <option value="paithani">Paithani</option>
+                <option value="chanderi">Chanderi</option>
+                <option value="mysore">Mysore Silk</option>
+                <option value="bhagalpuri">Bhagalpuri Silk</option>
+                <option value="sambalpuri">Sambalpuri</option>
+                <option value="bandhani">Bandhani</option>
+                <option value="pochampally">Pochampally Ikat</option>
+                <option value="tussar">Tussar Silk</option>
+                <option value="gadwal">Gadwal</option>
             </select>
         </div>
         <div class="filter-group">
-            <label for="sort">Sort by:</label>
-            <select id="sort" class="sort-select">
+            <label class="filter-label">Price Range</label>
+            <div class="price-range">
+                <input type="number" class="price-input" id="minPrice" placeholder="Min">
+                <span>to</span>
+                <input type="number" class="price-input" id="maxPrice" placeholder="Max">
+            </div>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Occasion</label>
+            <select class="filter-select" id="occasion">
+                <option value="all">All Occasions</option>
+                <option value="wedding">Wedding</option>
+                <option value="festival">Festival</option>
+                <option value="party">Party</option>
+                <option value="daily">Daily Wear</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Sort By</label>
+            <select class="filter-select" id="sort">
                 <option value="featured">Featured</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
@@ -682,135 +400,32 @@
     </div>
 
     <div class="product-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,red" alt="Royal Red Banarasi Saree"
-                class="product-image">
+        <div class="product-card" data-product-id="bn001">
+            <div class="product-image-container">
+                <img src="assets/images/products/banarasi-1.jpg" alt="Royal Banarasi Silk Saree" class="product-image">
+                <button class="quick-view-trigger">Quick View</button>
+            </div>
             <div class="product-details">
                 <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Royal Red Bridal Banarasi Saree</h3>
-                <p class="product-description">Exquisite pure silk Banarasi saree with intricate gold zari work
-                    featuring
-                    traditional motifs. Perfect for wedding ceremonies and special occasions.</p>
+                <h3 class="product-title">Royal Banarasi Silk</h3>
+                <p class="product-description">Traditional Banarasi silk saree with intricate zari work</p>
                 <div class="product-price">
                     <span>₹15,999</span>
-                    <span class="original-price">₹19,999</span>
+                    <span class="original-price">₹18,999</span>
                 </div>
                 <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
                 </div>
             </div>
         </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,green"
-                alt="Emerald Green Banarasi Saree" class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Emerald Green Banarasi Silk Saree</h3>
-                <p class="product-description">Lustrous pure silk saree in emerald green with silver zari work. Features
-                    elaborate peacock motifs and a rich pallu design.</p>
-                <div class="product-price">
-                    <span>₹12,499</span>
-                    <span class="original-price">₹15,499</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,blue" alt="Royal Blue Banarasi Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Organza Silk</span>
-                <h3 class="product-title">Royal Blue Organza Banarasi Saree</h3>
-                <p class="product-description">Lightweight organza silk saree with traditional Banarasi weaving.
-                    Features
-                    intricate floral motifs and a stunning contrast border.</p>
-                <div class="product-price">
-                    <span>₹9,999</span>
-                    <span class="original-price">₹12,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,gold" alt="Golden Banarasi Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Golden Antique Banarasi Saree</h3>
-                <p class="product-description">Luxurious pure silk saree in golden hue with elaborate antique zari work.
-                    Showcases traditional temple motifs and intricate border design.</p>
-                <div class="product-price">
-                    <span>₹18,999</span>
-                    <span class="original-price">₹22,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,pink" alt="Soft Pink Banarasi Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Georgette Silk</span>
-                <h3 class="product-title">Soft Pink Georgette Banarasi Saree</h3>
-                <p class="product-description">Elegant georgette silk saree in soft pink with delicate silver zari work.
-                    Perfect
-                    for evening parties and festive celebrations.</p>
-                <div class="product-price">
-                    <span>₹8,499</span>
-                    <span class="original-price">₹10,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card">
-            <img src="https://source.unsplash.com/random/600x900/?banarasi,saree,maroon" alt="Maroon Banarasi Saree"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Royal Maroon Banarasi Silk Saree</h3>
-                <p class="product-description">Classic pure silk Banarasi saree in deep maroon with rich gold zari work.
-                    Features
-                    traditional paisley motifs and an elaborate pallu.</p>
-                <div class="product-price">
-                    <span>₹14,999</span>
-                    <span class="original-price">₹17,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+        <!-- More product cards will be dynamically populated -->
     </div>
 
     <div class="gjs-grid-row">
         <div class="gjs-grid-column">
             <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
                 <a href="terms-of-service.html">Terms of Service</a>
                 <a href="shipping-policy.html">Shipping Policy</a>
             </div>
@@ -945,6 +560,10 @@
             </div>
         </div>
     </div>
+
+    <script src="scripts/products.js" type="module"></script>
+    <script src="scripts/product-interactions.js" type="module"></script>
+    <script src="scripts/image-zoom.js" type="module"></script>
 
     <script>
         // Payment Modal Functionality

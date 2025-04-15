@@ -80,6 +80,7 @@
             height: 300px;
             object-fit: cover;
             border-bottom: 3px solid #D4AF37;
+            transition: transform 0.3s ease;
         }
 
         .product-details {
@@ -206,6 +207,74 @@
         .logo-highlight {
             color: #D4AF37;
         }
+
+        .suit-type-tag {
+            display: inline-block;
+            background: rgba(147, 37, 37, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(147, 37, 37, 0.3);
+        }
+
+        .fabric-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .size-option {
+            border: 1px solid var(--border-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .size-option:hover,
+        .size-option.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-view-trigger {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: bottom 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .product-card:hover .quick-view-trigger {
+            bottom: 20px;
+            opacity: 1;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -230,164 +299,106 @@
     </header>
 
     <div class="collection-header">
-        <h1>Elegant Salwar Suit Collection</h1>
-        <p>Explore our premium range of handcrafted Indian salwar suits, designed with intricate embroidery and
-            luxurious fabrics for every occasion.</p>
+        <h1>Exclusive Indian Suit Collection</h1>
+        <p>Discover our handpicked collection of designer suits that blend traditional craftsmanship with contemporary
+            style</p>
+    </div>
+
+    <div class="category-grid">
+        <a href="#anarkali" class="category-card">
+            <img src="assets/images/categories/anarkali.jpg" alt="Anarkali Suits" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">Anarkali Suits</h3>
+                <p class="category-description">Elegant floor-length suits with a traditional flare</p>
+            </div>
+        </a>
+        <a href="#palazzo" class="category-card">
+            <img src="assets/images/categories/palazzo.jpg" alt="Palazzo Suits" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">Palazzo Suits</h3>
+                <p class="category-description">Contemporary suits with wide-leg palazzo pants</p>
+            </div>
+        </a>
+        <!-- More category cards will be added dynamically -->
     </div>
 
     <div class="filter-bar">
         <div class="filter-group">
-            <label for="category-filter">Category:</label>
-            <select id="category-filter" class="filter-select">
-                <option value="all">All Suits</option>
+            <label class="filter-label">Suit Type</label>
+            <select class="filter-select" id="suitType">
+                <option value="all">All Types</option>
                 <option value="anarkali">Anarkali Suits</option>
                 <option value="palazzo">Palazzo Suits</option>
-                <option value="patiala">Patiala Suits</option>
-                <option value="punjabi">Punjabi Suits</option>
                 <option value="sharara">Sharara Suits</option>
+                <option value="punjabi">Punjabi Suits</option>
+                <option value="pakistani">Pakistani Suits</option>
+                <option value="straight">Straight Cut Suits</option>
+                <option value="aline">A-Line Suits</option>
+                <option value="gown">Designer Gowns</option>
+                <option value="indo-western">Indo-Western Suits</option>
+                <option value="patiala">Patiala Suits</option>
+                <option value="gharara">Gharara Suits</option>
             </select>
         </div>
         <div class="filter-group">
-            <label for="occasion-filter">Occasion:</label>
-            <select id="occasion-filter" class="filter-select">
-                <option value="all">All Occasions</option>
-                <option value="wedding">Wedding</option>
-                <option value="festive">Festive</option>
-                <option value="casual">Casual</option>
-                <option value="party">Party Wear</option>
+            <label class="filter-label">Size</label>
+            <select class="filter-select" id="size">
+                <option value="all">All Sizes</option>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
             </select>
         </div>
         <div class="filter-group">
-            <label for="sort-options">Sort By:</label>
-            <select id="sort-options" class="filter-select">
-                <option value="popular">Most Popular</option>
-                <option value="newest">Newest</option>
+            <label class="filter-label">Price Range</label>
+            <div class="price-range">
+                <input type="number" class="price-input" id="minPrice" placeholder="Min">
+                <span>to</span>
+                <input type="number" class="price-input" id="maxPrice" placeholder="Max">
+            </div>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Sort By</label>
+            <select class="filter-select" id="sort">
+                <option value="featured">Featured</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
+                <option value="newest">Newest First</option>
             </select>
         </div>
     </div>
 
     <div class="product-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e1f5fe/2F5D8C?text=Anarkali+Suit" alt="Elegant Anarkali Suit"
-                class="product-image">
+        <div class="product-card" data-product-id="an001">
+            <div class="product-image-container">
+                <img src="assets/images/products/anarkali-1.jpg" alt="Royal Anarkali Suit" class="product-image">
+                <button class="quick-view-trigger">Quick View</button>
+            </div>
             <div class="product-details">
                 <span class="material-tag">Georgette</span>
-                <h3 class="product-title">Royal Blue Anarkali Suit</h3>
-                <p class="product-description">Stunning royal blue anarkali suit with gold embroidery work, perfect for
-                    festive occasions and celebrations.</p>
+                <h3 class="product-title">Royal Anarkali Suit</h3>
+                <p class="product-description">Floor-length Anarkali with intricate embroidery</p>
                 <div class="product-price">
-                    <span>₹8,999</span>
-                    <span class="original-price">₹12,999</span>
+                    <span>₹12,999</span>
+                    <span class="original-price">₹15,999</span>
+                </div>
+                <div class="size-options">
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
                 </div>
                 <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
                 </div>
             </div>
         </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e8f5e9/2F5D8C?text=Palazzo+Suit" alt="Designer Palazzo Suit"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Cotton Silk</span>
-                <h3 class="product-title">Emerald Green Palazzo Suit</h3>
-                <p class="product-description">Elegant emerald green palazzo suit with delicate hand embroidery,
-                    offering comfort and style for everyday wear.</p>
-                <div class="product-price">
-                    <span>₹6,499</span>
-                    <span class="original-price">₹8,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/fff3e0/2F5D8C?text=Wedding+Suit" alt="Wedding Salwar Suit"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Pure Silk</span>
-                <h3 class="product-title">Bridal Maroon Sharara Suit</h3>
-                <p class="product-description">Luxurious maroon sharara suit with intricate zari work and stone
-                    embellishments, perfect for wedding ceremonies.</p>
-                <div class="product-price">
-                    <span>₹18,999</span>
-                    <span class="original-price">₹24,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/f3e5f5/2F5D8C?text=Patiala+Suit" alt="Patiala Salwar Suit"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Cotton</span>
-                <h3 class="product-title">Lavender Patiala Suit</h3>
-                <p class="product-description">Comfortable lavender patiala suit with subtle print and mirror work
-                    details, ideal for casual gatherings.</p>
-                <div class="product-price">
-                    <span>₹4,999</span>
-                    <span class="original-price">₹6,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/ffebee/2F5D8C?text=Party+Wear" alt="Party Wear Suit"
-                class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Chiffon</span>
-                <h3 class="product-title">Rose Pink Designer Suit</h3>
-                <p class="product-description">Stylish rose pink designer suit with contemporary cuts and sequin work,
-                    perfect for evening parties.</p>
-                <div class="product-price">
-                    <span>₹9,499</span>
-                    <span class="original-price">₹11,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/400x500/e0f2f1/2F5D8C?text=Punjabi+Suit"
-                alt="Traditional Punjabi Suit" class="product-image">
-            <div class="product-details">
-                <span class="material-tag">Chanderi</span>
-                <h3 class="product-title">Turquoise Punjabi Suit</h3>
-                <p class="product-description">Vibrant turquoise punjabi suit with phulkari embroidery, celebrating the
-                    rich cultural heritage of Punjab.</p>
-                <div class="product-price">
-                    <span>₹7,499</span>
-                    <span class="original-price">₹9,999</span>
-                </div>
-                <div class="product-actions">
-                    <a href="#" class="buy-now">Buy Now</a>
-                    <a href="#" class="add-to-cart">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+        <!-- More product cards will be added dynamically -->
     </div>
 
     <div class="gjs-grid-row">
@@ -425,6 +436,9 @@
             }
         });
     </script>
+    <script src="scripts/products.js" type="module"></script>
+    <script src="scripts/product-interactions.js" type="module"></script>
+    <script src="scripts/image-zoom.js" type="module"></script>
 </body>
 
 </html>
