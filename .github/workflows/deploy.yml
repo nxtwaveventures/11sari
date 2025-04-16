@@ -17,25 +17,81 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18.17.0'
-      
-      - name: Create minimal package.json
+      - name: Create static site
         run: |
-          echo '{"name":"11sari","version":"1.0.0","private":true}' > package.json
-      
-      - name: Create basic website files
-        run: |
-          mkdir -p public
-          echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>11sari - Premium Indian Clothing</title><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"></head><body class="bg-gray-100"><header class="bg-white shadow-md py-4"><div class="container mx-auto px-4"><h1 class="text-3xl font-bold text-blue-600">11sari</h1></div></header><main class="container mx-auto px-4 py-8"><h2 class="text-4xl font-bold mb-4">Premium Indian Clothing</h2><p class="text-lg mb-6">A modern e-commerce platform for traditional Indian clothing, showcasing premium sarees and cultural wear.</p><div class="bg-white rounded-lg shadow-md p-6 mb-6"><h3 class="text-2xl font-semibold mb-4">Features</h3><ul class="list-disc pl-6 mb-4"><li>Responsive, modern design</li><li>Product showcase with detailed descriptions</li><li>About section highlighting our story and commitment</li><li>Smooth animations and transitions</li><li>Contact information for inquiries</li></ul></div><div class="bg-white rounded-lg shadow-md p-6 mb-6"><h3 class="text-2xl font-semibold mb-4">Featured Collections</h3><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-gray-200 p-4 rounded-lg"><h4 class="font-bold">Royal Kanjivaram</h4><p>Elegance redefined with our premium Kanjivaram collection</p></div><div class="bg-gray-200 p-4 rounded-lg"><h4 class="font-bold">Banarasi Specials</h4><p>Traditional craftsmanship with modern aesthetics</p></div><div class="bg-gray-200 p-4 rounded-lg"><h4 class="font-bold">Chanderi Collection</h4><p>Lightweight comfort with intricate designs</p></div></div></div></main><footer class="bg-gray-800 text-white py-6"><div class="container mx-auto px-4"><p>&copy; 2025 11sari. All rights reserved.</p></div></footer></body></html>' > public/index.html
-          echo '11sari.com' > public/CNAME
-          touch public/.nojekyll
+          # Create the main HTML file
+          mkdir -p _site
+          cat > _site/index.html << 'EOL'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>11sari - Premium Indian Clothing</title>
+              <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+              <style>
+                  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+              </style>
+          </head>
+          <body class="bg-gray-100">
+              <header class="bg-white shadow-md py-6">
+                  <div class="container mx-auto px-4">
+                      <h1 class="text-4xl font-bold text-blue-600">11sari</h1>
+                  </div>
+              </header>
+              
+              <main class="container mx-auto px-4 py-8">
+                  <h2 class="text-5xl font-bold mb-6">Premium Indian Clothing</h2>
+                  <p class="text-xl mb-8">A modern e-commerce platform for traditional Indian clothing, showcasing premium sarees and cultural wear.</p>
+                  
+                  <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                      <h3 class="text-2xl font-semibold mb-4">Features</h3>
+                      <ul class="list-disc pl-6 mb-4 space-y-2">
+                          <li>Responsive, modern design</li>
+                          <li>Product showcase with detailed descriptions</li>
+                          <li>About section highlighting our story and commitment</li>
+                          <li>Smooth animations and transitions</li>
+                          <li>Contact information for inquiries</li>
+                      </ul>
+                  </div>
+                  
+                  <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                      <h3 class="text-2xl font-semibold mb-6">Featured Collections</h3>
+                      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-md transition-shadow">
+                              <h4 class="font-bold text-xl mb-2">Royal Kanjivaram</h4>
+                              <p>Elegance redefined with our premium Kanjivaram collection</p>
+                          </div>
+                          <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-md transition-shadow">
+                              <h4 class="font-bold text-xl mb-2">Banarasi Specials</h4>
+                              <p>Traditional craftsmanship with modern aesthetics</p>
+                          </div>
+                          <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-md transition-shadow">
+                              <h4 class="font-bold text-xl mb-2">Chanderi Collection</h4>
+                              <p>Lightweight comfort with intricate designs</p>
+                          </div>
+                      </div>
+                  </div>
+              </main>
+              
+              <footer class="bg-gray-800 text-white py-8">
+                  <div class="container mx-auto px-4">
+                      <p class="text-center">&copy; 2025 11sari. All rights reserved.</p>
+                  </div>
+              </footer>
+          </body>
+          </html>
+          EOL
+          
+          # Create CNAME file
+          echo "11sari.com" > _site/CNAME
+          
+          # Create .nojekyll file
+          touch _site/.nojekyll
       
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: 11sari.com
+          folder: _site
+          branch: gh-pages
+          clean: true
