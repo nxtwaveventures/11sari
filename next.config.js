@@ -18,6 +18,11 @@ const nextConfig = {
         // !! WARN !!
         ignoreBuildErrors: true,
     },
+    // Disable server-side rendering for static exports
+    experimental: {
+        // This allows client components to work properly with SSG
+        serverComponentsExternalPackages: [],
+    },
     webpack: (config) => {
         config.resolve.alias = {
             ...config.resolve.alias,
