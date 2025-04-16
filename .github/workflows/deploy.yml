@@ -20,32 +20,33 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
           cache: 'npm'
       
-      - name: Clean cache
-        run: |
-          rm -rf .next
-          rm -rf out
-          rm -rf node_modules/.cache
-          
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm cache clean --force
       
-      - name: Debug Next.js config
-        run: cat next.config.js
-        
-      - name: Build static site
-        run: npm run build
-        
-      - name: Debug build output
-        run: ls -la out
+      - name: Enable output export
+        run: |
+          sed -i 's/\/\/ output: '"'"'export'"'"'/output: '"'"'export'"'"'/g' next.config.js
+          cat next.config.js
       
-      - name: Create .nojekyll file
-        run: touch out/.nojekyll
-        
+      - name: Build
+        run: |
+          npm run clean || true
+          npm run build
+      
+      - name: Prepare for deployment
+        run: |
+          touch out/.nojekyll
+          cp public/CNAME out/
+          ls -la out
+      
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: out
-          clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          cname: 11sari.com
