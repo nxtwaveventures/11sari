@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, useGLTF } from '@react-three/drei';
 import { useParams } from 'next/navigation';
-import { sareeData, Saree } from './data';
+import { sareeData } from '../../../utils/sareeData';
+import type { Saree } from '../../../utils/sareeData';
 
 // Bubble component for ocean animation
 const Bubble = ({ size, delay, left }: { size: number, delay: number, left: string }) => {

@@ -66,11 +66,4 @@ export const sareeData: Record<string, Saree> = {
             '/images/chnd003_3.jpg',
         ]
     }
-};
-
-// Required for static site generation
-export function generateStaticParams() {
-    return Object.keys(sareeData).map(id => ({
-        id: id
-    }));
-} 
+}; 
