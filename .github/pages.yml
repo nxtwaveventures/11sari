@@ -1,0 +1,6 @@
+build:
+  commands:
+    - npm install
+    - npm run deploy
+  base: /
+  output_dir: out 

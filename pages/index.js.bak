@@ -1,0 +1,19 @@
+export default function Home() {
+    return (
+        <div className="container">
+            <h1>Welcome to 11Sari</h1>
+            <p>A new concept is coming soon...</p>
+            <style jsx>{`
+        .container {
+          min-height: 100vh;
+          padding: 0 0.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+      `}</style>
+        </div>
+    );
+} 

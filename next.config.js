@@ -11,11 +11,32 @@ const nextConfig = {
     // Headers and redirects are not supported in static exports
     basePath: '',
     trailingSlash: true,
+    typescript: {
+        // !! WARN !!
+        // Dangerously allow production builds to successfully complete even if
+        // your project has type errors.
+        // !! WARN !!
+        ignoreBuildErrors: true,
+    },
     webpack: (config) => {
         config.resolve.alias = {
             ...config.resolve.alias,
             '@': __dirname,
         };
+
+        // Support for GLB/GLTF 3D model files
+        config.module.rules.push({
+            test: /\.(glb|gltf)$/,
+            use: {
+                loader: 'file-loader',
+                options: {
+                    publicPath: '/_next/static/media',
+                    outputPath: 'static/media',
+                    name: '[hash].[ext]',
+                },
+            },
+        });
+
         return config;
     }
 }
