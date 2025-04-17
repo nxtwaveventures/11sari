@@ -11,8 +11,9 @@
     "start": "next start -p 8082",
     "deploy": "next build --no-lint && next start -p 8082",
     "export": "next build && next export",
-    "static-export": "next build && next export -o out && touch out/.nojekyll",
-    "gh-pages": "npm run static-export && gh-pages -d out",
+    "static-export": "next build && touch out/.nojekyll && cp -r out/. .",
+    "gh-pages": "npm run static-export && gh-pages -d .",
+    "gh-build": "rm -rf out && next build && cp -r public/images out/ && touch out/.nojekyll && echo '11sari.com' > out/CNAME",
     "lint": "next lint"
   },
   "repository": {
