@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    output: 'standalone',
+    output: 'export',
     trailingSlash: true,
     typescript: {
         ignoreBuildErrors: true
@@ -20,7 +20,9 @@ const nextConfig = {
             'framer-motion': require.resolve('framer-motion'),
         };
         return config;
-    }
+    },
+    basePath: process.env.GITHUB_ACTIONS ? '/11sari' : '',
+    assetPrefix: process.env.GITHUB_ACTIONS ? '/11sari/' : '',
 };
 
 module.exports = nextConfig; 
