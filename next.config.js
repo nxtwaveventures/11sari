@@ -21,8 +21,10 @@ const nextConfig = {
         };
         return config;
     },
-    basePath: process.env.GITHUB_ACTIONS ? '/11sari' : '',
-    assetPrefix: process.env.GITHUB_ACTIONS ? '/11sari/' : '',
+    // If not using GitHub pages custom domain,
+    // uncomment these:
+    // basePath: process.env.GITHUB_ACTIONS ? '/11sari' : '',
+    // assetPrefix: process.env.GITHUB_ACTIONS ? '/11sari/' : '',
 };
 
 module.exports = nextConfig; 
