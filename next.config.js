@@ -10,8 +10,8 @@ const nextConfig = {
         ignoreDuringBuilds: true
     },
     images: {
-        domains: ['localhost'],
         unoptimized: true,
+        domains: ['localhost'],
     },
     transpilePackages: ['three', 'framer-motion'],
     webpack: (config) => {

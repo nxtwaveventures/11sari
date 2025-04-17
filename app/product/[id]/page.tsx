@@ -66,6 +66,15 @@ const sareeData = {
     }
 };
 
+// This function is required for static site generation with dynamic routes
+export function generateStaticParams() {
+    return [
+        { id: '1' },
+        { id: '2' },
+        { id: '3' }
+    ];
+}
+
 // Placeholder 3D model for the saree
 function SareeModel({ modelPath }: { modelPath: string }) {
     // This would load the actual model in production
