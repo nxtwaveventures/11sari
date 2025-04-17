@@ -1,0 +1,64 @@
+{
+  "name": "eleven-sari",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-driven, blockchain-based saree marketplace",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build-fast": "NEXT_DISABLE_ESLINT=1 next build --no-lint",
+    "start": "next start -p 8082",
+    "deploy": "next build --no-lint && next start -p 8082",
+    "export": "next build && next export",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nxtwaveventures/11sari.git"
+  },
+  "keywords": [
+    "saree",
+    "nft",
+    "blockchain",
+    "ai",
+    "ecommerce"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nxtwaveventures/11sari/issues"
+  },
+  "homepage": "https://github.com/nxtwaveventures/11sari#readme",
+  "dependencies": {
+    "@react-three/drei": "^9.99.1",
+    "@react-three/fiber": "^8.15.19",
+    "@thirdweb-dev/react": "^4.4.5",
+    "@thirdweb-dev/sdk": "^4.0.27",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "express": "^4.21.2",
+    "firebase": "^10.8.1",
+    "framer-motion": "^11.0.8",
+    "lucide-react": "^0.344.0",
+    "next": "14.1.0",
+    "next-themes": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.1",
+    "three": "^0.162.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "^18.2.21",
+    "@types/three": "^0.162.0",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.2"
+  }
+}
