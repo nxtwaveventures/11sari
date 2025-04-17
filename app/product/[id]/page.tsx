@@ -49,11 +49,10 @@ const sareeData = {
 
 // This function is required for static site generation with dynamic routes
 export function generateStaticParams() {
-    return [
-        { id: '1' },
-        { id: '2' },
-        { id: '3' }
-    ];
+    // Return an array of objects with the id param for each product
+    return Object.keys(sareeData).map(id => ({
+        id
+    }));
 }
 
 // Server component that passes data to the client component

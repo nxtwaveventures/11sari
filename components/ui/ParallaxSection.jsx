@@ -1,91 +1,53 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { forwardRef, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const ParallaxSection = ({
+const ParallaxSection = forwardRef(({
     children,
-    bgImage,
-    overlayColor = 'from-black/70 to-black/30',
-    speed = 0.5,
     className = '',
-    backgroundOpacity = 0.4
-}) => {
-    const ref = useRef(null);
-    const [elementTop, setElementTop] = useState(0);
-    const [clientHeight, setClientHeight] = useState(0);
+    overlayColor = "from-black/50 to-black/80",
+    backgroundOpacity = 0.5,
+    backgroundImage = "/images/silk-texture.jpg",
+    speed = 0.3
+}, ref) => {
+    const innerRef = useRef(null);
+    const combinedRef = ref || innerRef;
 
-    useEffect(() => {
-        if (!ref.current) return;
+    const { scrollYProgress } = useScroll({
+        target: combinedRef,
+        offset: ["start end", "end start"]
+    });
 
-        const setValues = () => {
-            setElementTop(ref.current.offsetTop);
-            setClientHeight(window.innerHeight);
-        };
-
-        setValues();
-        window.addEventListener('resize', setValues);
-
-        return () => window.removeEventListener('resize', setValues);
-    }, [ref]);
-
-    const { scrollY } = useScroll();
-
-    const y = useTransform(
-        scrollY,
-        [elementTop - clientHeight, elementTop + clientHeight],
-        [-speed * 100, speed * 100]
-    );
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", `${speed * 100}%`]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
     return (
         <section
-            ref={ref}
+            ref={combinedRef}
             className={`relative overflow-hidden ${className}`}
         >
-            {/* Parallax Background */}
-            {bgImage && (
-                <motion.div
-                    style={{ y, backgroundImage: `url(${bgImage})` }}
-                    className="absolute inset-0 bg-cover bg-center"
-                    data-testid="parallax-bg"
-                >
-                    <div className={`absolute inset-0 bg-gradient-to-b ${overlayColor} opacity-${backgroundOpacity * 100}`}></div>
-                </motion.div>
-            )}
+            <motion.div
+                style={{
+                    y,
+                    backgroundImage: `url(${backgroundImage})`,
+                    opacity: backgroundOpacity
+                }}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat -z-10"
+            />
 
-            {/* Decorative Elements */}
-            <div className="absolute top-10 right-10 w-40 h-40 bg-amber-400/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-400/10 rounded-full blur-3xl"></div>
+            <div className={`absolute inset-0 bg-gradient-to-b ${overlayColor} -z-10`} />
 
-            {/* Animated Pattern - Flower Petals */}
-            <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-                {[...Array(7)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute animate-float"
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${4 + Math.random() * 3}s`,
-                        }}
-                    >
-                        <div
-                            className="w-12 h-20 rounded-full bg-amber-300/20"
-                            style={{
-                                transform: `rotate(${Math.random() * 360}deg)`,
-                            }}
-                        ></div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10">
+            <motion.div
+                className="relative z-10"
+                style={{ opacity }}
+            >
                 {children}
-            </div>
+            </motion.div>
         </section>
     );
-};
+});
+
+ParallaxSection.displayName = 'ParallaxSection';
 
 export default ParallaxSection; 

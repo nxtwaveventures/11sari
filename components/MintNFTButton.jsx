@@ -45,6 +45,7 @@ const MintNFTButton = ({
     const [tokenId, setTokenId] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => {
@@ -72,6 +73,7 @@ const MintNFTButton = ({
             const walletData = await mockEthers.connectWallet();
             setWallet(walletData);
             setCurrentStep('prepare');
+            setIsConnected(true);
         } catch (err) {
             setError(`Failed to connect wallet: ${err.message}`);
         } finally {
@@ -144,14 +146,61 @@ const MintNFTButton = ({
         exit: { opacity: 0 }
     };
 
+    const handleMint = () => {
+        // If not connected, first prompt to connect wallet
+        if (!isConnected) {
+            setIsLoading(true);
+            connectWallet();
+            return;
+        }
+
+        // If connected, start minting process
+        startMinting();
+    };
+
     return (
         <>
-            <button
-                onClick={openModal}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium px-4 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+            <motion.button
+                onClick={handleMint}
+                className={`
+                    px-8 py-4 rounded-full font-medium text-lg relative overflow-hidden
+                    ${isConnected
+                        ? 'bg-gradient-to-r from-[hsl(354,70%,40%)] to-[hsl(15,80%,80%)] text-white'
+                        : 'bg-white text-[hsl(354,70%,40%)]'
+                    }
+                    hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1
+                    flex items-center justify-center min-w-[220px]
+                `}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                disabled={isLoading}
             >
-                Mint as NFT
-            </button>
+                {isLoading ? (
+                    <div className="flex items-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        {isConnected ? 'Minting...' : 'Connecting...'}
+                    </div>
+                ) : (
+                    <>
+                        {isConnected ? 'Mint Your NFT' : 'Connect Wallet'}
+                        <motion.span
+                            className="ml-2"
+                            animate={{ rotate: [0, 15, 0, -15, 0] }}
+                            transition={{ repeat: Infinity, repeatDelay: 3, duration: 1.5 }}
+                        >
+                            {isConnected ? '💎' : '👛'}
+                        </motion.span>
+                    </>
+                )}
+
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
+                    <div className="absolute -inset-[100%] animate-slow-spin bg-gradient-to-r from-transparent via-white to-transparent" style={{ height: '200%', width: '200%' }}></div>
+                </div>
+            </motion.button>
 
             {isOpen && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -190,8 +239,8 @@ const MintNFTButton = ({
                                             <div className="flex flex-col items-center">
                                                 <div
                                                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${index < getCurrentStepIndex() ? 'bg-green-500 text-white' :
-                                                            index === getCurrentStepIndex() ? 'bg-blue-500 text-white' :
-                                                                'bg-gray-700 text-gray-400'
+                                                        index === getCurrentStepIndex() ? 'bg-blue-500 text-white' :
+                                                            'bg-gray-700 text-gray-400'
                                                         }`}
                                                 >
                                                     {index < getCurrentStepIndex() ? '✓' : index + 1}
@@ -231,8 +280,8 @@ const MintNFTButton = ({
                                         onClick={connectWallet}
                                         disabled={isLoading}
                                         className={`w-full py-3 rounded-full text-white font-medium ${isLoading
-                                                ? 'bg-gray-700 cursor-not-allowed'
-                                                : 'bg-blue-600 hover:bg-blue-500'
+                                            ? 'bg-gray-700 cursor-not-allowed'
+                                            : 'bg-blue-600 hover:bg-blue-500'
                                             }`}
                                     >
                                         {isLoading ? (

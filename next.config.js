@@ -22,8 +22,7 @@ const nextConfig = {
         };
         return config;
     },
-    // If not using GitHub pages custom domain,
-    // uncomment these:
+    // Remove basePath and assetPrefix for custom domain
     // basePath: process.env.GITHUB_ACTIONS ? '/11sari' : '',
     // assetPrefix: process.env.GITHUB_ACTIONS ? '/11sari/' : '',
 };

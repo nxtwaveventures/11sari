@@ -7,7 +7,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -32,22 +32,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          # Automatically inject basePath in your Next.js configuration file and disable
+          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
+          static_site_generator: next
+      
       - name: Build
         run: npm run build
       
       - name: Prepare static files
         run: |
           mkdir -p out/.next
-          cp -r .next/static out/.next/
-          cp -r public/* out/
           touch out/.nojekyll
           echo "11sari.com" > out/CNAME
+          cp -r public/* out/ || true
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
+  # Deployment job
   deploy:
     environment:
       name: github-pages

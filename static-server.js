@@ -1,43 +1,50 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const fs = require('fs');
-const { exec } = require('child_process');
+
 const app = express();
-const port = 8082;
+const PORT = process.env.PORT || 8082;
 
-// Check if the Next.js standalone server exists
-const standaloneServerPath = path.join(__dirname, '.next/standalone/server.js');
+// Enable compression for all requests
+app.use(compression());
 
-if (fs.existsSync(standaloneServerPath)) {
-    console.log('Using Next.js standalone server...');
-    // Execute the standalone server directly
-    exec(`node ${standaloneServerPath}`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error starting standalone server: ${error.message}`);
-            return;
-        }
-        console.log(stdout);
-        console.error(stderr);
-    });
-} else {
-    console.log('Next.js standalone server not found, using fallback static server...');
+// Set cache headers for static assets
+app.use((req, res, next) => {
+    // Don't cache HTML files
+    if (req.path.endsWith('.html') || req.path === '/') {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    } else if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff2|ttf|eot|woff)$/)) {
+        // Cache static assets for 7 days
+        res.setHeader('Cache-Control', 'public, max-age=604800');
+    }
+    next();
+});
 
-    // Check if .next/static exists
-    const nextStaticPath = path.join(__dirname, '.next/static');
-    if (fs.existsSync(nextStaticPath)) {
-        // Serve static files from the .next/static directory
-        app.use('/_next/static', express.static(nextStaticPath));
+// Serve static files from the 'out' directory
+app.use(express.static(path.join(__dirname, 'out')));
+
+// Fallback for client-side routing - serve index.html for any unknown paths
+app.get('*', (req, res) => {
+    // Check if file exists in the out directory
+    const filePath = path.join(__dirname, 'out', req.path);
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+        return res.sendFile(filePath);
     }
 
-    // Serve static files from the public directory
-    app.use(express.static(path.join(__dirname, 'public')));
+    // Check if html file exists (Next.js export creates directories with index.html)
+    const htmlFilePath = path.join(__dirname, 'out', req.path, 'index.html');
+    if (fs.existsSync(htmlFilePath)) {
+        return res.sendFile(htmlFilePath);
+    }
 
-    // Fallback to index.html
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'index.html'));
-    });
+    // Fallback to index.html for client-side routing
+    res.sendFile(path.join(__dirname, 'out', 'index.html'));
+});
 
-    app.listen(port, () => {
-        console.log(`Fallback static server running at http://localhost:${port}`);
-    });
-} 
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Serving content from: ${path.join(__dirname, 'out')}`);
+}); 

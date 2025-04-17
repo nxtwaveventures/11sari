@@ -1,36 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const AnimatedText = ({
     text,
-    className = '',
+    className = "",
     once = false,
     speed = 0.05,
-    threshold = 0.1,
+    staggerChildren = 0.03,
     delay = 0,
-    type = 'words' // 'chars', 'words', or 'lines'
+    type = "letter" // Options: "letter", "word", or "text"
 }) => {
-    // Split text into individual elements for animation
-    let elements = [];
+    const [inView, setInView] = useState(false);
 
-    if (type === 'chars') {
-        elements = text.split('');
-    } else if (type === 'words') {
-        elements = text.split(' ').map(word => `${word} `);
-    } else if (type === 'lines') {
-        elements = text.split('\n');
-    }
+    // Reset animation when text changes
+    useEffect(() => {
+        if (!once) setInView(false);
+    }, [text, once]);
 
-    // Animation variants
+    // Framer motion variants
     const container = {
         hidden: { opacity: 0 },
         visible: (i = 1) => ({
             opacity: 1,
             transition: {
-                staggerChildren: speed,
-                delayChildren: delay * i
+                staggerChildren: staggerChildren,
+                delayChildren: delay,
+                ease: "easeInOut",
             },
         }),
     };
@@ -40,7 +37,7 @@ const AnimatedText = ({
             opacity: 1,
             y: 0,
             transition: {
-                type: 'spring',
+                type: "spring",
                 damping: 12,
                 stiffness: 100,
             },
@@ -49,36 +46,44 @@ const AnimatedText = ({
             opacity: 0,
             y: 20,
             transition: {
-                type: 'spring',
+                type: "spring",
                 damping: 12,
                 stiffness: 100,
             },
         },
     };
 
+    // Split text into array of letters or words
+    const items = type === "word"
+        ? text.split(" ")
+        : type === "letter"
+            ? Array.from(text)
+            : [text];
+
     return (
         <motion.div
-            className={`overflow-hidden w-full ${className}`}
+            className={`overflow-hidden inline-flex flex-wrap ${className}`}
             variants={container}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once, threshold }}
+            animate={once && !inView ? "hidden" : "visible"}
+            whileInView={once ? "visible" : undefined}
+            viewport={once ? { once: true, amount: 0.3 } : undefined}
+            onAnimationComplete={() => setInView(true)}
         >
-            <div className="flex flex-wrap">
-                {elements.map((element, index) => (
-                    <motion.span
-                        key={index}
-                        className="inline-block will-change-transform"
-                        variants={child}
-                        style={{
-                            display: type === 'lines' ? 'block' : 'inline-block',
-                            width: type === 'lines' ? '100%' : 'auto'
-                        }}
-                    >
-                        {element}
-                    </motion.span>
-                ))}
-            </div>
+            {items.map((item, index) => (
+                <motion.span
+                    key={index}
+                    variants={child}
+                    className={`inline-block ${type === "word" ? "mr-1.5" : ""}`}
+                    style={{
+                        display: "inline-block",
+                        whiteSpace: type === "letter" ? "pre" : "normal"
+                    }}
+                >
+                    {item}
+                    {type === "word" && index !== items.length - 1 ? " " : ""}
+                </motion.span>
+            ))}
         </motion.div>
     );
 };

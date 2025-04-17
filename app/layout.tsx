@@ -8,10 +8,11 @@ export const metadata = {
     title: 'Eleven Sari - Luxury Handcrafted Sarees',
     description: 'Discover our collection of authentic, blockchain-verified luxury sarees. Experience traditional craftsmanship with modern innovation.',
     keywords: 'saree, luxury saree, handcrafted saree, blockchain verified, indian fashion, traditional wear',
+    metadataBase: new URL('https://11sari.com'),
     openGraph: {
         title: 'Eleven Sari - Luxury Handcrafted Sarees',
         description: 'Discover our collection of authentic, blockchain-verified luxury sarees',
-        url: 'https://elevensari.com',
+        url: 'https://11sari.com',
         siteName: 'Eleven Sari',
         images: [
             {
@@ -57,7 +58,7 @@ export default function RootLayout({
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <link
                     rel="preload"
-                    href="/fonts/your-custom-font.woff2"
+                    href="/fonts/inter.woff2"
                     as="font"
                     type="font/woff2"
                     crossOrigin="anonymous"
@@ -65,7 +66,7 @@ export default function RootLayout({
                 {/* Preload critical assets */}
                 <link
                     rel="preload"
-                    href="/images/saree-pattern-gold.png"
+                    href="/images/og-image.jpg"
                     as="image"
                 />
             </head>

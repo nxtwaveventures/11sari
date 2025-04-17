@@ -1,65 +1,41 @@
 #!/bin/bash
 
-# Function to check if port is in use
-check_port() {
-    if lsof -Pi :8082 -sTCP:LISTEN -t >/dev/null ; then
-        return 0
-    else
-        return 1
-    fi
-}
+# Kill any processes using port 8082
+echo "Killing any processes using port 8082..."
+lsof -i :8082 | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true
 
-# Function to kill process on port
-kill_port_process() {
-    echo "Cleaning up existing processes on port 8082..."
-    lsof -ti:8082 | xargs kill -9 2>/dev/null || true
-}
-
-# Clean previous build
-echo "Cleaning previous build..."
-rm -rf .next
-rm -rf out
-
-# Install dependencies if needed
-if [ ! -d "node_modules" ]; then
-    echo "Installing dependencies..."
-    npm install
+# Build the site if out directory doesn't exist or if requested
+if [ ! -d "out" ] || [ "$1" == "--build" ]; then
+  echo "Building the site..."
+  npm run build
+  
+  # Add .nojekyll file to prevent GitHub Pages from ignoring files that start with an underscore
+  touch out/.nojekyll
+  
+  # Add CNAME file for custom domain
+  echo "11sari.com" > out/CNAME
 fi
 
-# Build the application
-echo "Building the application..."
-NODE_ENV=production npm run build
+# Start the static server
+echo "Starting the static server..."
+NODE_ENV=production nohup node static-server.js > server.log 2>&1 &
+echo $! > server.pid
 
-# Kill any existing process on port 8082
-kill_port_process
+# Wait a moment for server to start
+sleep 2
 
-# Start the server with proper error handling
-echo "Starting the server..."
-NODE_ENV=production PORT=8082 node .next/standalone/server.js &
-SERVER_PID=$!
-
-# Wait for server to start
-echo "Waiting for server to start..."
-for i in {1..30}; do
-    if check_port; then
-        echo "Server started successfully on port 8082"
-        echo "PID: $SERVER_PID"
-        break
-    fi
-    if [ $i -eq 30 ]; then
-        echo "Server failed to start within 30 seconds"
-        kill $SERVER_PID 2>/dev/null
-        exit 1
-    fi
-    sleep 1
-done
-
-# Monitor server health
-while true; do
-    if ! ps -p $SERVER_PID > /dev/null; then
-        echo "Server process died, restarting..."
-        NODE_ENV=production PORT=8082 node .next/standalone/server.js &
-        SERVER_PID=$!
-    fi
-    sleep 5
-done 
+# Check if server is running
+if [ -f "server.pid" ]; then
+  PID=$(cat server.pid)
+  if ps -p $PID > /dev/null; then
+    echo "Server started successfully with PID $PID"
+    echo "View logs with: tail -f server.log"
+    echo "Server is running at: http://localhost:8082"
+  else
+    echo "Server failed to start. Check logs: cat server.log"
+    exit 1
+  fi
+else
+  echo "Server failed to start. PID file not created."
+  exit 1
+fi 
