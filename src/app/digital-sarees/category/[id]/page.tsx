@@ -86,8 +86,10 @@ const sampleSarees = [
     },
 ];
 
-export default function CategoryPage({ params }: { params: { id: string } }) {
-    const categoryId = parseInt(params.id);
+export default async function CategoryPage({ params }: { params: { id: string } }) {
+    // Use await to ensure params is resolved before accessing id
+    const id = await params.id;
+    const categoryId = parseInt(id);
     const category = sareeCategories.find(cat => cat.id === categoryId);
 
     if (!category) {
