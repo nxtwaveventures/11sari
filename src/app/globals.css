@@ -31,6 +31,10 @@ body {
   background-color: #ffffff !important;
 }
 
+.bg-black {
+  background-color: #000000 !important;
+}
+
 .bg-gray-50 {
   background-color: #f9fafb !important;
 }
@@ -39,20 +43,97 @@ body {
   background-color: #f3f4f6 !important;
 }
 
+.bg-gray-200 {
+  background-color: #e5e7eb !important;
+}
+
+.bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
 .bg-gray-900 {
   background-color: #111827 !important;
+}
+
+.bg-primary-50 {
+  background-color: #fff9f6 !important;
+}
+
+.bg-primary-100 {
+  background-color: #ffe8e0 !important;
+}
+
+.bg-primary-500 {
+  background-color: #ff7a5c !important;
+}
+
+.bg-secondary-50 {
+  background-color: #fef5f7 !important;
+}
+
+.bg-secondary-100 {
+  background-color: #fee6ec !important;
+}
+
+.bg-secondary-500 {
+  background-color: #ff6f91 !important;
+}
+
+.bg-accent-50 {
+  background-color: #f8f7ff !important;
+}
+
+.bg-accent-100 {
+  background-color: #f0edff !important;
+}
+
+.bg-accent-500 {
+  background-color: #b1a3ff !important;
 }
 
 .text-white {
   color: #ffffff !important;
 }
 
-.text-gray-600 {
-  color: #4b5563 !important;
+.text-black {
+  color: #000000 !important;
 }
 
 .text-gray-400 {
   color: #9ca3af !important;
+}
+
+.text-gray-500 {
+  color: #6b7280 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-primary-500 {
+  color: #ff7a5c !important;
+}
+
+.text-secondary-500 {
+  color: #ff6f91 !important;
+}
+
+.text-accent-500 {
+  color: #b1a3ff !important;
+}
+
+/* Border colors */
+.border-white {
+  border-color: #ffffff !important;
+}
+
+.border-primary-500 {
+  border-color: #ff7a5c !important;
 }
 
 .btn-primary {
@@ -91,6 +172,15 @@ body {
   color: transparent;
   background-size: 300% 300%;
   animation: gradient-shift 8s ease infinite;
+}
+
+/* Gradients */
+.bg-gradient-to-r.from-primary-500.to-secondary-500 {
+  background-image: linear-gradient(to right, #ff7a5c, #ff6f91) !important;
+}
+
+.bg-gradient-to-br.from-primary-50.to-secondary-100 {
+  background-image: linear-gradient(to bottom right, #fff9f6, #fee6ec) !important;
 }
 
 @keyframes gradient-shift {

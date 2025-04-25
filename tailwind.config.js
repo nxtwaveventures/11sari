@@ -78,4 +78,9 @@ module.exports = {
         },
     },
     plugins: [],
+    paths: {
+        '@components/*': ['src/components/*'],
+        '@app/*': ['src/app/*'],
+        '@public/*': ['public/*'],
+    },
 }; 
