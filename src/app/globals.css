@@ -26,6 +26,35 @@ body {
   background: white;
 }
 
+/* Fix for common Tailwind classes that might not be working */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6 !important;
+}
+
+.bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-gray-400 {
+  color: #9ca3af !important;
+}
+
 .btn-primary {
   background: linear-gradient(to right, #ff7a5c, #ff6f91);
   color: white;
