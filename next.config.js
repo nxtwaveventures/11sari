@@ -4,6 +4,10 @@ const nextConfig = {
     images: {
         domains: ['example.com'],
     },
+    webpack: (config) => {
+        // Leave this empty for now - we'll use Next.js's built-in module resolution
+        return config;
+    }
 }
 
 module.exports = nextConfig 

@@ -2,8 +2,6 @@
 module.exports = {
     content: [
         "./src/**/*.{js,ts,jsx,tsx,mdx}",
-        "./app/**/*.{js,ts,jsx,tsx,mdx}",
-        "./components/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
         extend: {
@@ -78,9 +76,4 @@ module.exports = {
         },
     },
     plugins: [],
-    paths: {
-        '@components/*': ['src/components/*'],
-        '@app/*': ['src/app/*'],
-        '@public/*': ['public/*'],
-    },
 }; 

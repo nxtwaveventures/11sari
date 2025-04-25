@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FiInstagram, FiFacebook, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
+import { FiInstagram, FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer = () => {
     const year = new Date().getFullYear();
