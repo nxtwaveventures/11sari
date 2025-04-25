@@ -24,6 +24,33 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Reset some base styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 /* Fix for common Tailwind classes that might not be working */
@@ -136,28 +163,16 @@ body {
   border-color: #ff7a5c !important;
 }
 
-.btn-primary {
-  background: linear-gradient(to right, #ff7a5c, #ff6f91);
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border-radius: 9999px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s;
+/* Fix container widths */
+.container {
+  max-width: 1200px !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
-.btn-secondary {
-  background: white;
-  border: 2px solid #ff7a5c;
-  color: #ff7a5c;
-  font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border-radius: 9999px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s;
-}
-
+/* Fix card spacing and alignment */
 .card {
+  padding: 1.5rem;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -165,13 +180,16 @@ body {
   overflow: hidden;
 }
 
+.btn-primary {
+  @apply px-4 py-2 rounded-md text-white bg-primary-500 hover:bg-primary-600 transition-colors shadow-sm;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 rounded-md text-gray-800 bg-white hover:bg-gray-50 transition-colors shadow-sm;
+}
+
 .gradient-text {
-  background: linear-gradient(45deg, #ff7a5c, #ff6f91, #b1a3ff, #f1d723);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 300% 300%;
-  animation: gradient-shift 8s ease infinite;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500;
 }
 
 /* Gradients */
@@ -181,6 +199,24 @@ body {
 
 .bg-gradient-to-br.from-primary-50.to-secondary-100 {
   background-image: linear-gradient(to bottom right, #fff9f6, #fee6ec) !important;
+}
+
+/* Fix spacing in sections */
+section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spacing utilities */
+.my-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.py-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @keyframes gradient-shift {
