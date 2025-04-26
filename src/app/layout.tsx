@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MayaChatbot from "@/components/ui/MayaChatbot";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <MayaChatbot />
+        <CookieConsent />
       </body>
     </html>
   );
