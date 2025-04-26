@@ -52,12 +52,12 @@ const CookieConsent = () => {
                 className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6"
             >
                 <div className="max-w-7xl mx-auto">
-                    <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
                         {/* Header */}
-                        <div className="p-6 border-b border-gray-200 dark:border-gray-800">
+                        <div className="p-6 border-b border-gray-200 dark:border-gray-800 bg-gradient-to-r from-primary-50 to-transparent dark:from-primary-900/10 dark:to-transparent">
                             <div className="flex items-start justify-between">
                                 <div className="flex items-center space-x-4">
-                                    <div className="p-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                                    <div className="p-2 bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/10 rounded-lg">
                                         <FiShield className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                                     </div>
                                     <div>
@@ -88,14 +88,14 @@ const CookieConsent = () => {
                                     <div className="flex flex-col sm:flex-row gap-3">
                                         <button
                                             onClick={handleAcceptAll}
-                                            className="btn-primary flex-1 flex items-center justify-center space-x-2"
+                                            className="btn-primary bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 flex-1 flex items-center justify-center space-x-2"
                                         >
                                             <FiCheck className="w-4 h-4" />
                                             <span>Accept All</span>
                                         </button>
                                         <button
                                             onClick={() => setShowSettings(true)}
-                                            className="btn-secondary flex-1 flex items-center justify-center space-x-2"
+                                            className="btn-secondary bg-gradient-to-r from-gray-100 to-gray-50 hover:from-gray-200 hover:to-gray-100 dark:from-gray-800 dark:to-gray-700 dark:hover:from-gray-700 dark:hover:to-gray-600 flex-1 flex items-center justify-center space-x-2"
                                         >
                                             <FiSettings className="w-4 h-4" />
                                             <span>Customize</span>
@@ -105,7 +105,7 @@ const CookieConsent = () => {
                             ) : (
                                 <div className="space-y-4">
                                     <div className="space-y-3">
-                                        <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-lg">
                                             <div>
                                                 <h4 className="font-medium text-gray-900 dark:text-white">Necessary Cookies</h4>
                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Required for the website to function properly</p>
@@ -118,12 +118,12 @@ const CookieConsent = () => {
                                                     className="sr-only"
                                                     disabled
                                                 />
-                                                <div className="w-12 h-6 bg-primary-600 rounded-full cursor-not-allowed opacity-50"></div>
+                                                <div className="w-12 h-6 bg-gradient-to-r from-primary-600 to-primary-500 rounded-full cursor-not-allowed opacity-50"></div>
                                                 <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-lg">
                                             <div>
                                                 <h4 className="font-medium text-gray-900 dark:text-white">Analytics Cookies</h4>
                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Help us understand how visitors interact with our website</p>
@@ -135,12 +135,12 @@ const CookieConsent = () => {
                                                     onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
                                                     className="sr-only peer"
                                                 />
-                                                <div className="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full peer-checked:bg-primary-600 transition-colors"></div>
+                                                <div className="w-12 h-6 bg-gradient-to-r from-gray-300 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-full peer-checked:from-primary-600 peer-checked:to-primary-500 transition-colors"></div>
                                                 <div className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${preferences.analytics ? 'translate-x-6' : ''}`}></div>
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-lg">
                                             <div>
                                                 <h4 className="font-medium text-gray-900 dark:text-white">Marketing Cookies</h4>
                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Used to track visitors across websites for marketing purposes</p>
@@ -152,7 +152,7 @@ const CookieConsent = () => {
                                                     onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
                                                     className="sr-only peer"
                                                 />
-                                                <div className="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full peer-checked:bg-primary-600 transition-colors"></div>
+                                                <div className="w-12 h-6 bg-gradient-to-r from-gray-300 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-full peer-checked:from-primary-600 peer-checked:to-primary-500 transition-colors"></div>
                                                 <div className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${preferences.marketing ? 'translate-x-6' : ''}`}></div>
                                             </div>
                                         </div>
@@ -161,13 +161,13 @@ const CookieConsent = () => {
                                     <div className="flex flex-col sm:flex-row gap-3">
                                         <button
                                             onClick={handleSavePreferences}
-                                            className="btn-primary flex-1"
+                                            className="btn-primary bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 flex-1"
                                         >
                                             Save Preferences
                                         </button>
                                         <button
                                             onClick={() => setShowSettings(false)}
-                                            className="btn-secondary flex-1"
+                                            className="btn-secondary bg-gradient-to-r from-gray-100 to-gray-50 hover:from-gray-200 hover:to-gray-100 dark:from-gray-800 dark:to-gray-700 dark:hover:from-gray-700 dark:hover:to-gray-600 flex-1"
                                         >
                                             Back
                                         </button>
