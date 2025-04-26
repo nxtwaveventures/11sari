@@ -17,13 +17,6 @@ const sareeCategories = [
     { id: 11, name: 'Gadwal', count: 8, image: '/gadwal-placeholder.jpg' },
 ];
 
-// Add generateStaticParams function to pre-render all category pages at build time
-export function generateStaticParams() {
-    return sareeCategories.map((category) => ({
-        id: category.id.toString(),
-    }));
-}
-
 // Sample saree data for each category
 const sampleSarees = [
     {
