@@ -75,23 +75,33 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Legal</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/terms" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                <Link href="/legal/terms" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Terms & Conditions
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/privacy" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                <Link href="/legal/privacy" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Privacy Policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/returns" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                <Link href="/legal/return" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Return Policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/shipping" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                <Link href="/legal/shipping" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Shipping Policy
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/legal/blockchain-authentication" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Blockchain Authentication
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/legal/disclaimer" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Disclaimer
                                 </Link>
                             </li>
                         </ul>
