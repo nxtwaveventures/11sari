@@ -10,7 +10,7 @@ const nextConfig = {
             },
         ],
     },
-    basePath: process.env.NODE_ENV === 'production' ? '' : '/11sari',
+    basePath: '',
 };
 
 module.exports = nextConfig; 

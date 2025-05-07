@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 // Sample data - replace with your actual patterns
@@ -103,12 +102,10 @@ export default function DesignPage() {
     const [mainColor, setMainColor] = useState('');
     const [borderColor, setBorderColor] = useState('');
     const [palluColor, setPalluColor] = useState('');
-    const [extraCost, setExtraCost] = useState(0);
     const [savedDesigns, setSavedDesigns] = useState<SavedDesign[]>([]);
     const [showSaveModal, setShowSaveModal] = useState(false);
     const [designName, setDesignName] = useState('');
     const [selectedVariation, setSelectedVariation] = useState<string>('');
-    const [showVariations, setShowVariations] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
 
     // Load saved designs from localStorage

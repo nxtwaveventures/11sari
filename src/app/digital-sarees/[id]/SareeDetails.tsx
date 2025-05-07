@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Saree } from '@/data/sarees';
-import { processPayment, PaymentDetails } from '@/services/payment';
+import { processPayment } from '@/services/payment';
 import { stripePromise } from '@/lib/stripe';
 
 interface SareeDetailsProps {

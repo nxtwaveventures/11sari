@@ -1,7 +1,6 @@
 import React from 'react';
 import { Metadata } from "next";
 import LegalContent from "@/components/legal/LegalContent";
-import { motion } from 'framer-motion';
 
 export const metadata: Metadata = {
     title: "Shipping Policy – 11Sari.com",
