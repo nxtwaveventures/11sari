@@ -15,7 +15,10 @@
     "@headlessui/react": "^2.2.2",
     "@heroicons/react": "^2.2.0",
     "@stripe/stripe-js": "^7.2.0",
-    "framer-motion": "^12.9.1",
+    "@thirdweb-dev/react": "^4.4.7",
+    "@thirdweb-dev/sdk": "^4.0.23",
+    "ethers": "^5.7.2",
+    "framer-motion": "^10.16.4",
     "gsap": "^3.12.7",
     "next": "15.3.1",
     "next-themes": "^0.4.6",
@@ -23,9 +26,6 @@
     "react-dom": "^18",
     "react-icons": "^5.5.0",
     "stripe": "^18.0.0",
-    "@thirdweb-dev/react": "^4.4.7",
-    "@thirdweb-dev/sdk": "^4.0.23",
-    "ethers": "^5.7.2",
     "web3": "^1.10.0"
   },
   "devDependencies": {
