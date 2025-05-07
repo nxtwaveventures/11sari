@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FiInstagram, FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiInstagram, FiFacebook } from 'react-icons/fi';
 
 const Footer = () => {
     const year = new Date().getFullYear();
@@ -15,7 +15,7 @@ const Footer = () => {
                     <div className="space-y-4">
                         <h3 className="text-2xl font-bold gradient-text">11Sari</h3>
                         <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs">
-                            Digital Sarees. Handwoven. Blockchain Verified.
+                            Digital Sarees. Handwoven. Authentically Yours.
                         </p>
                         <div className="flex space-x-4">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors">
@@ -23,12 +23,6 @@ const Footer = () => {
                             </a>
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors">
                                 <FiFacebook size={20} />
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors">
-                                <FiLinkedin size={20} />
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors">
-                                <FiTwitter size={20} />
                             </a>
                         </div>
                     </div>
@@ -43,8 +37,8 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/digital-sarees" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Digital Sarees
+                                <Link href="/shop" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Shop
                                 </Link>
                             </li>
                             <li>
@@ -53,27 +47,27 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/blog" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Contact
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/weavers-portal" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Weavers Portal
+                                <Link href="/verify" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Verify Saree
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Legal */}
+                    {/* Contact & Legal */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Legal</h4>
+                        <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Contact & Legal</h4>
                         <ul className="space-y-2">
+                            <li>
+                                <Link href="/contact" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Contact Us
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/legal/policy" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
+                                    Policy
+                                </Link>
+                            </li>
                             <li>
                                 <Link href="/legal/terms" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Terms & Conditions
@@ -82,26 +76,6 @@ const Footer = () => {
                             <li>
                                 <Link href="/legal/privacy" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
                                     Privacy Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/legal/return" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Return Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/legal/shipping" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Shipping Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/legal/blockchain-authentication" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Blockchain Authentication
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/legal/disclaimer" className="text-gray-600 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-500 transition-colors text-sm">
-                                    Disclaimer
                                 </Link>
                             </li>
                         </ul>
@@ -137,18 +111,7 @@ const Footer = () => {
                     </p>
                     <div className="mt-4 md:mt-0 text-sm text-gray-600 dark:text-gray-400">
                         <span>Handcrafted with ❤️ in India</span>
-                        <span className="mx-2">|</span>
-                        <span>Blockchain Secured</span>
                     </div>
-                </div>
-
-                {/* SEO Meta Information (Hidden) */}
-                <div className="sr-only">
-                    <span>handcrafted sarees India</span>
-                    <span>NFT sarees</span>
-                    <span>digital saree reservation</span>
-                    <span>blockchain authenticated sarees</span>
-                    <span>luxury handcrafted sarees</span>
                 </div>
             </div>
         </footer>

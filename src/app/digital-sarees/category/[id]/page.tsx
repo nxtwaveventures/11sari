@@ -1,5 +1,6 @@
 import { sareeCategories } from '@/data/sareeCategories';
 import { sarees } from '@/data/sarees';
+import { notFound } from 'next/navigation';
 import CategoryContent from './CategoryContent';
 
 export function generateStaticParams() {
@@ -8,25 +9,17 @@ export function generateStaticParams() {
     }));
 }
 
-interface CategoryPageParams {
-    params: {
-        id: string;
-    };
-}
+type PageProps = {
+    params: Promise<{ id: string }>;
+};
 
-export default function CategoryPage({ params }: CategoryPageParams) {
-    const id = params.id;
+export default async function Page({ params }: PageProps) {
+    const { id } = await params;
     const categoryId = parseInt(id);
     const category = sareeCategories.find((cat) => cat.id === categoryId);
 
     if (!category) {
-        return (
-            <div className="min-h-screen bg-gray-50 p-8">
-                <div className="max-w-7xl mx-auto">
-                    <h1 className="text-2xl font-bold text-gray-900">Category not found</h1>
-                </div>
-            </div>
-        );
+        notFound();
     }
 
     const categorySarees = sarees.filter((saree) => saree.categoryId === categoryId);

@@ -1,19 +1,16 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function About() {
     return (
         <div className="min-h-screen">
-            {/* Hero Section */}
-            <div className="relative bg-gradient-to-r from-primary-100 to-secondary-100 py-20 px-4">
-                <div className="container mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                        Our <span className="gradient-text">Story</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
-                        Blending tradition with technology to preserve and promote India's handcrafted heritage.
-                    </p>
-                </div>
-            </div>
+            {/* Tagline Section */}
+            <section className="py-10 bg-gradient-to-r from-pink-100 via-yellow-50 to-yellow-100 text-center flex flex-col items-center">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-primary-700 mb-4 tracking-tight drop-shadow-lg">
+                    Design or Reserve. We'll Weave It For You.
+                </h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-primary-400 via-pink-400 to-yellow-400 rounded-full mb-4 mx-auto animate-pulse" />
+            </section>
 
             {/* Mission & Vision */}
             <section className="py-16 bg-white dark:bg-gray-900">
@@ -30,15 +27,18 @@ export default function About() {
                             <h2 className="text-3xl font-bold mb-6">
                                 Our <span className="gradient-text">Mission</span>
                             </h2>
-                            <p className="text-gray-700 dark:text-gray-300 mb-6">
-                                At 11Sari, we're on a mission to bridge the gap between traditional craftsmanship and modern technology. We aim to preserve and promote India's rich textile heritage while providing artisans with sustainable livelihoods and customers with authentic, high-quality products.
-                            </p>
-                            <p className="text-gray-700 dark:text-gray-300 mb-6">
-                                Through our innovative digital reservation system and blockchain authentication, we're creating transparency and trust in the market for handcrafted sarees, ensuring that each piece's journey—from the weaver's loom to your wardrobe—is documented and verifiable.
-                            </p>
-                            <p className="text-gray-700 dark:text-gray-300 font-medium">
-                                We believe that every saree tells a story, and we're here to make sure that story is heard, valued, and preserved for generations to come.
-                            </p>
+                            <div className="bg-gradient-to-br from-yellow-50 via-pink-50 to-white border border-yellow-200 dark:border-gray-800 rounded-2xl shadow-lg p-8 mb-4">
+                                <h3 className="text-2xl font-semibold mb-4 text-primary-600 text-center italic tracking-wide">
+                                    Design or Reserve. We'll Weave It For You.
+                                </h3>
+                                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed whitespace-pre-line text-center font-serif">
+                                    At 11Sari, we believe every saree tells a story—
+                                    Yours begins with a dream: design your own, reserve a masterpiece, and we'll weave your vision into silk and gold.
+                                    Wander through our curated gallery, where tradition meets trend and every drape is a celebration.
+                                    And for the seekers of beauty and value, our price tracker unveils hidden gems and dazzling deals from every corner of India—Amazon, Myntra, and beyond.
+                                    From bespoke dreams to serendipitous finds, 11Sari is where your saree journey begins, and every thread is woven with care.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,109 +91,22 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Our Team */}
-            <section className="py-16 bg-white dark:bg-gray-900">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold mb-12 text-center">
-                        Meet the <span className="gradient-text">Team</span>
-                    </h2>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Team member cards would go here */}
-                        {/* For now, using placeholders */}
-                        {[1, 2, 3].map((member) => (
-                            <div key={member} className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-md">
-                                <div className="h-64 bg-gradient-to-br from-primary-50 to-secondary-100 flex items-center justify-center">
-                                    <span className="text-lg font-medium text-gray-700">Team Member Photo</span>
-                                </div>
-                                <div className="p-6 text-center">
-                                    <h3 className="text-xl font-semibold mb-1">Team Member {member}</h3>
-                                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">Co-Founder & Position</p>
-                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                        A passionate advocate for Indian craftsmanship with a background in textile design and technology.
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Our Journey */}
-            <section className="py-16 bg-gray-50 dark:bg-gray-800">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold mb-12 text-center">
-                        Our <span className="gradient-text">Journey</span>
-                    </h2>
-
-                    <div className="relative">
-                        {/* Vertical line for timeline */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 via-secondary-500 to-accent-500"></div>
-
-                        {/* Timeline items */}
-                        <div className="space-y-16">
-                            <div className="relative z-10">
-                                <div className="flex items-center justify-center mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold">
-                                        1
-                                    </div>
-                                </div>
-                                <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md max-w-2xl mx-auto">
-                                    <h3 className="text-xl font-semibold mb-2">The Inspiration</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">
-                                        Our journey began with a deep appreciation for India's handloom heritage and a concern for the challenges faced by traditional weavers in the digital age.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="relative z-10">
-                                <div className="flex items-center justify-center mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-secondary-500 flex items-center justify-center text-white font-bold">
-                                        2
-                                    </div>
-                                </div>
-                                <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md max-w-2xl mx-auto">
-                                    <h3 className="text-xl font-semibold mb-2">The Innovation</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">
-                                        We developed our unique digital reservation system and blockchain authentication to create a bridge between traditional craftsmanship and modern technology.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="relative z-10">
-                                <div className="flex items-center justify-center mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold">
-                                        3
-                                    </div>
-                                </div>
-                                <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md max-w-2xl mx-auto">
-                                    <h3 className="text-xl font-semibold mb-2">The Impact</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">
-                                        Today, we're proud to support a growing community of artisans while providing our customers with authentic, blockchain-verified handcrafted sarees.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Call to Action */}
             <section className="py-16 bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl font-bold mb-6">
-                        Join Our Journey
+                        Join Our Story
                     </h2>
                     <p className="text-xl max-w-2xl mx-auto mb-8 text-white/90">
                         Be part of the movement to preserve and promote India's rich textile heritage.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <a href="/digital-sarees" className="px-8 py-3 bg-white text-primary-500 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                        <Link href="/shop" className="px-8 py-3 bg-white text-primary-500 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                             Explore Our Collection
-                        </a>
-                        <a href="/contact" className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                        </Link>
+                        <Link href="/contact" className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                             Contact Us
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>

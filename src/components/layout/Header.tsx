@@ -8,11 +8,10 @@ import { FiMenu, FiX, FiShoppingBag, FiUser, FiSearch, FiHeart } from 'react-ico
 
 const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Digital Sarees', path: '/digital-sarees' },
-    { name: 'Weavers Portal', path: '/weavers-portal' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Design', path: '/design' },
+    { name: 'About', path: '/about' },
+    { name: 'Verify Saree', path: '/verify' }
 ];
 
 const Header = () => {
@@ -38,8 +37,8 @@ const Header = () => {
     return (
         <header
             className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-3'
-                    : 'bg-transparent py-5'
+                ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-3'
+                : 'bg-transparent py-5'
                 }`}
         >
             <div className="container mx-auto px-4 flex justify-between items-center">
@@ -64,8 +63,8 @@ const Header = () => {
                             key={link.path}
                             href={link.path}
                             className={`relative text-sm font-medium transition-colors hover:text-primary-500 ${pathname === link.path
-                                    ? 'text-primary-500'
-                                    : 'text-gray-700 dark:text-gray-300'
+                                ? 'text-primary-500'
+                                : 'text-gray-700 dark:text-gray-300'
                                 }`}
                         >
                             {link.name}
@@ -112,13 +111,13 @@ const Header = () => {
                         </Link>
                     </div>
 
-                    <Link href="/digital-sarees" className="hidden sm:block">
+                    <Link href="/shop" className="hidden sm:block">
                         <motion.button
                             className="btn-primary text-sm"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Reserve a Saree
+                            Reserve Now
                         </motion.button>
                     </Link>
 
@@ -214,8 +213,8 @@ const Header = () => {
                                         key={link.path}
                                         href={link.path}
                                         className={`block py-2 px-4 rounded-md ${pathname === link.path
-                                                ? 'bg-primary-50 text-primary-500 dark:bg-gray-800'
-                                                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                                            ? 'bg-primary-50 text-primary-500 dark:bg-gray-800'
+                                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                                             }`}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
@@ -226,12 +225,12 @@ const Header = () => {
 
                             <div className="pt-4">
                                 <Link
-                                    href="/digital-sarees"
+                                    href="/shop"
                                     className="block py-2 px-4"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     <button className="btn-primary w-full">
-                                        Reserve a Saree
+                                        Reserve Now
                                     </button>
                                 </Link>
                             </div>

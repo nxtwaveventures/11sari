@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { blogPosts } from '@/data/blogPosts';
-import Image from 'next/image';
 
 // Blog categories for filtering
 const categories = [
@@ -123,13 +122,9 @@ export default function Blog() {
 
                                     <div className="flex items-center gap-4">
                                         <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ${getAvatarColor(featuredPost.author.name).bg}`}>
-                                            {featuredPost.author.avatar ? (
-                                                <img src={featuredPost.author.avatar} alt={featuredPost.author.name} className="w-full h-full object-cover" />
-                                            ) : (
-                                                <span className={`text-lg font-medium ${getAvatarColor(featuredPost.author.name).text}`}>
-                                                    {featuredPost.author.name.charAt(0)}
-                                                </span>
-                                            )}
+                                            <span className={`text-lg font-medium ${getAvatarColor(featuredPost.author.name).text}`}>
+                                                {featuredPost.author.name.charAt(0)}
+                                            </span>
                                         </div>
                                         <div>
                                             <h4 className="text-sm font-medium">{featuredPost.author.name}</h4>
@@ -179,13 +174,9 @@ export default function Blog() {
 
                                         <div className="flex items-center gap-3">
                                             <div className={`w-8 h-8 rounded-full flex items-center justify-center overflow-hidden ${getAvatarColor(post.author.name).bg}`}>
-                                                {post.author.avatar ? (
-                                                    <img src={post.author.avatar} alt={post.author.name} className="w-full h-full object-cover" />
-                                                ) : (
-                                                    <span className={`text-sm font-medium ${getAvatarColor(post.author.name).text}`}>
-                                                        {post.author.name.charAt(0)}
-                                                    </span>
-                                                )}
+                                                <span className={`text-sm font-medium ${getAvatarColor(post.author.name).text}`}>
+                                                    {post.author.name.charAt(0)}
+                                                </span>
                                             </div>
                                             <span className="text-sm font-medium">{post.author.name}</span>
                                         </div>

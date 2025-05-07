@@ -1,15 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    output: 'export',
+    output: 'standalone',
     images: {
-        domains: ['example.com'],
         unoptimized: true,
     },
-    webpack: (config) => {
-        // Leave this empty for now - we'll use Next.js's built-in module resolution
-        return config;
-    }
-}
+    trailingSlash: true,
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/11sari' : '',
+    basePath: process.env.NODE_ENV === 'production' ? '/11sari' : '',
+    // exportPathMap is not needed with the app router's generateStaticParams
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig; 

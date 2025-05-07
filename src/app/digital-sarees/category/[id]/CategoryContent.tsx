@@ -3,29 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-interface Category {
-    id: number;
-    name: string;
-    count: number;
-    image: string;
-    description: string;
-}
-
-interface Saree {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    nftId: string;
-    weaver: string;
-    isReserved: boolean;
-    colors: string[];
-    material: string;
-}
+import { SareeCategory } from '@/data/sareeCategories';
+import { Saree } from '@/data/sarees';
 
 interface CategoryContentProps {
-    category: Category;
+    category: SareeCategory;
     sarees: Saree[];
 }
 
