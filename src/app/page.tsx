@@ -16,15 +16,15 @@ const featuredSarees = [
   },
   {
     id: 2,
-    name: "Silk Kanjivaram",
-    image: "/sarees/kanjivaram-1.jpg",
+    name: "Royal Banarasi",
+    image: "/sarees/banarasi-1.jpg",
     price: "₹18,000",
     status: "Available for Reservation"
   },
   {
     id: 3,
-    name: "Designer Chanderi",
-    image: "/sarees/chanderi-1.jpg",
+    name: "Royal Banarasi",
+    image: "/sarees/banarasi-1.jpg",
     price: "₹12,000",
     status: "Available for Reservation"
   }

@@ -3,8 +3,14 @@ const nextConfig = {
     output: 'export',
     images: {
         unoptimized: true,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+            },
+        ],
     },
-    basePath: '/11sari',
+    basePath: process.env.NODE_ENV === 'production' ? '' : '/11sari',
 };
 
 module.exports = nextConfig; 
