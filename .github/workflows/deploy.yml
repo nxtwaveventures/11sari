@@ -30,10 +30,14 @@ jobs:
       - name: Install dependencies
         run: |
           npm cache clean --force
+          rm -rf node_modules
+          rm -rf .next
           npm install
       
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          touch out/.nojekyll
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
