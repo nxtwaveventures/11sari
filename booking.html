@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Madan - Master Weaver | BANARASI ROYALE</title>
+
+    <!-- Fonts - Dior Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Didot:wght@400&family=Helvetica+Neue:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/dior-style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .left-section {
+            flex: 0 0 60%;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/images/madan.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right-section {
+            flex: 0 0 40%;
+            background: linear-gradient(135deg, #8B0000, #A52A2A);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .right-content h1 {
+            font-family: 'Didot', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .right-content p {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .buy-now-btn {
+            background: white;
+            color: #8B0000;
+            border: none;
+            padding: 25px 80px;
+            font-size: 1.6rem;
+            font-family: 'Didot', serif;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .weaver-section {
+            background: rgba(255, 182, 193, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.2);
+        }
+
+        .weaver-title {
+            font-family: 'Didot', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .madan-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .madan-info {
+            flex: 1;
+        }
+
+        .madan-name {
+            font-family: 'Didot', serif;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .madan-title {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .madan-quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .buy-now-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-button:hover {
+            color: white;
+            transform: translateX(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .left-section {
+                flex: 0 0 50%;
+                height: 50vh;
+            }
+
+            .right-section {
+                flex: 0 0 50%;
+                height: 50vh;
+                padding: 30px 20px;
+            }
+
+            .buy-now-btn {
+                padding: 20px 60px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="gallery.html" class="back-button">‹</a>
+
+    <div class="main-container">
+        <!-- Left Section - Madan's Image -->
+        <div class="left-section">
+        </div>
+
+        <!-- Right Section - Buy Now -->
+        <div class="right-section">
+            <div class="right-content">
+                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20the%20Royal%20Heritage%20saree%20crafted%20by%20Master%20Weaver%20Madan.%20Could%20you%20please%20provide%20more%20details%3F"
+                    target="_blank" class="buy-now-btn">BUY NOW</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

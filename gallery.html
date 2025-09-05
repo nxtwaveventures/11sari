@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | BANARASI ROYALE</title>
+    <link rel="stylesheet" href="./assets/css/dior-style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: 'Helvetica Neue', sans-serif;
+            overflow: hidden;
+        }
+
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-home:hover {
+            color: white;
+            transform: translateX(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .gallery {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .gallery-panel {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-panel:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .saree-1 {
+            background-image: url('./assets/images/b1.jpg');
+        }
+
+        .saree-2 {
+            background-image: url('./assets/images/b2.jpg');
+        }
+
+        .saree-3 {
+            background-image: url('./assets/images/b3.png');
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                height: 300vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Minimalist Back Button -->
+    <a href="index.html" class="back-home">‹</a>
+
+    <div class="gallery">
+        <div class="gallery-panel saree-1" onclick="openImageInNewTab('b1')"></div>
+        <div class="gallery-panel saree-2" onclick="openImageInNewTab('b2')"></div>
+        <div class="gallery-panel saree-3" onclick="openImageInNewTab('b3')"></div>
+    </div>
+
+    <script>
+        function openImageInNewTab(imageName) {
+            // All images now open Madan's story page
+            window.open('./booking.html', '_blank');
+        }
+    </script>
+</body>
+
+</html>
