@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANARASI ROYALE</title>
+
+    <!-- Fonts - Dior Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Didot:wght@400&family=Helvetica+Neue:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/dior-style.css">
+</head>
+
+<body>
+    <!-- Dior-Style Navigation -->
+    <nav class="dior-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="nav-link">FASHION</a>
+                <a href="#" class="nav-link">JEWELRY</a>
+                <a href="#" class="nav-link">FRAGRANCE</a>
+            </div>
+            <div class="nav-center">
+                <a href="#home" class="logo">BANARASI ROYALE</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">ATELIER</a>
+                <a href="#" class="nav-link">HERITAGE</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dior-Style Hero Section -->
+    <main class="dior-hero">
+        <div class="hero-split">
+            <!-- Left Panel - Heritage Collection -->
+            <div class="hero-panel left-panel">
+                <div class="panel-background">
+                    <video autoplay muted loop playsinline preload="auto" class="panel-video"
+                        poster="./assets/images/heritage-collection.jpg">
+                        <source src="./assets/videos/heritage-collection.mp4" type="video/mp4">
+                        <!-- Fallback image if video fails to load -->
+                        <img src="./assets/images/heritage-collection.jpg" alt="Heritage Collection" />
+                    </video>
+                    <div class="panel-overlay"></div>
+                </div>
+                <div class="panel-content">
+                    <h2 class="panel-title">Heritage & Artisan</h2>
+                    <button class="dior-btn">Book now</button>
+                </div>
+            </div>
+
+            <!-- Right Panel - Bridal Collection -->
+            <div class="hero-panel right-panel">
+                <div class="panel-background">
+                    <video autoplay muted loop playsinline preload="auto" class="panel-video"
+                        poster="./assets/images/bridal-collection.jpg">
+                        <source src="./assets/videos/bridal-collection.mp4" type="video/mp4">
+                        <!-- Fallback image if video fails to load -->
+                        <img src="./assets/images/bridal-collection.jpg" alt="Bridal Collection" />
+                    </video>
+                    <div class="panel-overlay"></div>
+                </div>
+                <div class="panel-content">
+                    <h2 class="panel-title">Bridal & Ceremonial</h2>
+                    <button class="dior-btn">Shop now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Secondary Navigation Strip -->
+    <!-- Minimal Footer -->
+    <!-- Minimal Footer -->
+    <footer class="minimal-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="WhatsApp">WhatsApp</a>
+            </div>
+            <div class="footer-brand">
+                <span>BANARASI ROYALE</span>
+            </div>
+            <div class="footer-location">
+                <span>India (English)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <span>💬</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/main.js"></script>
+    <script>
+        // Video debugging and fallback handling
+        document.addEventListener('DOMContentLoaded', function () {
+            const videos = document.querySelectorAll('.panel-video');
+
+            videos.forEach((video, index) => {
+                const panelName = index === 0 ? 'Heritage' : 'Bridal';
+
+                console.log(`${panelName} video element:`, video);
+                if (video.querySelector('source')) {
+                    console.log(`${panelName} video source:`, video.querySelector('source').src);
+                }
+
+                // Handle video load success
+                video.addEventListener('loadeddata', function () {
+                    console.log(`${panelName} video loaded successfully!`);
+                    this.style.display = 'block';
+                    // Hide fallback image
+                    const fallbackImg = this.nextElementSibling;
+                    if (fallbackImg && fallbackImg.tagName === 'IMG') {
+                        fallbackImg.style.display = 'none';
+                    }
+                });
+
+                // Handle video load error
+                video.addEventListener('error', function (e) {
+                    console.error(`${panelName} video failed to load:`, e);
+                    this.style.display = 'none';
+                    // Show fallback image
+                    const fallbackImg = this.nextElementSibling;
+                    if (fallbackImg && fallbackImg.tagName === 'IMG') {
+                        fallbackImg.style.display = 'block';
+                    }
+                });
+
+                // Force play attempt
+                video.play().catch(e => {
+                    console.log(`${panelName} video autoplay prevented:`, e);
+                });
+
+                // Check if video is actually playing
+                setTimeout(() => {
+                    if (video.paused) {
+                        console.warn(`${panelName} video is paused - attempting to play`);
+                        video.play().catch(e => console.log(`${panelName} manual play failed:`, e));
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

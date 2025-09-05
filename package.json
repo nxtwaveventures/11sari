@@ -1,0 +1,26 @@
+{
+    "name": "banarasi-bridal-heritage",
+    "version": "1.0.0",
+    "description": "Premium custom Banarasi bridal saree website - Heritage meets modern commerce",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx live-server --port=3000 --open=/index.html",
+        "dev": "npx live-server --port=3000 --open=/index.html --watch=assets/",
+        "build": "echo 'Building for production...'",
+        "deploy": "echo 'Deploying to production...'"
+    },
+    "keywords": [
+        "banarasi",
+        "bridal",
+        "custom",
+        "handwoven",
+        "heritage",
+        "luxury",
+        "saree"
+    ],
+    "author": "Banarasi Bridal Heritage",
+    "license": "MIT",
+    "devDependencies": {
+        "live-server": "^1.2.2"
+    }
+}
